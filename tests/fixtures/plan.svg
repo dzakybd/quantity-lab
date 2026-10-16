@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="200" version="1.1" width="300" viewBox="0 0 300 200"><g id="Model" class="Model v1-1"><g class="Floor"><g id="Floor-1" transform="matrix(1,0,0,1,0,0)" class="Floorplan Floor-1">
+<g id="a" class="Space Bedroom" fill="#ffffff"><polygon points="20,20 140,20 140,180 20,180 "/><g class="SpaceDimensionsLabel"><g class="TextLabel NameLabel"><text>BEDROOM</text></g></g></g>
+<g id="b" class="Space Kitchen" fill="#ffffff"><polygon points="150,20 280,20 280,180 150,180 "/></g>
+<g id="c" class="Space Outdoor" fill="#ffffff"><polygon points="150,185 280,185 280,198 150,198 "/></g>
+<g id="d" class="Space Undefined" fill="#ffffff"><polygon points="0,0 10,10 10,0 0,10 "/></g>
+<g id="w1" class="Wall External"><polygon points="10,10 290,10 290,20 10,20 "/></g>
+<g id="w2" class="Wall"><polygon points="140,20 150,20 150,180 140,180 "/></g>
+<g id="dr" class="Door Swing Beside"><polygon points="140,60 150,60 150,90 140,90 "/></g>
+<g id="wi" class="Window Regular"><polygon points="40,10 80,10 80,20 40,20 "/></g>
+</g></g></g></svg>
