@@ -77,4 +77,5 @@ def compare(pred: list[Area], gt: list[Area], size: tuple[int, int]) -> dict:
         "perimeter_abs_err_mean_px": stat(abs_p, np.mean),
         "perimeter_abs_err_pct_median": stat([abs(x) for x in rel_p], np.median),
         "total_area_err_pct": round((pred_total - gt_total) / gt_total * 100, 4) if gt_total else None,
+        "pairs": [[int(r), int(c), round(float(iou[r, c]), 4)] for r, c in pairs],  # [pred index, gt index, IoU]
     }

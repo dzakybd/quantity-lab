@@ -1,0 +1,66 @@
+{
+ "tuned_on": [
+  "high_quality_architectural/6044",
+  "high_quality_architectural/2564",
+  "high_quality/6139"
+ ],
+ "objective": "mean room count F1, ties broken by mean |total area error|",
+ "grid": {
+  "threshold": [
+   100,
+   140,
+   180,
+   220
+  ],
+  "wall_px": [
+   3,
+   5,
+   8
+  ],
+  "door_px": [
+   40,
+   60,
+   90,
+   130
+  ],
+  "min_room_px2": [
+   1000,
+   2000,
+   3000
+  ],
+  "work_long_side": [
+   1500,
+   2500
+  ]
+ },
+ "chosen": {
+  "threshold": 140,
+  "wall_px": 3,
+  "door_px": 130,
+  "min_room_px2": 3000,
+  "work_long_side": 2500
+ },
+ "chosen_score": {
+  "params": {
+   "threshold": 140,
+   "wall_px": 3,
+   "door_px": 130,
+   "min_room_px2": 3000,
+   "work_long_side": 2500
+  },
+  "count_f1": 0.3262,
+  "abs_total_area_err_pct": 14.24
+ },
+ "default_score": {
+  "params": {
+   "threshold": 140,
+   "wall_px": 5,
+   "door_px": 60,
+   "min_room_px2": 2000,
+   "work_long_side": 1500
+  },
+  "count_f1": 0.0,
+  "abs_total_area_err_pct": 99.27
+ },
+ "trials": 288
+}

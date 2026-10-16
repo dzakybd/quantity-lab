@@ -1,0 +1,83 @@
+{
+ "held_out": [
+  "high_quality/488",
+  "high_quality_architectural/9453",
+  "high_quality_architectural/6276"
+ ],
+ "tuned_on": [
+  "high_quality_architectural/6044",
+  "high_quality_architectural/2564",
+  "high_quality/6139"
+ ],
+ "units": "image pixels (px, px^2); no physical scale",
+ "pdf_path": "F1_scaled.png wrapped as an image-only PDF, 1 pt = 1 px, rendered back at 72 DPI",
+ "matching": {
+  "iou": 0.5,
+  "part_share_for_split_merge": 0.3,
+  "min_area_for_relative_px2": 1000.0
+ },
+ "perturbations": [
+  [
+   "erode",
+   2
+  ],
+  [
+   "erode",
+   5
+  ],
+  [
+   "dilate",
+   2
+  ],
+  [
+   "dilate",
+   5
+  ],
+  [
+   "shift",
+   2
+  ],
+  [
+   "shift",
+   5
+  ],
+  [
+   "scale",
+   -2
+  ],
+  [
+   "scale",
+   2
+  ],
+  [
+   "merge",
+   20
+  ],
+  [
+   "split",
+   3
+  ]
+ ],
+ "baseline_params": {
+  "threshold": 140,
+  "wall_px": 3,
+  "door_px": 130,
+  "min_room_px2": 3000,
+  "work_long_side": 2500
+ },
+ "timing": "predicted mode: median of 3 full runs (render, segment, polygonize, score)",
+ "packages": {
+  "pymupdf": "1.28.2",
+  "opencv-python-headless": "5.0.0.93",
+  "shapely": "2.2.0",
+  "scipy": "1.18.1",
+  "numpy": "2.5.4"
+ },
+ "python": "3.12.12",
+ "hardware": {
+  "platform": "macOS-26.7.1-arm64-arm-64bit",
+  "cpu": "Apple M3 Pro",
+  "cpu_count": 12,
+  "ram_gb": 36
+ }
+}
