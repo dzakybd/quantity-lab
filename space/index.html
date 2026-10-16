@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>quantity-lab showcase</title>
+<meta name="description" content="How small floor-plan geometry errors distort room areas and counts: oracle rooms, controlled errors and a classical OpenCV baseline.">
+<style>
+:root { --bg: #f7f7f5; --panel: #ffffff; --fg: #1d1d1b; --muted: #6b6b66; --line: #e2e2dc; --accent: #4338ca; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #141413; --panel: #1d1d1b; --fg: #ecece6; --muted: #a3a39b; --line: #33332f; --accent: #a5b4fc; }
+}
+:root[data-theme="dark"] { --bg: #141413; --panel: #1d1d1b; --fg: #ecece6; --muted: #a3a39b; --line: #33332f; --accent: #a5b4fc; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 26px; margin: 0 0 4px; }
+h2 { font-size: 17px; margin: 0 0 10px; }
+p { margin: 0 0 8px; }
+a { color: var(--accent); }
+.muted { color: var(--muted); }
+pre { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; overflow-x: auto; margin: 8px 0 0; font: 13px ui-monospace, Menlo, monospace; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; min-width: 0; }
+.row { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; margin-top: 16px; align-items: start; }
+@media (max-width: 860px) { .row { grid-template-columns: 1fr; } }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.pills button { border: 1px solid var(--line); background: var(--panel); color: var(--fg); border-radius: 999px; padding: 6px 14px; font: inherit; font-size: 14px; cursor: pointer; }
+.pills button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.stat { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.stat b { display: block; font-size: 22px; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--muted); }
+#overlay { width: 100%; height: auto; display: block; background: #fff; border-radius: 6px; margin-top: 12px; }
+.scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 5px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--muted); font-weight: 600; }
+main > section.panel + section.panel { margin-top: 16px; }
+footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>How much can a 2-pixel error distort a floor-plan estimate?</h1>
+  <p class="muted">quantity-lab measures room area, perimeter and count on floor plans three ways: the annotated rooms (oracle), the same rooms with a controlled error, and a classical OpenCV baseline that labels the free space between walls. Units are image pixels; no physical scale is claimed.</p>
+  <pre>uv run python -m quantity_lab --input plan.pdf --annotations model.svg --mode perturbed --perturbation erode --pixels 2 --output out/plan</pre>
+  <p class="muted" style="margin-top:8px">Code (MIT): <a href="https://github.com/dzakybd/quantity-lab">github.com/dzakybd/quantity-lab</a>. Write-up: <a href="https://dzaky.ai.id/en/blog/quantity-lab-takeoff-errors">dzaky.ai.id</a>. Results were computed ahead of time; this page runs no model.</p>
+
+  <div class="row">
+    <section class="panel">
+      <h2>Synthetic plan</h2>
+      <div class="pills" id="plans" role="group" aria-label="Plan"></div>
+      <div class="pills" id="views" role="group" aria-label="Mode"></div>
+      <img id="overlay" alt="">
+      <p class="muted" style="font-size:12px;margin-top:8px">Coloured fill: measured rooms, one colour per room. Dark outline: the reference rooms.</p>
+    </section>
+    <section class="panel">
+      <h2 id="scoreTitle">Score</h2>
+      <div class="stats" id="stats"></div>
+      <p class="muted" style="font-size:12px;margin-top:10px">Rooms match one-to-one at IoU ≥ 0.5. Room area error is the mean signed error over matched rooms; total area compares the sums.</p>
+    </section>
+  </div>
+
+  <section class="panel" style="margin-top:16px">
+    <h2>Controlled errors on three held-out CubiCasa5K plans (numbers only)</h2>
+    <p class="muted" style="font-size:13px">Mean signed room-area error, per plan: simple (5 rooms) / medium (9) / dense (28).</p>
+    <div class="scroll"><table id="perturb"></table></div>
+  </section>
+  <section class="panel">
+    <h2>OpenCV baseline on the same plans</h2>
+    <p class="muted" style="font-size:13px">Tuned on three CubiCasa5K train plans, then frozen.</p>
+    <div class="scroll"><table id="pred"></table></div>
+  </section>
+
+  <footer>CubiCasa5K: Kalervo et al., SCIA 2019, <a href="https://zenodo.org/records/2613548">zenodo.org/records/2613548</a> (CC BY-NC-SA 4.0). No CubiCasa5K image is shown or included here; every picture is a synthetic plan made for this project.</footer>
+</main>
+<script>
+const VIEWS = { "oracle": "Oracle", "perturbed_erode_2": "Pulled in 2 px", "perturbed_erode_5": "Pulled in 5 px", "perturbed_dilate_5": "Pushed out 5 px", "perturbed_merge_20": "Missing divider", "perturbed_split_3": "Spurious line", "predicted": "OpenCV baseline" };
+const ERRS = { "erode_2": "Pulled in 2 px", "erode_5": "Pulled in 5 px", "dilate_2": "Pushed out 2 px", "dilate_5": "Pushed out 5 px", "shift_5": "Shifted 5 px", "scale_2": "Scale +2%", "merge_20": "Missing divider", "split_3": "Spurious line" };
+let data, cur = { p: 0, v: "oracle" };
+const fmt = (v, d = 1) => v === null || v === undefined ? "—" : (v > 0 ? "+" : "") + Number(v).toFixed(d);
+function pills(el, items, on, click) {
+  el.innerHTML = "";
+  items.forEach(([k, t]) => { const b = document.createElement("button"); b.textContent = t; b.setAttribute("aria-pressed", on(k)); b.onclick = () => click(k); el.appendChild(b); });
+}
+function render() {
+  const p = data.plans[cur.p], s = p.scores[cur.v];
+  pills(document.getElementById("plans"), data.plans.map((x, i) => [i, x.title]), i => i === cur.p, i => { cur.p = i; render(); });
+  pills(document.getElementById("views"), Object.entries(VIEWS), k => k === cur.v, k => { cur.v = k; render(); });
+  const img = document.getElementById("overlay");
+  img.src = `data/${p.id}/${cur.v}.png`;
+  img.alt = `${p.title}, ${VIEWS[cur.v]}: measured rooms filled in colour over the reference outlines`;
+  document.getElementById("scoreTitle").textContent = `${p.title} · ${VIEWS[cur.v]}`;
+  document.getElementById("stats").innerHTML = [
+    [s.count_f1.toFixed(2), "room count F1"], [fmt(s.area_signed_err_pct_mean) + "%", "room area error (matched)"],
+    [fmt(s.total_area_err_pct) + "%", "total area error"], [cur.v === "oracle" ? p.rooms : (s.pred_rooms ?? "—"), cur.v === "oracle" ? "reference rooms" : "rooms found (baseline)"],
+  ].map(([b, t]) => `<div class="stat"><b>${b}</b><span>${t}</span></div>`).join("");
+}
+function tables() {
+  const by = {};
+  data.perturbations.forEach(r => { (by[`${r.perturbation}_${r.pixels}`] ||= []).push(r); });
+  document.getElementById("perturb").innerHTML = "<tr><th>Error</th><th>Room area</th><th>Total area</th><th>Count F1</th></tr>" +
+    Object.entries(ERRS).filter(([k]) => by[k]).map(([k, t]) => `<tr><td>${t}</td><td>${by[k].map(r => fmt(+r.area_signed_err_pct_mean) + "%").join(" / ")}</td><td>${by[k].map(r => fmt(+r.total_area_err_pct) + "%").join(" / ")}</td><td>${by[k].map(r => (+r.count_f1).toFixed(2)).join(" / ")}</td></tr>`).join("");
+  const names = { "high_quality_488": "Simple", "high_quality_architectural_9453": "Medium (open kitchen)", "high_quality_architectural_6276": "Dense (two floors)" };
+  document.getElementById("pred").innerHTML = "<tr><th>Plan</th><th>Reference rooms</th><th>Found</th><th>Matched</th><th>Count F1</th><th>Total area</th></tr>" +
+    Object.entries(data.held_out).map(([k, v]) => { const p = v.predicted; return `<tr><td>${names[k] || k}</td><td>${p.gt_rooms}</td><td>${p.pred_rooms}</td><td>${p.matched}</td><td>${p.count_f1.toFixed(2)}</td><td>${fmt(p.total_area_err_pct)}%</td></tr>`; }).join("");
+}
+fetch("data/results.json").then(r => r.json()).then(j => { data = j; render(); tables(); });
+</script>
+</body>
+</html>
