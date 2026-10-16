@@ -75,7 +75,7 @@ What this shows:
 
 The baseline fails as a room counter. It splits rooms at furniture and fixture lines, merges rooms through open doorways and open plans, and its settings did not carry over between drawing styles: tuned on three train plans, it scored 0.33 count F1 even there. Note the medium plan: **total area within 1.3% while matching zero rooms**. A right total can hide wrong rooms.
 
-Synthetic plans (clean, CubiCasa-style) are in `runs/metrics.json`. They use the same frozen parameters and get count F1 0.00–0.44, because the doorways there are wider than the tuned gap closing.
+Synthetic plans (clean, CubiCasa-style) are in `runs/metrics.json`. They use the same frozen parameters and get count F1 0.00–0.44, because their doorways, scaled to the working resolution, are wider than the tuned gap closing (130 px).
 
 ## Reproduce
 
