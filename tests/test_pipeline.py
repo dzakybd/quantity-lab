@@ -88,3 +88,18 @@ def test_missing_annotation_exit_1(tmp_path):
         tmp_path / "x",
     )
     assert r.returncode == 1 and "not found" in r.stderr
+
+
+def test_repair_flags_and_validity_survive_export(tmp_path):
+    from quantity_lab.pipeline import run, write
+
+    result = run(_pdf(tmp_path), PLAN, "oracle")
+    write(result, tmp_path / "audit")
+    data = json.loads((tmp_path / "audit" / "rooms.json").read_text())
+    assert data["validity"]["repaired_fraction"] == 1 / 3
+    assert data["validity"]["valid_before_repair_rate"] == 2 / 3
+    assert data["validity"]["valid_after_repair_rate"] == 1.0
+    import csv
+
+    row = next(csv.DictReader((tmp_path / "audit" / "quantities.csv").open()))
+    assert row["mode"] == "oracle" and row["unit"] == "px2"

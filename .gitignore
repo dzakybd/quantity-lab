@@ -10,3 +10,4 @@ runs/**/*.pdf
 runs/**/*.svg
 space/data/
 kaggle/
+runs/outputs/

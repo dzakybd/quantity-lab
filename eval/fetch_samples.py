@@ -16,7 +16,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from eval.common import TEST, TRAIN_LIST, plan_dir
+from eval.common import SAMPLES, TEST, TRAIN_LIST, plan_dir
 from quantity_lab.annotations import load_plan
 from quantity_lab.geometry import rasterize
 
@@ -68,6 +68,7 @@ def coverage(d: Path) -> float:
 
 
 def main() -> None:
+    kaggle_get("test.txt", SAMPLES)
     for plan in TEST:
         print("test", plan, fetch(plan))
     with tempfile.TemporaryDirectory() as tmp:

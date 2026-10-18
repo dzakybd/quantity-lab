@@ -53,11 +53,14 @@ def run(
     gray = render_gray(pdf)
     t["render_s"] = time.perf_counter() - t0
     size = (gray.shape[1], gray.shape[0])
+    t0 = time.perf_counter()
     plan = load_plan(svg)
+    t["annotations_s"] = time.perf_counter() - t0
     gt_rooms = plan.indoor()
     gt = [r.polygon for r in gt_rooms]
     comparison = None
     t0 = time.perf_counter()
+    audit = {}
     if mode == "oracle":
         rooms = [_room(i, r.polygon, r.label, r.repaired) for i, r in enumerate(gt_rooms, 1)]
         t["measure_s"] = time.perf_counter() - t0
@@ -70,9 +73,9 @@ def run(
             raise ValueError(f"unknown mode {mode}")
         t["segment_s"] = time.perf_counter() - t0
         t0 = time.perf_counter()
-        polys = list(polygonize(mask).values())
+        polys = polygonize(mask, audit=audit)
         t["polygonize_s"] = time.perf_counter() - t0
-        rooms = [_room(i, p, None, False) for i, p in enumerate(polys, 1)]
+        rooms = [_room(i, p, None, label in audit["repaired_labels"]) for i, (label, p) in enumerate(polys.items(), 1)]
         t0 = time.perf_counter()
         comparison = compare([r["geometry"] for r in rooms], gt, size)
         t["score_s"] = time.perf_counter() - t0
@@ -91,7 +94,14 @@ def run(
             "door_count": plan.door_count if mode == "oracle" else None,
             "window_count": plan.window_count if mode == "oracle" else None,
         },
-        "timing_s": {k: round(v, 4) for k, v in t.items()},
+        "timing_s": {k: round(v, 6) for k, v in t.items()},
+        "validity": {
+            "rooms": len(rooms),
+            "valid_before_repair_rate": sum(r["valid"] for r in rooms) / len(rooms) if rooms else None,
+            "repaired_fraction": sum(r["repaired"] for r in rooms) / len(rooms) if rooms else None,
+            "valid_after_repair_rate": sum(r["geometry"].is_valid for r in rooms) / len(rooms) if rooms else None,
+            "contour_audit": audit,
+        },
     }
     if comparison is not None:
         result["comparison"] = comparison
@@ -105,9 +115,24 @@ def write(result: dict, out: Path) -> None:
     public = {k: v for k, v in result.items() if not k.startswith("_")} | {"rooms": rooms}
     (out / "rooms.json").write_text(json.dumps(public, indent=1))
     with (out / "quantities.csv").open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["id", "label", "room_area_px2", "room_perimeter_px", "valid", "repaired"])
+        w = csv.DictWriter(
+            f,
+            fieldnames=[
+                "drawing_id",
+                "unit",
+                "mode",
+                "id",
+                "label",
+                "room_area_px2",
+                "room_perimeter_px",
+                "valid",
+                "repaired",
+            ],
+        )
         w.writeheader()
-        w.writerows(rooms)
+        w.writerows(
+            {"drawing_id": result["drawing_id"], "unit": result["unit"], "mode": result["mode"]} | r for r in rooms
+        )
     overlay(result["_gray"], result["_gt"], [r["geometry"] for r in result["rooms"]], out / "overlay.png")
 
 

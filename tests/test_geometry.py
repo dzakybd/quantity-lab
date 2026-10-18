@@ -75,3 +75,29 @@ def test_polygonize_keeps_holes():
 def test_tiny_room_survives():
     back = polygonize(rasterize([box(5, 5, 9, 9)], (20, 20)))
     assert len(back) == 1 and back[1].area > 0
+
+
+def test_polygonize_preserves_contour_repair_audit():
+    mask = np.zeros((20, 20), np.int32)
+    mask[2:7, 2:7] = 1
+    mask[7:12, 7:12] = 1
+    audit = {}
+    rooms = polygonize(mask, audit=audit)
+    assert audit["polygons_before_repair"] == 1
+    assert audit["invalid_before_repair"] == 1 and audit["repaired_labels"] == [1]
+    assert all(p.is_valid for p in rooms.values())
+
+
+def test_overlapping_annotation_label_mask_records_last_room():
+    rooms = [box(5, 5, 10, 10), box(0, 0, 20, 20)]
+    mask = rasterize(rooms, (30, 30))
+    assert not (mask == 1).any() and (mask == 2).sum() == 400
+
+
+def test_geometry_collection_repair_keeps_polygon_and_audit_flag():
+    from shapely.geometry import GeometryCollection, LineString
+
+    raw = GeometryCollection([box(0, 0, 10, 10), LineString([(10, 10), (20, 20)])])
+    fixed, repaired = repair(raw)
+    assert repaired and fixed.is_valid
+    assert measure(fixed) == (100.0, 40.0)

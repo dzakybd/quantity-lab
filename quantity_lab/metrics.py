@@ -23,15 +23,17 @@ def _overlaps(pred: list[Area], gt: list[Area], size: tuple[int, int]):
     union = pa[:, None] + ga[None, :] - inter
     iou = np.divide(inter, union, out=np.zeros_like(inter), where=union > 0)
     fg_iou = float(((pm > 0) & (gm > 0)).sum() / max(1, ((pm > 0) | (gm > 0)).sum()))
-    return inter, pa, ga, iou, fg_iou
+    bg_iou = float(((pm == 0) & (gm == 0)).sum() / max(1, ((pm == 0) | (gm == 0)).sum()))
+    return inter, pa, ga, iou, fg_iou, bg_iou
 
 
 def compare(pred: list[Area], gt: list[Area], size: tuple[int, int]) -> dict:
     """`size` is the image (width, height). Returns a flat dict of metrics; see the README for definitions."""
-    inter, pa, ga, iou, fg_iou = _overlaps(pred, gt, size)
+    inter, pa, ga, iou, fg_iou, bg_iou = _overlaps(pred, gt, size)
     pairs = []
     if len(pred) and len(gt):
-        rows, cols = linear_sum_assignment(-iou)
+        # Maximize eligible matches first, then IoU; sub-threshold pairs must not displace valid matches.
+        rows, cols = linear_sum_assignment((iou >= MATCH_IOU) * -(min(iou.shape) + 1) - iou)
         pairs = [(r, c) for r, c in zip(rows, cols) if iou[r, c] >= MATCH_IOU]
     n = len(pairs)
     precision = n / len(pred) if pred else 0.0
@@ -69,6 +71,7 @@ def compare(pred: list[Area], gt: list[Area], size: tuple[int, int]) -> dict:
         "merged": merged,
         "split": split,
         "mask_iou": round(fg_iou, 4),
+        "background_mask_iou": round(bg_iou, 4),
         "matched_iou_mean": stat(ious, np.mean),
         "area_abs_err_mean_px2": stat(abs_a, np.mean),
         "area_abs_err_max_px2": stat(abs_a, np.max),

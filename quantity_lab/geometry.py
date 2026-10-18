@@ -48,9 +48,11 @@ def rasterize(rooms: list[Area], size: tuple[int, int]) -> np.ndarray:
     return mask
 
 
-def polygonize(mask: np.ndarray, min_area: float = 1.0) -> dict[int, Area]:
+def polygonize(mask: np.ndarray, min_area: float = 1.0, audit: dict | None = None) -> dict[int, Area]:
     """Polygon per label (holes kept), traced on pixel boundaries so a filled w x h block has area w*h."""
     out = {}
+    if audit is not None:
+        audit.update(polygons_before_repair=0, invalid_before_repair=0, repaired_labels=[])
     for label in np.unique(mask):
         if label == 0:
             continue
@@ -76,7 +78,13 @@ def polygonize(mask: np.ndarray, min_area: float = 1.0) -> dict[int, Area]:
                 polys.append(Polygon(shell))
                 continue
             # contour runs through pixel centres; grow by half a pixel to reach pixel boundaries
-            p = Polygon(shell, [h for h in holes if len(h) >= 3]).buffer(0.5, join_style="mitre")
+            raw = Polygon(shell, [h for h in holes if len(h) >= 3])
+            if audit is not None:
+                audit["polygons_before_repair"] += 1
+                audit["invalid_before_repair"] += int(not raw.is_valid)
+                if not raw.is_valid and int(label) not in audit["repaired_labels"]:
+                    audit["repaired_labels"].append(int(label))
+            p = raw.buffer(0.5, join_style="mitre")
             polys.extend(p.geoms if isinstance(p, MultiPolygon) else [p])
         polys = [p for p in polys if p.area >= min_area]
         if polys:

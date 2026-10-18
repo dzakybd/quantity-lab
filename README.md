@@ -35,45 +35,53 @@ uv run python -m quantity_lab --input plan.pdf --annotations model.svg --mode pr
   - *merged:* one predicted room covers at least 30% of two or more reference rooms;
   - *split:* one reference room has two or more predicted pieces each covering at least 30% of it.
 - **Errors:** area and perimeter errors are computed on matched rooms. Relative errors are reported only for reference rooms of at least 1,000 px². The total-area error compares the sums.
-- **Data:** three held-out CubiCasa5K **test** plans.
-  - `high_quality/488`: simple, 5 indoor rooms.
-  - `high_quality_architectural/9453`: medium, 9 rooms; the kitchen and living room have no wall between them.
-  - `high_quality_architectural/6276`: dense, two floors, 28 rooms.
+- **Data:** ten held-out CubiCasa5K **test** plans (`runs/sample_manifest.json`): the first three examples (`high_quality/488`, `high_quality_architectural/9453`, `high_quality_architectural/6276`) plus seven taken in order from the test list shuffled with seed 20261019, keeping plans whose annotations cover at least 60% of the dark pixels. One candidate (`2204`) failed that check and is logged as excluded. No predicted score was used to pick plans.
 - **Tuning:** the baseline was tuned on three **train** plans (`samples/TRAIN.txt`) and frozen in `runs/params.json`.
 
 ## Results (held-out test plans)
 
 **Mode A: the measuring code.**
-- The raster round trip finds every room (count F1 1.0).
-- Median room-area error is 0.12–0.36%, and total area is within 0.06%.
+- Nine of ten plans keep every room through the raster round trip. `high_quality/5632` loses one: a later annotation fully covers an Undefined room in the label mask (`runs/failure_cases/oracle-overlap.md`).
+- Median room-area error is 0.07–0.36%, and total area is within 0.30%.
 
-**Mode B: controlled errors.** Mean signed room-area error on the three plans (`runs/perturbation_results.csv`):
+**Mode B: controlled errors.** Range across the ten plans of each plan's mean signed room-area error (`runs/perturbation_results.csv`):
 
 | Error | Room area | Perimeter (median abs.) | Count F1 |
 |---|---|---|---|
-| boundary pulled in 2 px | −3.3% to −4.1% | 1.3–1.8% | 1.00 |
-| boundary pulled in 5 px | −8.3% to −10.1% | 3.5–4.6% | 1.00 |
-| boundary pushed out 2 px | +3.6% to +3.7% | 0.6–1.2% | 1.00 |
-| boundary pushed out 5 px | +8.8% to +9.6% | 2.1–3.4% | 1.00 |
-| whole plan shifted 2 or 5 px | within ±0.2% | ≤0.13% | 1.00 |
-| scale ±2% | ±3.6% to ±4.2% | 1.9–2.2% | 0.82–1.00 |
-| one missing divider (merge) | total area within 0.6% | — | 0.89–0.98 |
-| one spurious line (split) | total area within 0.3% | — | 0.73–0.95 |
+| boundary pulled in 2 px | −4.1 to −3.2% | 1.3–2.0% | 0.94–1.00 |
+| boundary pulled in 5 px | −10.1 to −7.6% | 3.5–4.9% | 0.94–1.00 |
+| boundary pushed out 2 px | +2.6 to +3.9% | 0.6–1.3% | 0.94–1.00 |
+| boundary pushed out 5 px | +6.6 to +9.7% | 2.1–3.9% | 0.94–1.00 |
+| whole plan shifted 5 px | −0.2 to +0.2% | 0.0–0.1% | 0.94–1.00 |
+| scale −2% | −4.2 to −3.6% | 1.8–2.1% | 0.82–1.00 |
+| scale +2% | +3.8 to +4.2% | 1.9–2.2% | 0.82–1.00 |
+| one missing divider (merge) | total area within 0.83% | — | 0.80–0.98 |
+| one spurious line (split) | total area within 0.45% | — | 0.73–0.95 |
 
 What this shows:
 - **Boundary errors scale with perimeter.** A 2 px error costs smaller rooms more.
 - **A shifted plan keeps its areas.** Misregistration hurts overlap, not area.
+- **Count F1 below 1.0 on boundary errors comes from one plan** (`5632`, the overlap case above), not from the perturbation.
 - **Merges and splits leave the total area almost unchanged but get the room count wrong.**
 
 **Mode C: OpenCV baseline (count F1 / total-area error).**
 
 | Plan | Reference rooms | Predicted | Matched | Count F1 | Total area error |
 |---|---|---|---|---|---|
-| 488 simple | 5 | 31 | 2 | 0.11 | +33.8% |
-| 9453 medium | 9 | 23 | 0 | 0.00 | −1.3% |
-| 6276 dense | 28 | 71 | 5 | 0.10 | −4.5% |
+| HQ/488 | 5 | 31 | 2 | 0.11 | +33.8% |
+| HQA/9453 | 9 | 23 | 0 | 0.00 | −1.3% |
+| HQA/6276 | 28 | 71 | 5 | 0.10 | −4.5% |
+| colorful/13502 | 6 | 29 | 3 | 0.17 | +5.6% |
+| HQA/2035 | 6 | 39 | 4 | 0.18 | +11.5% |
+| HQA/875 | 8 | 103 | 4 | 0.07 | +2.8% |
+| HQ/9334 | 11 | 2 | 0 | 0.00 | −99.3% |
+| HQA/9433 | 17 | 35 | 3 | 0.12 | −74.1% |
+| HQ/5632 | 9 | 42 | 3 | 0.12 | +7.1% |
+| HQ/1140 | 8 | 47 | 4 | 0.15 | +3.8% |
 
-The baseline fails as a room counter. It splits rooms at furniture and fixture lines, merges rooms through open doorways and open plans, and its settings did not carry over between drawing styles: tuned on three train plans, it scored 0.33 count F1 even there. Note the medium plan: **total area within 1.3% while matching zero rooms**. A right total can hide wrong rooms.
+The baseline fails as a room counter. It splits rooms at furniture and fixture lines, merges rooms through open doorways and open plans, and its settings did not carry over between drawing styles: tuned on three train plans, it scored 0.33 count F1 even there. Across the ten plans, mean count F1 is 0.101 and the room-count MAE is 33.3. Note `9453`: **total area within 1.4% while matching zero rooms**. A right total can hide wrong rooms. HQ = `high_quality`, HQA = `high_quality_architectural`.
+
+Mask IoU, area/perimeter errors, polygon validity before and after repair, and stage timings (mean, median, min, max) are in `runs/summary.json`. Rooms are matched one-to-one at IoU ≥ 0.5. `runs/verification.json` records the export checks and the repeat run of every prediction.
 
 Synthetic plans (clean, CubiCasa-style) are in `runs/metrics.json`. They use the same frozen parameters and get count F1 0.00–0.44, because their doorways, scaled to the working resolution, are wider than the tuned gap closing (130 px).
 
@@ -83,13 +91,15 @@ Synthetic plans (clean, CubiCasa-style) are in `runs/metrics.json`. They use the
 uv run python -m eval.fetch_samples   # needs KAGGLE_API_TOKEN; Kaggle mirror qmarva/cubicasa5k
 uv run python -m eval.tune            # train plans only
 uv run python -m eval.benchmark
+uv run python -m eval.report
+uv run python -m eval.verify
 uv run python space/build.py
 uv run pytest -q
 ```
 
 ## Limitations
 
-- **Three test plans.** These show how the errors behave, not a general accuracy figure.
+- **Ten test plans,** three of which were inspected before the set was expanded. These show how the errors behave, not a general accuracy figure.
 - **No physical units.** A real takeoff needs a validated scale (a scale bar or a known dimension).
 - **The baseline is deliberately classical.** A trained segmentation model (such as the one in the CubiCasa5K paper) is the natural next step for mode C.
 - **Wall length is not measured.** The area of a wall polygon is not wall length, and a centreline method was out of scope.

@@ -42,3 +42,21 @@ def test_shrunk_room_area_error():
 def test_empty_prediction():
     m = compare([], GT, SIZE)
     assert m["matched"] == 0 and m["count_f1"] == 0.0 and m["total_area_err_pct"] == -100.0
+
+
+def test_room_count_error_is_independent_of_matching():
+    shifted = [box(10, 10, 30, 30), box(40, 10, 60, 30), box(70, 10, 90, 30)]
+    m = compare(shifted, GT, SIZE)
+    assert m["room_count_err"] == 0 and m["count_f1"] == 0.0
+    assert 0 <= m["background_mask_iou"] <= 1
+
+
+def test_matching_prioritizes_number_of_threshold_matches(monkeypatch):
+    import numpy as np
+
+    from quantity_lab import metrics
+
+    iou = np.array([[0.9, 0.5], [0.5, 0.49]])
+    monkeypatch.setattr(metrics, "_overlaps", lambda *args: (np.zeros((2, 2)), np.ones(2), np.ones(2), iou, 1.0, 1.0))
+    m = metrics.compare(GT[:2], GT[:2], SIZE)
+    assert m["matched"] == 2

@@ -1,0 +1,139 @@
+{
+  "source": "https://zenodo.org/records/2613548/files/cubicasa5k.zip?download=1",
+  "selection_seed": 20261019,
+  "selection": "retain three original test plans; add first seven eligible plans from seeded shuffle of official test.txt; coverage >= 0.6 and room bounds inside image, no predicted scores used",
+  "held_out": [
+    "high_quality/488",
+    "high_quality_architectural/9453",
+    "high_quality_architectural/6276",
+    "colorful/13502",
+    "high_quality_architectural/2035",
+    "high_quality_architectural/875",
+    "high_quality/9334",
+    "high_quality_architectural/9433",
+    "high_quality/5632",
+    "high_quality/1140"
+  ],
+  "additional_intake": [
+    {
+      "plan": "colorful/13502",
+      "coverage": 0.9889656956971759,
+      "room_bounds_inside_image": true,
+      "image_size": [
+        765,
+        1513
+      ],
+      "svg_canvas": [
+        719,
+        1495
+      ],
+      "indoor_rooms": 6,
+      "selected": true
+    },
+    {
+      "plan": "high_quality_architectural/2035",
+      "coverage": 0.975675078690154,
+      "room_bounds_inside_image": true,
+      "image_size": [
+        1458,
+        774
+      ],
+      "svg_canvas": [
+        1369,
+        818
+      ],
+      "indoor_rooms": 6,
+      "selected": true
+    },
+    {
+      "plan": "high_quality_architectural/875",
+      "coverage": 0.9511065705751057,
+      "room_bounds_inside_image": true,
+      "image_size": [
+        1041,
+        1014
+      ],
+      "svg_canvas": [
+        1000,
+        959
+      ],
+      "indoor_rooms": 8,
+      "selected": true
+    },
+    {
+      "plan": "high_quality_architectural/2204",
+      "coverage": 0.4986087304944015,
+      "room_bounds_inside_image": true,
+      "image_size": [
+        3136,
+        1325
+      ],
+      "svg_canvas": [
+        3046,
+        1238
+      ],
+      "indoor_rooms": 24,
+      "selected": false
+    },
+    {
+      "plan": "high_quality/9334",
+      "coverage": 0.985825043622169,
+      "room_bounds_inside_image": true,
+      "image_size": [
+        1079,
+        1967
+      ],
+      "svg_canvas": [
+        891,
+        1845
+      ],
+      "indoor_rooms": 11,
+      "selected": true
+    },
+    {
+      "plan": "high_quality_architectural/9433",
+      "coverage": 0.9317160884500616,
+      "room_bounds_inside_image": true,
+      "image_size": [
+        1312,
+        1919
+      ],
+      "svg_canvas": [
+        1241,
+        1825
+      ],
+      "indoor_rooms": 17,
+      "selected": true
+    },
+    {
+      "plan": "high_quality/5632",
+      "coverage": 0.8959369724254361,
+      "room_bounds_inside_image": true,
+      "image_size": [
+        939,
+        1406
+      ],
+      "svg_canvas": [
+        864,
+        1368
+      ],
+      "indoor_rooms": 9,
+      "selected": true
+    },
+    {
+      "plan": "high_quality/1140",
+      "coverage": 0.9583323035859922,
+      "room_bounds_inside_image": true,
+      "image_size": [
+        1513,
+        953
+      ],
+      "svg_canvas": [
+        1494,
+        918
+      ],
+      "indoor_rooms": 8,
+      "selected": true
+    }
+  ]
+}

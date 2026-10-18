@@ -1,8 +1,197 @@
 {
+ "params_sha256": "80a3a5952ca63a82be91a7b821b98c571c5344493c2a77112510322c38d8bc53",
+ "sample_manifest": {
+  "source": "https://zenodo.org/records/2613548/files/cubicasa5k.zip?download=1",
+  "selection_seed": 20261019,
+  "selection": "retain three original test plans; add first seven eligible plans from seeded shuffle of official test.txt; coverage >= 0.6 and room bounds inside image, no predicted scores used",
+  "held_out": [
+   "high_quality/488",
+   "high_quality_architectural/9453",
+   "high_quality_architectural/6276",
+   "colorful/13502",
+   "high_quality_architectural/2035",
+   "high_quality_architectural/875",
+   "high_quality/9334",
+   "high_quality_architectural/9433",
+   "high_quality/5632",
+   "high_quality/1140"
+  ],
+  "additional_intake": [
+   {
+    "plan": "colorful/13502",
+    "coverage": 0.9889656956971759,
+    "room_bounds_inside_image": true,
+    "image_size": [
+     765,
+     1513
+    ],
+    "svg_canvas": [
+     719,
+     1495
+    ],
+    "indoor_rooms": 6,
+    "selected": true
+   },
+   {
+    "plan": "high_quality_architectural/2035",
+    "coverage": 0.975675078690154,
+    "room_bounds_inside_image": true,
+    "image_size": [
+     1458,
+     774
+    ],
+    "svg_canvas": [
+     1369,
+     818
+    ],
+    "indoor_rooms": 6,
+    "selected": true
+   },
+   {
+    "plan": "high_quality_architectural/875",
+    "coverage": 0.9511065705751057,
+    "room_bounds_inside_image": true,
+    "image_size": [
+     1041,
+     1014
+    ],
+    "svg_canvas": [
+     1000,
+     959
+    ],
+    "indoor_rooms": 8,
+    "selected": true
+   },
+   {
+    "plan": "high_quality_architectural/2204",
+    "coverage": 0.4986087304944015,
+    "room_bounds_inside_image": true,
+    "image_size": [
+     3136,
+     1325
+    ],
+    "svg_canvas": [
+     3046,
+     1238
+    ],
+    "indoor_rooms": 24,
+    "selected": false
+   },
+   {
+    "plan": "high_quality/9334",
+    "coverage": 0.985825043622169,
+    "room_bounds_inside_image": true,
+    "image_size": [
+     1079,
+     1967
+    ],
+    "svg_canvas": [
+     891,
+     1845
+    ],
+    "indoor_rooms": 11,
+    "selected": true
+   },
+   {
+    "plan": "high_quality_architectural/9433",
+    "coverage": 0.9317160884500616,
+    "room_bounds_inside_image": true,
+    "image_size": [
+     1312,
+     1919
+    ],
+    "svg_canvas": [
+     1241,
+     1825
+    ],
+    "indoor_rooms": 17,
+    "selected": true
+   },
+   {
+    "plan": "high_quality/5632",
+    "coverage": 0.8959369724254361,
+    "room_bounds_inside_image": true,
+    "image_size": [
+     939,
+     1406
+    ],
+    "svg_canvas": [
+     864,
+     1368
+    ],
+    "indoor_rooms": 9,
+    "selected": true
+   },
+   {
+    "plan": "high_quality/1140",
+    "coverage": 0.9583323035859922,
+    "room_bounds_inside_image": true,
+    "image_size": [
+     1513,
+     953
+    ],
+    "svg_canvas": [
+     1494,
+     918
+    ],
+    "indoor_rooms": 8,
+    "selected": true
+   }
+  ]
+ },
+ "source_sha256": {
+  "high_quality/488": {
+   "model.svg": "b8a32df9f1dc0860757f23ad861223f8139bea58b949557a6905e02f6afd8e2b",
+   "F1_scaled.png": "66627989e3a273b85ef362f2cab239d3711a30eb67f5c9723448e91a6dd36ad1"
+  },
+  "high_quality_architectural/9453": {
+   "model.svg": "a9ece1363ab11081036359cad6cbc7374ba202d65ecd012c96177b235993c030",
+   "F1_scaled.png": "80e0a0c3ed261ab3e991362a63a21c3b053d17296bbb40b0d7f7fda9f862e253"
+  },
+  "high_quality_architectural/6276": {
+   "model.svg": "60c711235c80f840a4124cc7a6d851b3223845f7cf1b91df40c95e8e4f28b87c",
+   "F1_scaled.png": "482a03ef66de7bfa4e64c96b482caa9bb438f18a29f0eb2fe4ec0e8a467ff9be"
+  },
+  "colorful/13502": {
+   "model.svg": "9b87dedd17d4f50407792e6fdd33fb9553a4afc06b7483ab1e73bba3ec43e7c7",
+   "F1_scaled.png": "672de029a8bdfddcc45425ac179aa538567b9b5cc74d854226d694b3f784408f"
+  },
+  "high_quality_architectural/2035": {
+   "model.svg": "ab82194dccc5089c0069faa07d7d07aa238c83a832249526e7540b59c68c5951",
+   "F1_scaled.png": "a4eeb545941c393bf051c9a1bbd355119404c51f4818aa6a0df9fcdd15d3e487"
+  },
+  "high_quality_architectural/875": {
+   "model.svg": "66d21553ac52b582aeee0b76f973967a43e0fd0582e67999b21cbfdcf4ce5396",
+   "F1_scaled.png": "c5b8d12b207657441963044da0c1fe175f1996fa1677e86ef40cf0850c031cb8"
+  },
+  "high_quality/9334": {
+   "model.svg": "bff7e7696ca9bdb01433cd039eb405d4218a7d1798ca99f096a4b2754a3f26fd",
+   "F1_scaled.png": "6ed53dee6c27bf9b9c2ddcca10fe4d8eb0f60d52a5950f8ea39780dd6b7c004f"
+  },
+  "high_quality_architectural/9433": {
+   "model.svg": "9ffcd21858f242bcb7d3bf364d1433eb880028c096dd124d588134a787c99dc6",
+   "F1_scaled.png": "39973348f25110a9f21659c6e0ae13b81dab62cfc9bd02b92f87efc1b04e5d02"
+  },
+  "high_quality/5632": {
+   "model.svg": "f09ac5747bae599624fac40d71bdfa71ba0a692e41c5d9bf6145e82cac82e951",
+   "F1_scaled.png": "a6ddae490df11f88e2567bfbc12d0aaa8960f0bd058d3abbce455023d8730ed0"
+  },
+  "high_quality/1140": {
+   "model.svg": "5fd05c221c968e7adc8bb1b227321641f5c99df35a71638c3e5b59069cff39e5",
+   "F1_scaled.png": "54fdf4576a4017ea059091a486258ef6145ecfbffb5e64e3a3e29f6c79bb1e4f"
+  }
+ },
  "held_out": [
   "high_quality/488",
   "high_quality_architectural/9453",
-  "high_quality_architectural/6276"
+  "high_quality_architectural/6276",
+  "colorful/13502",
+  "high_quality_architectural/2035",
+  "high_quality_architectural/875",
+  "high_quality/9334",
+  "high_quality_architectural/9433",
+  "high_quality/5632",
+  "high_quality/1140"
  ],
  "tuned_on": [
   "high_quality_architectural/6044",
@@ -65,7 +254,7 @@
   "min_room_px2": 3000,
   "work_long_side": 2500
  },
- "timing": "predicted mode: median of 3 full runs (render, segment, polygonize, score)",
+ "timing": "predicted mode: median of 3 full runs; separate median render, annotation, segment, polygonize and score stages; PDF wrapping excluded",
  "packages": {
   "pymupdf": "1.28.2",
   "opencv-python-headless": "5.0.0.93",
@@ -73,11 +262,11 @@
   "scipy": "1.18.1",
   "numpy": "2.5.4"
  },
- "python": "3.12.12",
+ "python": "3.12.15",
  "hardware": {
-  "platform": "macOS-26.7.1-arm64-arm-64bit",
-  "cpu": "Apple M3 Pro",
-  "cpu_count": 12,
-  "ram_gb": 36
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "cpu": "Apple M1 Pro",
+  "cpu_count": 10,
+  "ram_gb": 32
  }
 }
