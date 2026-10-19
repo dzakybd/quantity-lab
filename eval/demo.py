@@ -83,7 +83,7 @@ def with_panel(im: Image.Image, img: Image.Image) -> Image.Image:
     im = im.copy()
     p = img.convert("RGB")
     p.thumbnail((PW, PW), Image.LANCZOS)
-    im.paste(p, (PX, PY))
+    im.paste(p, (PX, PY + (H - 100 - PY - p.height) // 2))  # centre between the subtitle and the URL
     return im
 
 
@@ -140,8 +140,9 @@ def main() -> None:
         vals = {k: v.replace(" to ", " sampai ").replace(".", ",") for k, v in vals.items()}
     end = base(t, t["end_title"], t["end_foot"])
     d = ImageDraw.Draw(end)
+    top = PY + (H - 100 - PY - len(t["end_rows"]) * 190) // 2
     for i, (label, value) in enumerate(t["end_rows"]):
-        y = 300 + i * 190
+        y = top + i * 190
         d.rounded_rectangle((PX - 10, y - 20, W - PX + 10, y + 130), radius=18, fill=SOFT if i % 2 == 0 else None)
         d.text((PX + 10, y), label, fill=INK, font=font(38, bold=True))
         d.text((PX + 10, y + 56), value.format(**vals), fill=PRIMARY, font=font(42, bold=True))
