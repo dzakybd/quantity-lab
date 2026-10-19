@@ -28,6 +28,7 @@ def main(argv: list[str] | None = None) -> int:
             return 1
     try:
         raw = json.loads(args.params.read_text()) if args.params else None
+        raw = raw.get("chosen", raw) if raw else raw  # a tuning output (runs/params.json) or a bare parameter dict
         params = BaselineParams.from_dict(raw) if raw and args.mode == "predicted" else None
         seg_params = SegParams.from_dict(raw) if raw and args.mode == "segmented" else None
         result = run(args.input, args.annotations, args.mode, args.perturbation, args.pixels, params, seg_params)

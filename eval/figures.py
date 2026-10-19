@@ -27,6 +27,7 @@ TEXT = {
         "erode5": "Boundary 5 px too small",
         "pred": "OpenCV baseline",
         "pred_two": ["Baseline, simple plan: rooms merge", "Baseline, dense plan: everything merges"],
+        "model_two": ["Trained model: rooms join through a doorway", "Trained model: kitchen and living room merge"],
         "merge": "Missing divider",
         "split": "Spurious line",
         "legend": "fill: measured rooms, one colour each · dark outline: reference rooms",
@@ -40,6 +41,7 @@ TEXT = {
         "erode5": "Batas 5 px terlalu kecil",
         "pred": "Baseline OpenCV",
         "pred_two": ["Baseline, denah sederhana: ruangan menyatu", "Baseline, denah padat: semua menyatu"],
+        "model_two": ["Model terlatih: ruangan menyatu lewat pintu", "Model terlatih: dapur dan ruang tamu menyatu"],
         "merge": "Sekat hilang",
         "split": "Garis palsu",
         "legend": "isian: ruangan terukur, satu warna per ruangan · garis gelap: ruangan referensi",
@@ -96,6 +98,8 @@ def main() -> None:
           [t["oracle"], t["merge"], t["split"]], 520, t["legend"]).save(args.out / f"quantity-lab-merge-split{sfx}.png")  # fmt: skip
     panel([ov / "synth-simple" / "predicted.png", ov / "synth-dense" / "predicted.png"], t["pred_two"], 700,
           t["legend"]).save(args.out / f"quantity-lab-baseline{sfx}.png")  # fmt: skip
+    panel([ov / "synth-simple" / "segmented.png", ov / "synth-medium" / "segmented.png"], t["model_two"], 700,
+          t["legend"]).save(args.out / f"quantity-lab-model{sfx}.png")  # fmt: skip
 
     rows = list(csv.DictReader((RUNS / "perturbation_results.csv").open()))
     plt.rcParams.update({"font.family": "Helvetica Neue", "font.size": 13})

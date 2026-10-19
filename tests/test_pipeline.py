@@ -115,3 +115,13 @@ def test_cli_segmented(tmp_path):
     assert r.returncode == 0, r.stderr
     data = json.loads((out / "rooms.json").read_text())
     assert data["mode"] == "segmented" and "comparison" in data
+
+
+def test_cli_reads_a_tuning_output_as_params(tmp_path):
+    tuned = tmp_path / "params.json"
+    tuned.write_text(json.dumps({"tuned_on": ["x"], "chosen": {"threshold": 140, "min_room_px2": 500}}))
+    out = tmp_path / "pred"
+    r = _run(
+        "--input", _pdf(tmp_path), "--annotations", PLAN, "--mode", "predicted", "--params", tuned, "--output", out
+    )
+    assert r.returncode == 0, r.stderr

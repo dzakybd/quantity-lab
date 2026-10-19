@@ -4,7 +4,9 @@ How do small geometry errors turn into wrong quantities? quantity-lab measures r
 
 - **A. Oracle:** the annotated room polygons, measured directly. It also runs the raster round trip (polygons → mask → polygons) to show the error that rasterizing alone adds.
 - **B. Controlled errors:** known damage applied to the oracle mask, then re-measured. The damage types are boundary erosion and dilation (2 and 5 px), a 2 and 5 px shift, a ±2% scale, a missing divider (two rooms merge) and a spurious line (one room splits).
-- **C. Predicted:** a classical OpenCV baseline with no model. It keeps thick dark strokes as walls, closes doorways between collinear wall pieces, and labels the free space between walls as rooms.
+- **C. Predicted:** two real room finders, scored the same way.
+  - `predicted`: a classical OpenCV baseline with no model. It keeps thick dark strokes as walls, closes doorways between collinear wall pieces, and labels the free space between walls as rooms.
+  - `segmented`: the pretrained CubiCasa5K multi-task network (Kalervo et al., 2019; trained on the train split, not retrained). Rooms are the connected floor regions between the walls it predicts; that pixel-to-room step was chosen on train plans only (`eval/tune_seg.py`, frozen in `runs/seg_params.json`).
 
 Units are **image pixels** (px, px²). No physical scale is claimed.
 
@@ -19,6 +21,15 @@ uv run python -m quantity_lab --input plan.pdf --annotations model.svg --mode pe
 uv run python -m quantity_lab --input plan.pdf --annotations model.svg --mode predicted --params runs/params.json --output out/plan_pred
 ```
 
+The `segmented` mode needs PyTorch and the CubiCasa5K model code and weights (CC BY-NC 4.0, not redistributed here):
+
+```bash
+uv sync --group seg
+git clone --depth 1 https://github.com/CubiCasa/CubiCasa5k third_party/CubiCasa5k
+uvx gdown 1gRB7ez1e4H7a9Y09lLqRuna0luZO5VRK -O third_party/model_best_val_loss_var.pkl
+uv run --group seg python -m quantity_lab --input plan.pdf --annotations model.svg --mode segmented --params runs/seg_params.json --output out/plan_seg
+```
+
 - **Inputs:**
   - `--input` is a plan PDF; an image-only PDF is fine. To make one from an image, use `quantity_lab.pdfio.image_to_pdf`, which maps one PDF point to one image pixel.
   - `--annotations` is a CubiCasa5K-style `model.svg`. Its `Space <Type>` polygons are the reference rooms; `Space Outdoor` is excluded from the quantities.
@@ -26,7 +37,7 @@ uv run python -m quantity_lab --input plan.pdf --annotations model.svg --mode pr
 - **Outputs:** `rooms.json`, `quantities.csv` and `overlay.png`.
   - Metric names carry their units: `room_area_px2`, `room_perimeter_px`, `room_count`.
   - Polygons that needed `make_valid` are flagged `repaired`.
-  - The perturbed and predicted modes add a `comparison` with the oracle.
+  - The perturbed, predicted and segmented modes add a `comparison` with the oracle.
 
 ## How it is measured
 
@@ -81,7 +92,9 @@ What this shows:
 
 The baseline fails as a room counter. It splits rooms at furniture and fixture lines, merges rooms through open doorways and open plans, and its settings did not carry over between drawing styles: tuned on three train plans, it scored 0.33 count F1 even there. Across the ten plans, mean count F1 is 0.101 and the room-count MAE is 33.3. Note `9453`: **total area within 1.3% while matching zero rooms**. A right total can hide wrong rooms. HQ = `high_quality`, HQA = `high_quality_architectural`.
 
-Mask IoU, area/perimeter errors, polygon validity before and after repair, and stage timings (mean, median, min, max) are in `runs/summary.json`. Rooms are matched one-to-one at IoU ≥ 0.5. `runs/verification.json` records the export checks and the repeat run of every prediction.
+**Mode C: trained model (count F1 / mask IoU / total-area error).** Mean count F1 **0.712** (median 0.778, range 0.167–0.933), mask IoU 0.933, room-count MAE 2.7, median per-plan room-area error 2.2%. Walls come out clean. The weakest plan is again `9453`: **mask IoU 0.91 and total area within 1.0%, while nine rooms come out as three**, leaking through doorways the model did not detect. Door closing (`close_doors`) changes nothing because 99% of predicted door pixels are already labelled wall; splitting by predicted room class lowered train F1 (0.68 to 0.52) because the class map is noisy inside a room. Most model rooms (79%) need contour repair. Segmentation takes a median 310 ms per plan on an M1 Pro GPU (MPS).
+
+Mask IoU, area/perimeter errors, polygon validity before and after repair, and stage timings (mean, median, min, max) are in `runs/summary.json`. Rooms are matched one-to-one at IoU ≥ 0.5. `runs/verification.json` records the export checks and the repeat run of both predictors on every test plan (identical metrics).
 
 Synthetic plans (clean, CubiCasa-style) are in `runs/metrics.json`. They use the same frozen parameters and get count F1 0.00–0.44, because their doorways, scaled to the working resolution, are wider than the tuned gap closing (130 px).
 
@@ -90,9 +103,10 @@ Synthetic plans (clean, CubiCasa-style) are in `runs/metrics.json`. They use the
 ```bash
 uv run python -m eval.fetch_samples   # needs KAGGLE_API_TOKEN; Kaggle mirror qmarva/cubicasa5k
 uv run python -m eval.tune            # train plans only
-uv run python -m eval.benchmark
+uv run --group seg python -m eval.tune_seg   # train plans only; needs third_party/ (see above)
+uv run --group seg python -m eval.benchmark
 uv run python -m eval.report
-uv run python -m eval.verify
+uv run --group seg python -m eval.verify
 uv run python space/build.py
 uv run pytest -q
 ```
@@ -101,7 +115,7 @@ uv run pytest -q
 
 - **Ten test plans,** three of which were inspected before the set was expanded. These show how the errors behave, not a general accuracy figure.
 - **No physical units.** A real takeoff needs a validated scale (a scale bar or a known dimension).
-- **The baseline is deliberately classical.** A trained segmentation model (such as the one in the CubiCasa5K paper) is the natural next step for mode C.
+- **One pretrained model, tested on its own dataset.** Other drawing styles will do worse. Splitting rooms at narrow openings (a watershed on the distance to walls), chosen on train plans, is the next step for the doorway leaks.
 - **Wall length is not measured.** The area of a wall polygon is not wall length, and a centreline method was out of scope.
 
 ## Data and licence
@@ -109,5 +123,7 @@ uv run pytest -q
 Code: MIT.
 
 CubiCasa5K: A. Kalervo, J. Ylioinas, M. Häikiö, A. Karhu, J. Kannala, "CubiCasa5K: A Dataset and an Improved Multi-Task Model for Floorplan Image Analysis", SCIA 2019. Data: https://zenodo.org/records/2613548 (CC BY-NC-SA 4.0). Mirror used for per-file download: https://www.kaggle.com/datasets/qmarva/cubicasa5k.
+
+CubiCasa5K model code and weights: https://github.com/CubiCasa/CubiCasa5k (CC BY-NC 4.0). Fetched into `third_party/` (gitignored) and never committed.
 
 **No CubiCasa5K data is included in this repository.** `samples/` and every image rendered from it stay local; only numeric results are committed. Public pictures are synthetic plans made by `eval/synth.py`.
