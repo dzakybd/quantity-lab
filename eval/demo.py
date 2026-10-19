@@ -30,13 +30,13 @@ TEXT = {
             ("perturbed_erode_2", "Boundary 2 px too small", "Room area {area}%"),
             ("perturbed_erode_5", "Boundary 5 px too small", "Room area {area}%"),
             ("perturbed_merge_20", "One missing divider", "Total area {total}%, room count wrong"),
-            ("predicted", "A classical OpenCV baseline", "Found {found} rooms for {ref}: count F1 {f1}"),
+            ("predicted", "A classical OpenCV baseline", "Found {found} rooms for {ref}: room F1 {f1}"),
         ],
-        "end_title": "Three real floor plans (CubiCasa5K)",
+        "end_title": "Ten real floor plans (CubiCasa5K)",
         "end_rows": [
             ("2 px boundary error", "{e2} room area"),
-            ("5 px boundary error", "{e5} room area"),
-            ("OpenCV baseline", "count F1 {bf1}"),
+            ("One missing divider", "total area within {mt}%, room count wrong"),
+            ("OpenCV baseline", "mean room F1 {bf1}"),
             ("Right total, wrong rooms", "{rt} total area, 0 rooms matched"),
         ],
         "end_foot": "Pixels, not metres. Pictures: synthetic plan.",
@@ -50,13 +50,13 @@ TEXT = {
             ("perturbed_erode_2", "Batas 2 px terlalu kecil", "Luas ruangan {area}%"),
             ("perturbed_erode_5", "Batas 5 px terlalu kecil", "Luas ruangan {area}%"),
             ("perturbed_merge_20", "Satu sekat hilang", "Luas total {total}%, jumlah ruangan salah"),
-            ("predicted", "Baseline OpenCV klasik", "Menemukan {found} ruangan dari {ref}: F1 jumlah {f1}"),
+            ("predicted", "Baseline OpenCV klasik", "Menemukan {found} ruangan dari {ref}: F1 ruangan {f1}"),
         ],
-        "end_title": "Tiga denah nyata (CubiCasa5K)",
+        "end_title": "Sepuluh denah nyata (CubiCasa5K)",
         "end_rows": [
             ("Galat batas 2 px", "luas ruangan {e2}"),
-            ("Galat batas 5 px", "luas ruangan {e5}"),
-            ("Baseline OpenCV", "F1 jumlah {bf1}"),
+            ("Satu sekat hilang", "luas total maks. {mt}%, jumlah ruangan salah"),
+            ("Baseline OpenCV", "rata-rata F1 ruangan {bf1}"),
             ("Total benar, ruangan salah", "luas total {rt}, 0 ruangan cocok"),
         ],
         "end_foot": "Piksel, bukan meter. Gambar: denah sintetis.",
@@ -131,11 +131,11 @@ def main() -> None:
 
     held = [v for v in m.values() if v["dataset"] == "held-out"]
     e2 = [v["perturbed"]["erode_2"]["area_signed_err_pct_mean"] for v in held]
-    e5 = [v["perturbed"]["erode_5"]["area_signed_err_pct_mean"] for v in held]
+    mt = max(abs(v["perturbed"]["merge_20"]["total_area_err_pct"]) for v in held)
     bf1 = [v["predicted"]["count_f1"] for v in held]
     zero = next(v for v in held if v["predicted"]["matched"] == 0)
-    vals = {"e2": f"{pct(max(e2))} to {pct(min(e2))}%", "e5": f"{pct(max(e5))} to {pct(min(e5))}%",
-            "bf1": f"{min(bf1):.2f} to {max(bf1):.2f}", "rt": pct(zero["predicted"]["total_area_err_pct"]) + "%"}  # fmt: skip
+    vals = {"e2": f"{pct(max(e2))} to {pct(min(e2))}%", "mt": f"{mt:.2f}",
+            "bf1": f"{sum(bf1) / len(bf1):.3f}", "rt": pct(zero["predicted"]["total_area_err_pct"]) + "%"}  # fmt: skip
     if args.lang == "id":
         vals = {k: v.replace(" to ", " sampai ").replace(".", ",") for k, v in vals.items()}
     end = base(t, t["end_title"], t["end_foot"])
