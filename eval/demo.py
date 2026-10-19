@@ -127,6 +127,8 @@ def main() -> None:
         else:
             e = s["perturbed"][key.removeprefix("perturbed_")]
             sub = sub.format(area=pct(e["area_signed_err_pct_mean"]), total=pct(e["total_area_err_pct"]))
+        if args.lang == "id":
+            sub = sub.replace(".", ",")  # decimal comma
         hold(with_panel(base(t, title, sub), Image.open(ov / f"{key}.png")), 1.8)
 
     held = [v for v in m.values() if v["dataset"] == "held-out"]
@@ -135,7 +137,7 @@ def main() -> None:
     bf1 = [v["predicted"]["count_f1"] for v in held]
     zero = next(v for v in held if v["predicted"]["matched"] == 0)
     vals = {"e2": f"{pct(max(e2))} to {pct(min(e2))}%", "mt": f"{mt:.2f}",
-            "bf1": f"{sum(bf1) / len(bf1):.3f}", "rt": pct(zero["predicted"]["total_area_err_pct"]) + "%"}  # fmt: skip
+            "bf1": f"{sum(bf1) / len(bf1):.{3 if args.lang == 'en' else 2}f}", "rt": pct(zero["predicted"]["total_area_err_pct"]) + "%"}  # fmt: skip
     if args.lang == "id":
         vals = {k: v.replace(" to ", " sampai ").replace(".", ",") for k, v in vals.items()}
     end = base(t, t["end_title"], t["end_foot"])
