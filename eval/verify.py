@@ -1,4 +1,4 @@
-"""Verify all exports and rerun frozen predicted settings on the ten held-out plans."""
+"""Verify all exports and rerun the frozen baseline and trained-model settings on the ten held-out plans."""
 
 import csv
 import hashlib
@@ -11,6 +11,7 @@ from PIL import Image
 from eval.common import INPUTS, RUNS, SAMPLES, TEST, plan_dir
 from quantity_lab.baseline import BaselineParams
 from quantity_lab.pipeline import run, write
+from quantity_lab.segmentation import SegParams
 
 
 def main():
@@ -18,6 +19,11 @@ def main():
     m = json.loads((RUNS / "metrics.json").read_text())
     digest = hashlib.sha256((RUNS / "params.json").read_bytes()).hexdigest()
     assert digest == config["params_sha256"]
+    seg_digest = hashlib.sha256((RUNS / "seg_params.json").read_bytes()).hexdigest()
+    assert seg_digest == config["seg_params_sha256"]
+    seg = json.loads((RUNS / "seg_params.json").read_text())
+    assert not set(TEST) & set(seg["tuned_on"])
+    seg_params = SegParams.from_dict(seg["chosen"])
     assert len(TEST) == len(set(TEST)) == 10 and not set(TEST) & set(config["tuned_on"])
     official_test = {line.strip("/") for line in (SAMPLES / "test.txt").read_text().split()}
     assert set(TEST) <= official_test
@@ -27,7 +33,7 @@ def main():
     assert tests.returncode == 0, tests.stdout + tests.stderr
     checked = 0
     for pid, entry in m.items():
-        modes = ["oracle", "predicted", *entry["perturbed"]]
+        modes = ["oracle", "predicted", "segmented", *entry["perturbed"]]
         for mode in modes:
             out = RUNS / "outputs" / pid / mode
             data = json.loads((out / "rooms.json").read_text())
@@ -44,13 +50,15 @@ def main():
         pid = p.replace("/", "_")
         for f, digest_source in config["source_sha256"][p].items():
             assert hashlib.sha256((plan_dir(p) / f).read_bytes()).hexdigest() == digest_source
-        result = run(INPUTS / pid / "plan.pdf", plan_dir(p) / "model.svg", "predicted", params=params)
-        for key, expected in m[pid]["predicted"].items():
-            if key in result["comparison"]:
-                assert result["comparison"][key] == expected, (pid, key)
-        write(result, RUNS / "outputs" / pid / "predicted")
+        for mode, kw in (("predicted", {"params": params}), ("segmented", {"seg_params": seg_params})):
+            result = run(INPUTS / pid / "plan.pdf", plan_dir(p) / "model.svg", mode, **kw)
+            for key, expected in m[pid][mode].items():
+                if key in result["comparison"]:
+                    assert result["comparison"][key] == expected, (pid, mode, key)
+            write(result, RUNS / "outputs" / pid / mode)
         repeated.append(pid)
     assert digest == hashlib.sha256((RUNS / "params.json").read_bytes()).hexdigest()
+    assert seg_digest == hashlib.sha256((RUNS / "seg_params.json").read_bytes()).hexdigest()
     (RUNS / "verification.json").write_text(
         json.dumps(
             {
@@ -61,9 +69,10 @@ def main():
                 },
                 "exports_checked": checked,
                 "repeated_predicted_plans": repeated,
+                "repeated_modes": ["predicted", "segmented"],
                 "params_unchanged": True,
                 "source_hashes_verified": True,
-                "checks": "JSON/CSV room counts and units; nonzero quantities; overlay image size; no train/test overlap; repeated prediction metrics identical",
+                "checks": "JSON/CSV room counts and units; nonzero quantities; overlay image size; no train/test overlap for either tuning; repeated baseline and trained-model metrics identical",
             },
             indent=2,
         )

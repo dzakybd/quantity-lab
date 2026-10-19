@@ -1,5 +1,12 @@
 {
  "params_sha256": "80a3a5952ca63a82be91a7b821b98c571c5344493c2a77112510322c38d8bc53",
+ "seg_params_sha256": "624175757898483cf51c1277d553588f750a1d508003314cc2bc8f0c42c1d178",
+ "seg_model": "CubiCasa5K hg_furukawa_original, model_best_val_loss_var.pkl (train split; not retrained)",
+ "seg_params": {
+  "close_doors": false,
+  "split_by_class": false,
+  "min_room_share": 0.005
+ },
  "sample_manifest": {
   "source": "https://zenodo.org/records/2613548/files/cubicasa5k.zip?download=1",
   "selection_seed": 20261019,
@@ -254,19 +261,20 @@
   "min_room_px2": 3000,
   "work_long_side": 2500
  },
- "timing": "predicted mode: median of 3 full runs; separate median render, annotation, segment, polygonize and score stages; PDF wrapping excluded",
+ "timing": "predicted and segmented modes: one warm-up, then median of 3 full runs; separate median render, annotation, segment, polygonize and score stages; PDF wrapping excluded",
  "packages": {
   "pymupdf": "1.28.2",
   "opencv-python-headless": "5.0.0.93",
   "shapely": "2.2.0",
   "scipy": "1.18.1",
-  "numpy": "2.5.4"
+  "numpy": "2.5.4",
+  "torch": "2.14.1"
  },
- "python": "3.12.15",
+ "python": "3.12.12",
  "hardware": {
-  "platform": "macOS-27.0.1-arm64-arm-64bit",
-  "cpu": "Apple M1 Pro",
-  "cpu_count": 10,
-  "ram_gb": 32
+  "platform": "macOS-26.7.1-arm64-arm-64bit",
+  "cpu": "Apple M3 Pro",
+  "cpu_count": 12,
+  "ram_gb": 36
  }
 }

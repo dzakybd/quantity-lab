@@ -27,7 +27,7 @@ def main():
         "aggregation": "Each plan has equal weight; relative quantity errors use matched rooms >= 1000 px2 only. Missing matches are null, never zero.",
         "modes": {},
     }
-    for mode in ["raster_roundtrip", "predicted", *held[0]["perturbed"]]:
+    for mode in ["raster_roundtrip", "predicted", "segmented", *held[0]["perturbed"]]:
         rows = [v[mode] if mode in v else v["perturbed"][mode] for v in held]
         fields = [k for k, v in rows[0].items() if isinstance(v, (int, float)) or v is None]
         entry = {k: distribution([r[k] for r in rows]) for k in fields}

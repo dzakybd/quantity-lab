@@ -2,9 +2,9 @@
   "pytest": {
     "command": "python -m pytest -q",
     "exit_code": 0,
-    "output": "..........................................                               [100%]\n42 passed in 3.16s"
+    "output": "................................................                         [100%]\n48 passed in 13.51s"
   },
-  "exports_checked": 156,
+  "exports_checked": 169,
   "repeated_predicted_plans": [
     "high_quality_488",
     "high_quality_architectural_9453",
@@ -17,7 +17,11 @@
     "high_quality_5632",
     "high_quality_1140"
   ],
+  "repeated_modes": [
+    "predicted",
+    "segmented"
+  ],
   "params_unchanged": true,
   "source_hashes_verified": true,
-  "checks": "JSON/CSV room counts and units; nonzero quantities; overlay image size; no train/test overlap; repeated prediction metrics identical"
+  "checks": "JSON/CSV room counts and units; nonzero quantities; overlay image size; no train/test overlap for either tuning; repeated baseline and trained-model metrics identical"
 }

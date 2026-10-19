@@ -12,9 +12,9 @@
    "repaired": 0,
    "door_count": 6,
    "window_count": 3,
-   "render_s": 0.007403,
-   "annotations_s": 0.001861,
-   "measure_s": 4.7e-05,
+   "render_s": 0.075691,
+   "annotations_s": 0.002194,
+   "measure_s": 3.2e-05,
    "validity": {
     "rooms": 5,
     "valid_before_repair_rate": 1.0,
@@ -77,11 +77,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005863,
-     "annotations_s": 0.001856,
-     "segment_s": 0.025164,
-     "polygonize_s": 0.0047,
-     "score_s": 0.048539
+     "render_s": 0.005494,
+     "annotations_s": 0.001798,
+     "segment_s": 0.02331,
+     "polygonize_s": 0.003811,
+     "score_s": 0.044049
     }
    },
    "erode_5": {
@@ -116,11 +116,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.00582,
-     "annotations_s": 0.001774,
-     "segment_s": 0.025724,
-     "polygonize_s": 0.004543,
-     "score_s": 0.047495
+     "render_s": 0.005183,
+     "annotations_s": 0.002453,
+     "segment_s": 0.022604,
+     "polygonize_s": 0.003767,
+     "score_s": 0.043417
     }
    },
    "dilate_2": {
@@ -155,11 +155,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005755,
-     "annotations_s": 0.001797,
-     "segment_s": 0.045437,
-     "polygonize_s": 0.00489,
-     "score_s": 0.04907
+     "render_s": 0.006191,
+     "annotations_s": 0.002082,
+     "segment_s": 0.043354,
+     "polygonize_s": 0.003981,
+     "score_s": 0.046735
     }
    },
    "dilate_5": {
@@ -194,11 +194,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005823,
-     "annotations_s": 0.001807,
-     "segment_s": 0.044449,
-     "polygonize_s": 0.004599,
-     "score_s": 0.0528
+     "render_s": 0.005113,
+     "annotations_s": 0.001828,
+     "segment_s": 0.038705,
+     "polygonize_s": 0.003875,
+     "score_s": 0.046508
     }
    },
    "shift_2": {
@@ -233,11 +233,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005871,
-     "annotations_s": 0.001934,
-     "segment_s": 0.021209,
-     "polygonize_s": 0.004919,
-     "score_s": 0.053012
+     "render_s": 0.006144,
+     "annotations_s": 0.002031,
+     "segment_s": 0.020016,
+     "polygonize_s": 0.003641,
+     "score_s": 0.047039
     }
    },
    "shift_5": {
@@ -272,11 +272,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.00593,
-     "annotations_s": 0.001867,
-     "segment_s": 0.021713,
-     "polygonize_s": 0.004861,
-     "score_s": 0.052606
+     "render_s": 0.005104,
+     "annotations_s": 0.001899,
+     "segment_s": 0.020279,
+     "polygonize_s": 0.003895,
+     "score_s": 0.046927
     }
    },
    "scale_-2": {
@@ -311,11 +311,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005754,
-     "annotations_s": 0.001725,
-     "segment_s": 0.022709,
-     "polygonize_s": 0.004837,
-     "score_s": 0.051796
+     "render_s": 0.005403,
+     "annotations_s": 0.00201,
+     "segment_s": 0.020191,
+     "polygonize_s": 0.004329,
+     "score_s": 0.0461
     }
    },
    "scale_2": {
@@ -350,11 +350,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.00581,
-     "annotations_s": 0.001896,
-     "segment_s": 0.022344,
-     "polygonize_s": 0.004633,
-     "score_s": 0.053692
+     "render_s": 0.005372,
+     "annotations_s": 0.002101,
+     "segment_s": 0.022362,
+     "polygonize_s": 0.004198,
+     "score_s": 0.04734
     }
    },
    "merge_20": {
@@ -389,11 +389,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005718,
-     "annotations_s": 0.001817,
-     "segment_s": 0.031335,
-     "polygonize_s": 0.004584,
-     "score_s": 0.052552
+     "render_s": 0.005197,
+     "annotations_s": 0.002013,
+     "segment_s": 0.027208,
+     "polygonize_s": 0.003779,
+     "score_s": 0.045766
     }
    },
    "split_3": {
@@ -428,11 +428,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.0059,
-     "annotations_s": 0.001888,
-     "segment_s": 0.027424,
-     "polygonize_s": 0.004853,
-     "score_s": 0.051915
+     "render_s": 0.005707,
+     "annotations_s": 0.002026,
+     "segment_s": 0.024788,
+     "polygonize_s": 0.00403,
+     "score_s": 0.046861
     }
    }
   },
@@ -456,13 +456,13 @@
    "area_abs_err_pct_median": 36.1097,
    "perimeter_abs_err_pct_median": 16.0906,
    "total_area_err_pct": 33.8147,
-   "seconds_median": 0.194,
+   "seconds_median": 0.1632,
    "timing_s": {
-    "render_s": 0.005856,
-    "annotations_s": 0.001776,
-    "segment_s": 0.080443,
-    "polygonize_s": 0.011155,
-    "score_s": 0.093495
+    "render_s": 0.0057,
+    "annotations_s": 0.002352,
+    "segment_s": 0.060661,
+    "polygonize_s": 0.008194,
+    "score_s": 0.083554
    },
    "validity": {
     "rooms": 31,
@@ -474,6 +474,50 @@
      "invalid_before_repair": 1,
      "repaired_labels": [
       1
+     ]
+    }
+   }
+  },
+  "segmented": {
+   "gt_rooms": 5,
+   "pred_rooms": 5,
+   "count_precision": 0.8,
+   "count_recall": 0.8,
+   "room_count_err": 0,
+   "mask_iou": 0.9703,
+   "background_mask_iou": 0.9586,
+   "area_abs_err_mean_px2": 21196.0796,
+   "area_abs_err_max_px2": 81607.5166,
+   "perimeter_abs_err_mean_px": 352.2116,
+   "count_f1": 0.8,
+   "matched": 4,
+   "merged": 1,
+   "split": 0,
+   "matched_iou_mean": 0.8912,
+   "area_signed_err_pct_mean": 14.7226,
+   "area_abs_err_pct_median": 4.5979,
+   "perimeter_abs_err_pct_median": 6.0708,
+   "total_area_err_pct": 2.1687,
+   "seconds_median": 0.2434,
+   "timing_s": {
+    "render_s": 0.005744,
+    "annotations_s": 0.002267,
+    "segment_s": 0.174071,
+    "polygonize_s": 0.004586,
+    "score_s": 0.056338
+   },
+   "validity": {
+    "rooms": 5,
+    "valid_before_repair_rate": 0.4,
+    "repaired_fraction": 0.6,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 5,
+     "invalid_before_repair": 3,
+     "repaired_labels": [
+      2,
+      3,
+      5
      ]
     }
    }
@@ -492,9 +536,9 @@
    "repaired": 0,
    "door_count": 8,
    "window_count": 8,
-   "render_s": 0.01013,
-   "annotations_s": 0.002687,
-   "measure_s": 2.5e-05,
+   "render_s": 0.106054,
+   "annotations_s": 0.003042,
+   "measure_s": 2.8e-05,
    "validity": {
     "rooms": 9,
     "valid_before_repair_rate": 1.0,
@@ -557,11 +601,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.010362,
-     "annotations_s": 0.002633,
-     "segment_s": 0.037111,
-     "polygonize_s": 0.016075,
-     "score_s": 0.077135
+     "render_s": 0.008312,
+     "annotations_s": 0.002442,
+     "segment_s": 0.030668,
+     "polygonize_s": 0.011826,
+     "score_s": 0.064051
     }
    },
    "erode_5": {
@@ -596,11 +640,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.010518,
-     "annotations_s": 0.002409,
-     "segment_s": 0.038614,
-     "polygonize_s": 0.015405,
-     "score_s": 0.074068
+     "render_s": 0.008579,
+     "annotations_s": 0.002578,
+     "segment_s": 0.033183,
+     "polygonize_s": 0.011987,
+     "score_s": 0.065913
     }
    },
    "dilate_2": {
@@ -635,11 +679,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.010274,
-     "annotations_s": 0.002629,
-     "segment_s": 0.084862,
-     "polygonize_s": 0.016041,
-     "score_s": 0.074576
+     "render_s": 0.008561,
+     "annotations_s": 0.002696,
+     "segment_s": 0.070316,
+     "polygonize_s": 0.011821,
+     "score_s": 0.063042
     }
    },
    "dilate_5": {
@@ -674,11 +718,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.010208,
-     "annotations_s": 0.002606,
-     "segment_s": 0.080246,
-     "polygonize_s": 0.016145,
-     "score_s": 0.076624
+     "render_s": 0.009026,
+     "annotations_s": 0.002975,
+     "segment_s": 0.071097,
+     "polygonize_s": 0.012458,
+     "score_s": 0.069893
     }
    },
    "shift_2": {
@@ -713,11 +757,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.010276,
-     "annotations_s": 0.002491,
-     "segment_s": 0.024804,
-     "polygonize_s": 0.01569,
-     "score_s": 0.075407
+     "render_s": 0.009024,
+     "annotations_s": 0.002322,
+     "segment_s": 0.022719,
+     "polygonize_s": 0.012169,
+     "score_s": 0.067043
     }
    },
    "shift_5": {
@@ -752,11 +796,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.010284,
-     "annotations_s": 0.002659,
-     "segment_s": 0.024713,
-     "polygonize_s": 0.015948,
-     "score_s": 0.076122
+     "render_s": 0.008677,
+     "annotations_s": 0.002658,
+     "segment_s": 0.022839,
+     "polygonize_s": 0.012296,
+     "score_s": 0.067311
     }
    },
    "scale_-2": {
@@ -791,11 +835,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.010424,
-     "annotations_s": 0.002654,
-     "segment_s": 0.026987,
-     "polygonize_s": 0.015684,
-     "score_s": 0.075894
+     "render_s": 0.008607,
+     "annotations_s": 0.002637,
+     "segment_s": 0.023754,
+     "polygonize_s": 0.011908,
+     "score_s": 0.066469
     }
    },
    "scale_2": {
@@ -830,11 +874,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.010049,
-     "annotations_s": 0.002672,
-     "segment_s": 0.026661,
-     "polygonize_s": 0.016149,
-     "score_s": 0.077875
+     "render_s": 0.008666,
+     "annotations_s": 0.00344,
+     "segment_s": 0.022541,
+     "polygonize_s": 0.011834,
+     "score_s": 0.066037
     }
    },
    "merge_20": {
@@ -869,11 +913,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.010112,
-     "annotations_s": 0.002601,
-     "segment_s": 0.063108,
-     "polygonize_s": 0.015564,
-     "score_s": 0.075678
+     "render_s": 0.008903,
+     "annotations_s": 0.002651,
+     "segment_s": 0.050481,
+     "polygonize_s": 0.011837,
+     "score_s": 0.064236
     }
    },
    "split_3": {
@@ -908,11 +952,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.01005,
-     "annotations_s": 0.002767,
-     "segment_s": 0.038784,
-     "polygonize_s": 0.01644,
-     "score_s": 0.076212
+     "render_s": 0.008383,
+     "annotations_s": 0.002565,
+     "segment_s": 0.03291,
+     "polygonize_s": 0.012271,
+     "score_s": 0.064602
     }
    }
   },
@@ -936,13 +980,13 @@
    "area_abs_err_pct_median": null,
    "perimeter_abs_err_pct_median": null,
    "total_area_err_pct": -1.3362,
-   "seconds_median": 0.1972,
+   "seconds_median": 0.1629,
    "timing_s": {
-    "render_s": 0.010334,
-    "annotations_s": 0.002503,
-    "segment_s": 0.06104,
-    "polygonize_s": 0.026048,
-    "score_s": 0.096254
+    "render_s": 0.009612,
+    "annotations_s": 0.003049,
+    "segment_s": 0.047606,
+    "polygonize_s": 0.017758,
+    "score_s": 0.084327
    },
    "validity": {
     "rooms": 23,
@@ -962,6 +1006,50 @@
      ]
     }
    }
+  },
+  "segmented": {
+   "gt_rooms": 9,
+   "pred_rooms": 3,
+   "count_precision": 0.3333,
+   "count_recall": 0.1111,
+   "room_count_err": -6,
+   "mask_iou": 0.9108,
+   "background_mask_iou": 0.9704,
+   "area_abs_err_mean_px2": 7945.6522,
+   "area_abs_err_max_px2": 7945.6522,
+   "perimeter_abs_err_mean_px": 528.1684,
+   "count_f1": 0.1667,
+   "matched": 1,
+   "merged": 1,
+   "split": 0,
+   "matched_iou_mean": 0.6746,
+   "area_signed_err_pct_mean": -32.1178,
+   "area_abs_err_pct_median": 32.1178,
+   "perimeter_abs_err_pct_median": 77.4986,
+   "total_area_err_pct": 1.0026,
+   "seconds_median": 0.596,
+   "timing_s": {
+    "render_s": 0.009263,
+    "annotations_s": 0.002978,
+    "segment_s": 0.478771,
+    "polygonize_s": 0.013847,
+    "score_s": 0.089761
+   },
+   "validity": {
+    "rooms": 3,
+    "valid_before_repair_rate": 0.0,
+    "repaired_fraction": 1.0,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 3,
+     "invalid_before_repair": 3,
+     "repaired_labels": [
+      1,
+      2,
+      3
+     ]
+    }
+   }
   }
  },
  "high_quality_architectural_6276": {
@@ -977,9 +1065,9 @@
    "repaired": 0,
    "door_count": 29,
    "window_count": 32,
-   "render_s": 0.027113,
-   "annotations_s": 0.006582,
-   "measure_s": 6.3e-05,
+   "render_s": 0.198958,
+   "annotations_s": 0.005779,
+   "measure_s": 5.2e-05,
    "validity": {
     "rooms": 28,
     "valid_before_repair_rate": 1.0,
@@ -1042,11 +1130,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.025975,
-     "annotations_s": 0.006498,
-     "segment_s": 0.190964,
-     "polygonize_s": 0.067746,
-     "score_s": 0.284292
+     "render_s": 0.021405,
+     "annotations_s": 0.006494,
+     "segment_s": 0.166145,
+     "polygonize_s": 0.050752,
+     "score_s": 0.254642
     }
    },
    "erode_5": {
@@ -1081,11 +1169,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.026314,
-     "annotations_s": 0.006481,
-     "segment_s": 0.203287,
-     "polygonize_s": 0.067614,
-     "score_s": 0.280627
+     "render_s": 0.022174,
+     "annotations_s": 0.006384,
+     "segment_s": 0.173619,
+     "polygonize_s": 0.051536,
+     "score_s": 0.245062
     }
    },
    "dilate_2": {
@@ -1120,11 +1208,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.025994,
-     "annotations_s": 0.006451,
-     "segment_s": 0.284528,
-     "polygonize_s": 0.065964,
-     "score_s": 0.277002
+     "render_s": 0.021745,
+     "annotations_s": 0.006399,
+     "segment_s": 0.243924,
+     "polygonize_s": 0.050644,
+     "score_s": 0.237512
     }
    },
    "dilate_5": {
@@ -1159,11 +1247,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.026422,
-     "annotations_s": 0.006528,
-     "segment_s": 0.279146,
-     "polygonize_s": 0.068121,
-     "score_s": 0.28412
+     "render_s": 0.021813,
+     "annotations_s": 0.006533,
+     "segment_s": 0.242257,
+     "polygonize_s": 0.050224,
+     "score_s": 0.248886
     }
    },
    "shift_2": {
@@ -1198,11 +1286,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.025889,
-     "annotations_s": 0.006622,
-     "segment_s": 0.103334,
-     "polygonize_s": 0.067224,
-     "score_s": 0.28032
+     "render_s": 0.021959,
+     "annotations_s": 0.00636,
+     "segment_s": 0.092936,
+     "polygonize_s": 0.050882,
+     "score_s": 0.251512
     }
    },
    "shift_5": {
@@ -1237,11 +1325,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.02601,
-     "annotations_s": 0.006405,
-     "segment_s": 0.103585,
-     "polygonize_s": 0.067,
-     "score_s": 0.280425
+     "render_s": 0.02183,
+     "annotations_s": 0.006113,
+     "segment_s": 0.100409,
+     "polygonize_s": 0.052356,
+     "score_s": 0.261371
     }
    },
    "scale_-2": {
@@ -1276,11 +1364,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.026111,
-     "annotations_s": 0.006756,
-     "segment_s": 0.111871,
-     "polygonize_s": 0.067188,
-     "score_s": 0.275477
+     "render_s": 0.022422,
+     "annotations_s": 0.006692,
+     "segment_s": 0.105605,
+     "polygonize_s": 0.052027,
+     "score_s": 0.256383
     }
    },
    "scale_2": {
@@ -1315,11 +1403,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.025965,
-     "annotations_s": 0.006593,
-     "segment_s": 0.107846,
-     "polygonize_s": 0.06702,
-     "score_s": 0.284189
+     "render_s": 0.02224,
+     "annotations_s": 0.006203,
+     "segment_s": 0.103125,
+     "polygonize_s": 0.05569,
+     "score_s": 0.269797
     }
    },
    "merge_20": {
@@ -1354,11 +1442,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.025837,
-     "annotations_s": 0.00647,
-     "segment_s": 0.446026,
-     "polygonize_s": 0.066099,
-     "score_s": 0.278054
+     "render_s": 0.023624,
+     "annotations_s": 0.006669,
+     "segment_s": 0.414619,
+     "polygonize_s": 0.054264,
+     "score_s": 0.258269
     }
    },
    "split_3": {
@@ -1393,11 +1481,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.026379,
-     "annotations_s": 0.006344,
-     "segment_s": 0.14601,
-     "polygonize_s": 0.070018,
-     "score_s": 0.279804
+     "render_s": 0.023501,
+     "annotations_s": 0.006494,
+     "segment_s": 0.136671,
+     "polygonize_s": 0.055746,
+     "score_s": 0.255793
     }
    }
   },
@@ -1421,13 +1509,13 @@
    "area_abs_err_pct_median": 6.8007,
    "perimeter_abs_err_pct_median": 16.7533,
    "total_area_err_pct": -4.4892,
-   "seconds_median": 0.6686,
+   "seconds_median": 0.5569,
    "timing_s": {
-    "render_s": 0.026306,
-    "annotations_s": 0.006483,
-    "segment_s": 0.160836,
-    "polygonize_s": 0.138588,
-    "score_s": 0.332912
+    "render_s": 0.022307,
+    "annotations_s": 0.006247,
+    "segment_s": 0.12943,
+    "polygonize_s": 0.100327,
+    "score_s": 0.300013
    },
    "validity": {
     "rooms": 71,
@@ -1461,6 +1549,61 @@
      ]
     }
    }
+  },
+  "segmented": {
+   "gt_rooms": 28,
+   "pred_rooms": 16,
+   "count_precision": 0.6875,
+   "count_recall": 0.3929,
+   "room_count_err": -12,
+   "mask_iou": 0.8529,
+   "background_mask_iou": 0.9021,
+   "area_abs_err_mean_px2": 23839.3866,
+   "area_abs_err_max_px2": 163588.4629,
+   "perimeter_abs_err_mean_px": 871.0215,
+   "count_f1": 0.5,
+   "matched": 11,
+   "merged": 6,
+   "split": 0,
+   "matched_iou_mean": 0.8561,
+   "area_signed_err_pct_mean": 7.3931,
+   "area_abs_err_pct_median": 7.0104,
+   "perimeter_abs_err_pct_median": 44.0952,
+   "total_area_err_pct": -7.3176,
+   "seconds_median": 1.748,
+   "timing_s": {
+    "render_s": 0.021924,
+    "annotations_s": 0.007216,
+    "segment_s": 1.263462,
+    "polygonize_s": 0.077554,
+    "score_s": 0.361816
+   },
+   "validity": {
+    "rooms": 16,
+    "valid_before_repair_rate": 0.125,
+    "repaired_fraction": 0.875,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 16,
+     "invalid_before_repair": 14,
+     "repaired_labels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      13,
+      14,
+      15,
+      16
+     ]
+    }
+   }
   }
  },
  "colorful_13502": {
@@ -1476,9 +1619,9 @@
    "repaired": 1,
    "door_count": 6,
    "window_count": 6,
-   "render_s": 0.011362,
-   "annotations_s": 0.002227,
-   "measure_s": 2.7e-05,
+   "render_s": 0.075778,
+   "annotations_s": 0.00266,
+   "measure_s": 2.6e-05,
    "validity": {
     "rooms": 6,
     "valid_before_repair_rate": 0.8333333333333334,
@@ -1541,11 +1684,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011318,
-     "annotations_s": 0.002316,
-     "segment_s": 0.022565,
-     "polygonize_s": 0.007512,
-     "score_s": 0.048294
+     "render_s": 0.009927,
+     "annotations_s": 0.002394,
+     "segment_s": 0.020744,
+     "polygonize_s": 0.006034,
+     "score_s": 0.042315
     }
    },
    "erode_5": {
@@ -1580,11 +1723,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011394,
-     "annotations_s": 0.002595,
-     "segment_s": 0.023064,
-     "polygonize_s": 0.007253,
-     "score_s": 0.047997
+     "render_s": 0.010027,
+     "annotations_s": 0.002545,
+     "segment_s": 0.020266,
+     "polygonize_s": 0.005882,
+     "score_s": 0.040842
     }
    },
    "dilate_2": {
@@ -1619,11 +1762,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011423,
-     "annotations_s": 0.002299,
-     "segment_s": 0.051135,
-     "polygonize_s": 0.007536,
-     "score_s": 0.049781
+     "render_s": 0.009871,
+     "annotations_s": 0.002326,
+     "segment_s": 0.044929,
+     "polygonize_s": 0.006293,
+     "score_s": 0.043361
     }
    },
    "dilate_5": {
@@ -1658,11 +1801,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011348,
-     "annotations_s": 0.002292,
-     "segment_s": 0.050745,
-     "polygonize_s": 0.007489,
-     "score_s": 0.052205
+     "render_s": 0.009882,
+     "annotations_s": 0.002606,
+     "segment_s": 0.0427,
+     "polygonize_s": 0.005988,
+     "score_s": 0.045374
     }
    },
    "shift_2": {
@@ -1697,11 +1840,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011532,
-     "annotations_s": 0.002323,
-     "segment_s": 0.017274,
-     "polygonize_s": 0.007253,
-     "score_s": 0.049081
+     "render_s": 0.010453,
+     "annotations_s": 0.002593,
+     "segment_s": 0.016408,
+     "polygonize_s": 0.006265,
+     "score_s": 0.044994
     }
    },
    "shift_5": {
@@ -1736,11 +1879,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011528,
-     "annotations_s": 0.002311,
-     "segment_s": 0.017384,
-     "polygonize_s": 0.007145,
-     "score_s": 0.048224
+     "render_s": 0.009642,
+     "annotations_s": 0.002327,
+     "segment_s": 0.015092,
+     "polygonize_s": 0.005822,
+     "score_s": 0.043277
     }
    },
    "scale_-2": {
@@ -1775,11 +1918,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011476,
-     "annotations_s": 0.002289,
-     "segment_s": 0.018516,
-     "polygonize_s": 0.007435,
-     "score_s": 0.047934
+     "render_s": 0.009786,
+     "annotations_s": 0.002211,
+     "segment_s": 0.016587,
+     "polygonize_s": 0.006163,
+     "score_s": 0.045755
     }
    },
    "scale_2": {
@@ -1814,11 +1957,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.01136,
-     "annotations_s": 0.002254,
-     "segment_s": 0.018352,
-     "polygonize_s": 0.007324,
-     "score_s": 0.049374
+     "render_s": 0.009832,
+     "annotations_s": 0.002367,
+     "segment_s": 0.016335,
+     "polygonize_s": 0.005938,
+     "score_s": 0.043228
     }
    },
    "merge_20": {
@@ -1853,11 +1996,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011328,
-     "annotations_s": 0.002268,
-     "segment_s": 0.032393,
-     "polygonize_s": 0.007197,
-     "score_s": 0.048279
+     "render_s": 0.010136,
+     "annotations_s": 0.002628,
+     "segment_s": 0.027832,
+     "polygonize_s": 0.005557,
+     "score_s": 0.041452
     }
    },
    "split_3": {
@@ -1892,11 +2035,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011636,
-     "annotations_s": 0.002279,
-     "segment_s": 0.025781,
-     "polygonize_s": 0.007604,
-     "score_s": 0.04892
+     "render_s": 0.009887,
+     "annotations_s": 0.002388,
+     "segment_s": 0.021801,
+     "polygonize_s": 0.006321,
+     "score_s": 0.043055
     }
    }
   },
@@ -1920,13 +2063,13 @@
    "area_abs_err_pct_median": 8.9149,
    "perimeter_abs_err_pct_median": 200.8466,
    "total_area_err_pct": 5.5645,
-   "seconds_median": 0.1675,
+   "seconds_median": 0.1411,
    "timing_s": {
-    "render_s": 0.011418,
-    "annotations_s": 0.002298,
-    "segment_s": 0.056737,
-    "polygonize_s": 0.020341,
-    "score_s": 0.074153
+    "render_s": 0.010617,
+    "annotations_s": 0.002561,
+    "segment_s": 0.044666,
+    "polygonize_s": 0.015314,
+    "score_s": 0.066514
    },
    "validity": {
     "rooms": 29,
@@ -1954,6 +2097,50 @@
      ]
     }
    }
+  },
+  "segmented": {
+   "gt_rooms": 6,
+   "pred_rooms": 4,
+   "count_precision": 1.0,
+   "count_recall": 0.6667,
+   "room_count_err": -2,
+   "mask_iou": 0.9852,
+   "background_mask_iou": 0.9911,
+   "area_abs_err_mean_px2": 29077.6017,
+   "area_abs_err_max_px2": 114754.1623,
+   "perimeter_abs_err_mean_px": 396.7024,
+   "count_f1": 0.8,
+   "matched": 4,
+   "merged": 1,
+   "split": 0,
+   "matched_iou_mean": 0.8638,
+   "area_signed_err_pct_mean": 20.7214,
+   "area_abs_err_pct_median": 2.0577,
+   "perimeter_abs_err_pct_median": 7.9868,
+   "total_area_err_pct": 0.0827,
+   "seconds_median": 0.332,
+   "timing_s": {
+    "render_s": 0.010192,
+    "annotations_s": 0.002343,
+    "segment_s": 0.255944,
+    "polygonize_s": 0.006549,
+    "score_s": 0.052541
+   },
+   "validity": {
+    "rooms": 4,
+    "valid_before_repair_rate": 0.25,
+    "repaired_fraction": 0.75,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 4,
+     "invalid_before_repair": 3,
+     "repaired_labels": [
+      1,
+      2,
+      4
+     ]
+    }
+   }
   }
  },
  "high_quality_architectural_2035": {
@@ -1969,9 +2156,9 @@
    "repaired": 0,
    "door_count": 6,
    "window_count": 4,
-   "render_s": 0.00566,
-   "annotations_s": 0.001751,
-   "measure_s": 2.3e-05,
+   "render_s": 0.070409,
+   "annotations_s": 0.001936,
+   "measure_s": 1.9e-05,
    "validity": {
     "rooms": 6,
     "valid_before_repair_rate": 1.0,
@@ -2034,11 +2221,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.00578,
-     "annotations_s": 0.001908,
-     "segment_s": 0.033592,
-     "polygonize_s": 0.007145,
-     "score_s": 0.061963
+     "render_s": 0.005149,
+     "annotations_s": 0.002066,
+     "segment_s": 0.029581,
+     "polygonize_s": 0.005686,
+     "score_s": 0.054904
     }
    },
    "erode_5": {
@@ -2074,10 +2261,10 @@
     },
     "timing_s": {
      "render_s": 0.005888,
-     "annotations_s": 0.001887,
-     "segment_s": 0.033711,
-     "polygonize_s": 0.007196,
-     "score_s": 0.062123
+     "annotations_s": 0.002283,
+     "segment_s": 0.030633,
+     "polygonize_s": 0.005651,
+     "score_s": 0.054923
     }
    },
    "dilate_2": {
@@ -2112,11 +2299,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005776,
-     "annotations_s": 0.001871,
-     "segment_s": 0.058457,
-     "polygonize_s": 0.007257,
-     "score_s": 0.063807
+     "render_s": 0.005356,
+     "annotations_s": 0.002226,
+     "segment_s": 0.05181,
+     "polygonize_s": 0.00566,
+     "score_s": 0.055637
     }
    },
    "dilate_5": {
@@ -2151,11 +2338,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005839,
-     "annotations_s": 0.001886,
-     "segment_s": 0.058391,
-     "polygonize_s": 0.007313,
-     "score_s": 0.064662
+     "render_s": 0.005452,
+     "annotations_s": 0.002077,
+     "segment_s": 0.052305,
+     "polygonize_s": 0.00634,
+     "score_s": 0.059164
     }
    },
    "shift_2": {
@@ -2190,11 +2377,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005846,
-     "annotations_s": 0.001926,
-     "segment_s": 0.027816,
-     "polygonize_s": 0.007215,
-     "score_s": 0.062821
+     "render_s": 0.005594,
+     "annotations_s": 0.002148,
+     "segment_s": 0.025894,
+     "polygonize_s": 0.005734,
+     "score_s": 0.055486
     }
    },
    "shift_5": {
@@ -2229,11 +2416,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005896,
-     "annotations_s": 0.001892,
-     "segment_s": 0.027675,
-     "polygonize_s": 0.006978,
-     "score_s": 0.06303
+     "render_s": 0.00536,
+     "annotations_s": 0.002152,
+     "segment_s": 0.024924,
+     "polygonize_s": 0.005913,
+     "score_s": 0.056668
     }
    },
    "scale_-2": {
@@ -2268,11 +2455,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005809,
-     "annotations_s": 0.001877,
-     "segment_s": 0.028571,
-     "polygonize_s": 0.00731,
-     "score_s": 0.062331
+     "render_s": 0.005896,
+     "annotations_s": 0.002315,
+     "segment_s": 0.025339,
+     "polygonize_s": 0.005638,
+     "score_s": 0.057928
     }
    },
    "scale_2": {
@@ -2307,11 +2494,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.006006,
-     "annotations_s": 0.001887,
-     "segment_s": 0.028714,
-     "polygonize_s": 0.007105,
-     "score_s": 0.063705
+     "render_s": 0.00594,
+     "annotations_s": 0.002476,
+     "segment_s": 0.025744,
+     "polygonize_s": 0.005638,
+     "score_s": 0.061197
     }
    },
    "merge_20": {
@@ -2346,11 +2533,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005877,
-     "annotations_s": 0.001879,
-     "segment_s": 0.042503,
-     "polygonize_s": 0.006756,
-     "score_s": 0.064956
+     "render_s": 0.005369,
+     "annotations_s": 0.002005,
+     "segment_s": 0.036272,
+     "polygonize_s": 0.00544,
+     "score_s": 0.0561
     }
    },
    "split_3": {
@@ -2385,11 +2572,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.005889,
-     "annotations_s": 0.001915,
-     "segment_s": 0.036089,
-     "polygonize_s": 0.00744,
-     "score_s": 0.063467
+     "render_s": 0.005639,
+     "annotations_s": 0.002439,
+     "segment_s": 0.031936,
+     "polygonize_s": 0.006192,
+     "score_s": 0.057532
     }
    }
   },
@@ -2413,13 +2600,13 @@
    "area_abs_err_pct_median": 15.7333,
    "perimeter_abs_err_pct_median": 48.8985,
    "total_area_err_pct": 11.5249,
-   "seconds_median": 0.1891,
+   "seconds_median": 0.1606,
    "timing_s": {
-    "render_s": 0.005929,
-    "annotations_s": 0.001899,
-    "segment_s": 0.068562,
-    "polygonize_s": 0.022019,
-    "score_s": 0.088283
+    "render_s": 0.005717,
+    "annotations_s": 0.002357,
+    "segment_s": 0.054017,
+    "polygonize_s": 0.016154,
+    "score_s": 0.080492
    },
    "validity": {
     "rooms": 39,
@@ -2450,6 +2637,52 @@
      ]
     }
    }
+  },
+  "segmented": {
+   "gt_rooms": 6,
+   "pred_rooms": 5,
+   "count_precision": 0.8,
+   "count_recall": 0.6667,
+   "room_count_err": -1,
+   "mask_iou": 0.9763,
+   "background_mask_iou": 0.9781,
+   "area_abs_err_mean_px2": 38791.0292,
+   "area_abs_err_max_px2": 153160.8184,
+   "perimeter_abs_err_mean_px": 516.0783,
+   "count_f1": 0.7273,
+   "matched": 4,
+   "merged": 1,
+   "split": 0,
+   "matched_iou_mean": 0.866,
+   "area_signed_err_pct_mean": 21.3279,
+   "area_abs_err_pct_median": 1.755,
+   "perimeter_abs_err_pct_median": 7.4746,
+   "total_area_err_pct": 0.9213,
+   "seconds_median": 0.3514,
+   "timing_s": {
+    "render_s": 0.005923,
+    "annotations_s": 0.002397,
+    "segment_s": 0.257144,
+    "polygonize_s": 0.007475,
+    "score_s": 0.078672
+   },
+   "validity": {
+    "rooms": 5,
+    "valid_before_repair_rate": 0.0,
+    "repaired_fraction": 1.0,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 5,
+     "invalid_before_repair": 5,
+     "repaired_labels": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ]
+    }
+   }
   }
  },
  "high_quality_architectural_875": {
@@ -2465,8 +2698,8 @@
    "repaired": 0,
    "door_count": 9,
    "window_count": 7,
-   "render_s": 0.007501,
-   "annotations_s": 0.002191,
+   "render_s": 0.060061,
+   "annotations_s": 0.002604,
    "measure_s": 2.2e-05,
    "validity": {
     "rooms": 8,
@@ -2530,11 +2763,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007398,
-     "annotations_s": 0.002349,
-     "segment_s": 0.032665,
-     "polygonize_s": 0.007191,
-     "score_s": 0.065311
+     "render_s": 0.006637,
+     "annotations_s": 0.002619,
+     "segment_s": 0.029081,
+     "polygonize_s": 0.005781,
+     "score_s": 0.058471
     }
    },
    "erode_5": {
@@ -2569,11 +2802,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007431,
-     "annotations_s": 0.002331,
-     "segment_s": 0.033729,
-     "polygonize_s": 0.007293,
-     "score_s": 0.063888
+     "render_s": 0.006563,
+     "annotations_s": 0.002422,
+     "segment_s": 0.031371,
+     "polygonize_s": 0.006065,
+     "score_s": 0.059555
     }
    },
    "dilate_2": {
@@ -2608,11 +2841,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007584,
-     "annotations_s": 0.002346,
-     "segment_s": 0.060723,
-     "polygonize_s": 0.007202,
-     "score_s": 0.063823
+     "render_s": 0.00687,
+     "annotations_s": 0.00223,
+     "segment_s": 0.052448,
+     "polygonize_s": 0.006003,
+     "score_s": 0.059214
     }
    },
    "dilate_5": {
@@ -2647,11 +2880,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007339,
-     "annotations_s": 0.002345,
-     "segment_s": 0.063166,
-     "polygonize_s": 0.007118,
-     "score_s": 0.068308
+     "render_s": 0.006654,
+     "annotations_s": 0.002708,
+     "segment_s": 0.054954,
+     "polygonize_s": 0.006014,
+     "score_s": 0.062565
     }
    },
    "shift_2": {
@@ -2686,11 +2919,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007324,
-     "annotations_s": 0.002358,
-     "segment_s": 0.025976,
-     "polygonize_s": 0.007238,
-     "score_s": 0.065734
+     "render_s": 0.006603,
+     "annotations_s": 0.002514,
+     "segment_s": 0.023801,
+     "polygonize_s": 0.006031,
+     "score_s": 0.062467
     }
    },
    "shift_5": {
@@ -2725,11 +2958,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.00732,
-     "annotations_s": 0.002324,
-     "segment_s": 0.025975,
-     "polygonize_s": 0.007203,
-     "score_s": 0.065857
+     "render_s": 0.00653,
+     "annotations_s": 0.00244,
+     "segment_s": 0.023819,
+     "polygonize_s": 0.00588,
+     "score_s": 0.058523
     }
    },
    "scale_-2": {
@@ -2764,11 +2997,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007437,
-     "annotations_s": 0.002338,
-     "segment_s": 0.027096,
-     "polygonize_s": 0.007257,
-     "score_s": 0.065037
+     "render_s": 0.00662,
+     "annotations_s": 0.002438,
+     "segment_s": 0.024896,
+     "polygonize_s": 0.005775,
+     "score_s": 0.059556
     }
    },
    "scale_2": {
@@ -2803,11 +3036,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007361,
-     "annotations_s": 0.002415,
-     "segment_s": 0.026788,
-     "polygonize_s": 0.007423,
-     "score_s": 0.066646
+     "render_s": 0.006625,
+     "annotations_s": 0.002529,
+     "segment_s": 0.023153,
+     "polygonize_s": 0.005651,
+     "score_s": 0.059385
     }
    },
    "merge_20": {
@@ -2842,11 +3075,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.008031,
-     "annotations_s": 0.005398,
-     "segment_s": 0.08677,
-     "polygonize_s": 0.007088,
-     "score_s": 0.066721
+     "render_s": 0.006657,
+     "annotations_s": 0.00253,
+     "segment_s": 0.039529,
+     "polygonize_s": 0.005785,
+     "score_s": 0.059822
     }
    },
    "split_3": {
@@ -2881,11 +3114,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007483,
-     "annotations_s": 0.002379,
-     "segment_s": 0.033842,
-     "polygonize_s": 0.007804,
-     "score_s": 0.06579
+     "render_s": 0.006322,
+     "annotations_s": 0.002497,
+     "segment_s": 0.029526,
+     "polygonize_s": 0.00616,
+     "score_s": 0.060321
     }
    }
   },
@@ -2909,13 +3142,13 @@
    "area_abs_err_pct_median": 28.8737,
    "perimeter_abs_err_pct_median": 152.3397,
    "total_area_err_pct": 2.7969,
-   "seconds_median": 0.3865,
+   "seconds_median": 0.3268,
    "timing_s": {
-    "render_s": 0.007418,
-    "annotations_s": 0.00231,
-    "segment_s": 0.23153,
-    "polygonize_s": 0.038573,
-    "score_s": 0.104255
+    "render_s": 0.006751,
+    "annotations_s": 0.002735,
+    "segment_s": 0.19104,
+    "polygonize_s": 0.029034,
+    "score_s": 0.094923
    },
    "validity": {
     "rooms": 103,
@@ -2963,6 +3196,52 @@
      ]
     }
    }
+  },
+  "segmented": {
+   "gt_rooms": 8,
+   "pred_rooms": 7,
+   "count_precision": 1.0,
+   "count_recall": 0.875,
+   "room_count_err": -1,
+   "mask_iou": 0.9837,
+   "background_mask_iou": 0.9771,
+   "area_abs_err_mean_px2": 7923.4473,
+   "area_abs_err_max_px2": 52883.6932,
+   "perimeter_abs_err_mean_px": 203.5047,
+   "count_f1": 0.9333,
+   "matched": 7,
+   "merged": 1,
+   "split": 0,
+   "matched_iou_mean": 0.9351,
+   "area_signed_err_pct_mean": 5.5729,
+   "area_abs_err_pct_median": 0.6256,
+   "perimeter_abs_err_pct_median": 6.1956,
+   "total_area_err_pct": -0.2186,
+   "seconds_median": 0.32,
+   "timing_s": {
+    "render_s": 0.007014,
+    "annotations_s": 0.002803,
+    "segment_s": 0.234666,
+    "polygonize_s": 0.00708,
+    "score_s": 0.067715
+   },
+   "validity": {
+    "rooms": 7,
+    "valid_before_repair_rate": 0.2857142857142857,
+    "repaired_fraction": 0.7142857142857143,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 7,
+     "invalid_before_repair": 5,
+     "repaired_labels": [
+      1,
+      2,
+      4,
+      5,
+      6
+     ]
+    }
+   }
   }
  },
  "high_quality_9334": {
@@ -2978,9 +3257,9 @@
    "repaired": 0,
    "door_count": 11,
    "window_count": 4,
-   "render_s": 0.011745,
-   "annotations_s": 0.002669,
-   "measure_s": 2.9e-05,
+   "render_s": 0.108026,
+   "annotations_s": 0.002897,
+   "measure_s": 3.2e-05,
    "validity": {
     "rooms": 11,
     "valid_before_repair_rate": 1.0,
@@ -3043,11 +3322,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.012141,
-     "annotations_s": 0.002819,
-     "segment_s": 0.055733,
-     "polygonize_s": 0.015985,
-     "score_s": 0.100785
+     "render_s": 0.009836,
+     "annotations_s": 0.002581,
+     "segment_s": 0.048753,
+     "polygonize_s": 0.012288,
+     "score_s": 0.088991
     }
    },
    "erode_5": {
@@ -3082,11 +3361,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011715,
-     "annotations_s": 0.002765,
-     "segment_s": 0.057058,
-     "polygonize_s": 0.015491,
-     "score_s": 0.098515
+     "render_s": 0.010857,
+     "annotations_s": 0.002912,
+     "segment_s": 0.048744,
+     "polygonize_s": 0.012081,
+     "score_s": 0.086556
     }
    },
    "dilate_2": {
@@ -3121,11 +3400,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.01169,
-     "annotations_s": 0.002739,
-     "segment_s": 0.101162,
-     "polygonize_s": 0.015158,
-     "score_s": 0.098703
+     "render_s": 0.009941,
+     "annotations_s": 0.002895,
+     "segment_s": 0.088532,
+     "polygonize_s": 0.012061,
+     "score_s": 0.089858
     }
    },
    "dilate_5": {
@@ -3160,11 +3439,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011736,
-     "annotations_s": 0.002771,
-     "segment_s": 0.100369,
-     "polygonize_s": 0.015341,
-     "score_s": 0.104105
+     "render_s": 0.010374,
+     "annotations_s": 0.002845,
+     "segment_s": 0.088572,
+     "polygonize_s": 0.011977,
+     "score_s": 0.092048
     }
    },
    "shift_2": {
@@ -3199,11 +3478,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011797,
-     "annotations_s": 0.002906,
-     "segment_s": 0.04041,
-     "polygonize_s": 0.015489,
-     "score_s": 0.100746
+     "render_s": 0.010035,
+     "annotations_s": 0.003025,
+     "segment_s": 0.036426,
+     "polygonize_s": 0.01247,
+     "score_s": 0.090098
     }
    },
    "shift_5": {
@@ -3238,11 +3517,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.012346,
-     "annotations_s": 0.002768,
-     "segment_s": 0.040449,
-     "polygonize_s": 0.015694,
-     "score_s": 0.100908
+     "render_s": 0.009977,
+     "annotations_s": 0.002912,
+     "segment_s": 0.035883,
+     "polygonize_s": 0.011802,
+     "score_s": 0.089368
     }
    },
    "scale_-2": {
@@ -3277,11 +3556,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011893,
-     "annotations_s": 0.003144,
-     "segment_s": 0.042487,
-     "polygonize_s": 0.01539,
-     "score_s": 0.099176
+     "render_s": 0.010073,
+     "annotations_s": 0.002865,
+     "segment_s": 0.037258,
+     "polygonize_s": 0.011951,
+     "score_s": 0.086481
     }
    },
    "scale_2": {
@@ -3316,11 +3595,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011873,
-     "annotations_s": 0.002713,
-     "segment_s": 0.042924,
-     "polygonize_s": 0.015475,
-     "score_s": 0.102327
+     "render_s": 0.010425,
+     "annotations_s": 0.002615,
+     "segment_s": 0.037769,
+     "polygonize_s": 0.012423,
+     "score_s": 0.090287
     }
    },
    "merge_20": {
@@ -3355,11 +3634,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011903,
-     "annotations_s": 0.002768,
-     "segment_s": 0.085739,
-     "polygonize_s": 0.015416,
-     "score_s": 0.101765
+     "render_s": 0.009877,
+     "annotations_s": 0.002833,
+     "segment_s": 0.071298,
+     "polygonize_s": 0.011919,
+     "score_s": 0.090035
     }
    },
    "split_3": {
@@ -3394,11 +3673,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.011726,
-     "annotations_s": 0.002725,
-     "segment_s": 0.056022,
-     "polygonize_s": 0.016012,
-     "score_s": 0.102889
+     "render_s": 0.010014,
+     "annotations_s": 0.002897,
+     "segment_s": 0.048116,
+     "polygonize_s": 0.012499,
+     "score_s": 0.089432
     }
    }
   },
@@ -3422,13 +3701,13 @@
    "area_abs_err_pct_median": null,
    "perimeter_abs_err_pct_median": null,
    "total_area_err_pct": -99.3031,
-   "seconds_median": 0.1284,
+   "seconds_median": 0.109,
    "timing_s": {
-    "render_s": 0.011761,
-    "annotations_s": 0.002747,
-    "segment_s": 0.03656,
-    "polygonize_s": 0.010732,
-    "score_s": 0.066683
+    "render_s": 0.010534,
+    "annotations_s": 0.003045,
+    "segment_s": 0.027863,
+    "polygonize_s": 0.008958,
+    "score_s": 0.058359
    },
    "validity": {
     "rooms": 2,
@@ -3439,6 +3718,52 @@
      "polygons_before_repair": 2,
      "invalid_before_repair": 0,
      "repaired_labels": []
+    }
+   }
+  },
+  "segmented": {
+   "gt_rooms": 11,
+   "pred_rooms": 9,
+   "count_precision": 0.7778,
+   "count_recall": 0.6364,
+   "room_count_err": -2,
+   "mask_iou": 0.8946,
+   "background_mask_iou": 0.9286,
+   "area_abs_err_mean_px2": 1155.9536,
+   "area_abs_err_max_px2": 3451.6392,
+   "perimeter_abs_err_mean_px": 71.6638,
+   "count_f1": 0.7,
+   "matched": 7,
+   "merged": 1,
+   "split": 0,
+   "matched_iou_mean": 0.9403,
+   "area_signed_err_pct_mean": 0.461,
+   "area_abs_err_pct_median": 1.2196,
+   "perimeter_abs_err_pct_median": 6.8202,
+   "total_area_err_pct": 6.2076,
+   "seconds_median": 0.6263,
+   "timing_s": {
+    "render_s": 0.010606,
+    "annotations_s": 0.003134,
+    "segment_s": 0.466729,
+    "polygonize_s": 0.016419,
+    "score_s": 0.130529
+   },
+   "validity": {
+    "rooms": 9,
+    "valid_before_repair_rate": 0.4444444444444444,
+    "repaired_fraction": 0.5555555555555556,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 9,
+     "invalid_before_repair": 5,
+     "repaired_labels": [
+      1,
+      2,
+      5,
+      6,
+      8
+     ]
     }
    }
   }
@@ -3456,9 +3781,9 @@
    "repaired": 0,
    "door_count": 19,
    "window_count": 13,
-   "render_s": 0.013913,
-   "annotations_s": 0.004044,
-   "measure_s": 4.5e-05,
+   "render_s": 0.114526,
+   "annotations_s": 0.003916,
+   "measure_s": 3.6e-05,
    "validity": {
     "rooms": 17,
     "valid_before_repair_rate": 1.0,
@@ -3521,11 +3846,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.013547,
-     "annotations_s": 0.003985,
-     "segment_s": 0.083089,
-     "polygonize_s": 0.02265,
-     "score_s": 0.140164
+     "render_s": 0.011825,
+     "annotations_s": 0.004152,
+     "segment_s": 0.07102,
+     "polygonize_s": 0.016173,
+     "score_s": 0.128407
     }
    },
    "erode_5": {
@@ -3560,11 +3885,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.013819,
-     "annotations_s": 0.004286,
-     "segment_s": 0.086262,
-     "polygonize_s": 0.022166,
-     "score_s": 0.137419
+     "render_s": 0.011965,
+     "annotations_s": 0.003855,
+     "segment_s": 0.075698,
+     "polygonize_s": 0.016332,
+     "score_s": 0.12078
     }
    },
    "dilate_2": {
@@ -3599,11 +3924,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.013687,
-     "annotations_s": 0.014466,
-     "segment_s": 0.134698,
-     "polygonize_s": 0.022875,
-     "score_s": 0.179352
+     "render_s": 0.012319,
+     "annotations_s": 0.004319,
+     "segment_s": 0.11706,
+     "polygonize_s": 0.016844,
+     "score_s": 0.123133
     }
    },
    "dilate_5": {
@@ -3638,11 +3963,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.013782,
-     "annotations_s": 0.004086,
-     "segment_s": 0.128762,
-     "polygonize_s": 0.022185,
-     "score_s": 0.145847
+     "render_s": 0.012202,
+     "annotations_s": 0.004015,
+     "segment_s": 0.113162,
+     "polygonize_s": 0.016669,
+     "score_s": 0.129885
     }
    },
    "shift_2": {
@@ -3677,11 +4002,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.013844,
-     "annotations_s": 0.004083,
-     "segment_s": 0.05822,
-     "polygonize_s": 0.02207,
-     "score_s": 0.142595
+     "render_s": 0.012122,
+     "annotations_s": 0.004396,
+     "segment_s": 0.053244,
+     "polygonize_s": 0.016222,
+     "score_s": 0.131014
     }
    },
    "shift_5": {
@@ -3716,11 +4041,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.013956,
-     "annotations_s": 0.004033,
-     "segment_s": 0.058078,
-     "polygonize_s": 0.022159,
-     "score_s": 0.142301
+     "render_s": 0.01128,
+     "annotations_s": 0.003764,
+     "segment_s": 0.050523,
+     "polygonize_s": 0.016049,
+     "score_s": 0.125398
     }
    },
    "scale_-2": {
@@ -3755,11 +4080,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.013749,
-     "annotations_s": 0.004058,
-     "segment_s": 0.060969,
-     "polygonize_s": 0.022248,
-     "score_s": 0.139839
+     "render_s": 0.011415,
+     "annotations_s": 0.00408,
+     "segment_s": 0.054312,
+     "polygonize_s": 0.016785,
+     "score_s": 0.130597
     }
    },
    "scale_2": {
@@ -3794,11 +4119,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.013797,
-     "annotations_s": 0.004025,
-     "segment_s": 0.060255,
-     "polygonize_s": 0.022725,
-     "score_s": 0.145376
+     "render_s": 0.01251,
+     "annotations_s": 0.004489,
+     "segment_s": 0.056808,
+     "polygonize_s": 0.017154,
+     "score_s": 0.136408
     }
    },
    "merge_20": {
@@ -3833,11 +4158,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.013825,
-     "annotations_s": 0.004069,
-     "segment_s": 0.136235,
-     "polygonize_s": 0.022119,
-     "score_s": 0.151118
+     "render_s": 0.011249,
+     "annotations_s": 0.003939,
+     "segment_s": 0.116056,
+     "polygonize_s": 0.016556,
+     "score_s": 0.140591
     }
    },
    "split_3": {
@@ -3872,11 +4197,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.013823,
-     "annotations_s": 0.00401,
-     "segment_s": 0.076777,
-     "polygonize_s": 0.02291,
-     "score_s": 0.141937
+     "render_s": 0.011893,
+     "annotations_s": 0.006714,
+     "segment_s": 0.070718,
+     "polygonize_s": 0.016304,
+     "score_s": 0.129314
     }
    }
   },
@@ -3900,13 +4225,13 @@
    "area_abs_err_pct_median": 24.5031,
    "perimeter_abs_err_pct_median": 61.928,
    "total_area_err_pct": -74.1098,
-   "seconds_median": 0.2609,
+   "seconds_median": 0.2175,
    "timing_s": {
-    "render_s": 0.014076,
-    "annotations_s": 0.004072,
-    "segment_s": 0.084582,
-    "polygonize_s": 0.040697,
-    "score_s": 0.115387
+    "render_s": 0.012054,
+    "annotations_s": 0.004084,
+    "segment_s": 0.066842,
+    "polygonize_s": 0.027771,
+    "score_s": 0.102872
    },
    "validity": {
     "rooms": 35,
@@ -3937,6 +4262,64 @@
      ]
     }
    }
+  },
+  "segmented": {
+   "gt_rooms": 17,
+   "pred_rooms": 19,
+   "count_precision": 0.7368,
+   "count_recall": 0.8235,
+   "room_count_err": 2,
+   "mask_iou": 0.8315,
+   "background_mask_iou": 0.8598,
+   "area_abs_err_mean_px2": 1629.9674,
+   "area_abs_err_max_px2": 14789.0957,
+   "perimeter_abs_err_mean_px": 144.5538,
+   "count_f1": 0.7778,
+   "matched": 14,
+   "merged": 0,
+   "split": 2,
+   "matched_iou_mean": 0.9628,
+   "area_signed_err_pct_mean": 0.0711,
+   "area_abs_err_pct_median": 0.8733,
+   "perimeter_abs_err_pct_median": 12.238,
+   "total_area_err_pct": -12.6761,
+   "seconds_median": 0.7198,
+   "timing_s": {
+    "render_s": 0.011647,
+    "annotations_s": 0.004078,
+    "segment_s": 0.538286,
+    "polygonize_s": 0.023206,
+    "score_s": 0.138597
+   },
+   "validity": {
+    "rooms": 19,
+    "valid_before_repair_rate": 0.10526315789473684,
+    "repaired_fraction": 0.8947368421052632,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 19,
+     "invalid_before_repair": 17,
+     "repaired_labels": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+     ]
+    }
+   }
   }
  },
  "high_quality_5632": {
@@ -3952,9 +4335,9 @@
    "repaired": 0,
    "door_count": 10,
    "window_count": 5,
-   "render_s": 0.007299,
-   "annotations_s": 0.002187,
-   "measure_s": 2.8e-05,
+   "render_s": 0.064479,
+   "annotations_s": 0.002201,
+   "measure_s": 2.4e-05,
    "validity": {
     "rooms": 9,
     "valid_before_repair_rate": 1.0,
@@ -4017,11 +4400,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007448,
-     "annotations_s": 0.002093,
-     "segment_s": 0.048423,
-     "polygonize_s": 0.009548,
-     "score_s": 0.09554
+     "render_s": 0.006333,
+     "annotations_s": 0.002027,
+     "segment_s": 0.043206,
+     "polygonize_s": 0.00777,
+     "score_s": 0.088809
     }
    },
    "erode_5": {
@@ -4056,11 +4439,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007279,
-     "annotations_s": 0.002066,
-     "segment_s": 0.049361,
-     "polygonize_s": 0.008974,
-     "score_s": 0.093503
+     "render_s": 0.006492,
+     "annotations_s": 0.001984,
+     "segment_s": 0.044196,
+     "polygonize_s": 0.007716,
+     "score_s": 0.084484
     }
    },
    "dilate_2": {
@@ -4095,11 +4478,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007823,
-     "annotations_s": 0.002145,
-     "segment_s": 0.080429,
-     "polygonize_s": 0.009314,
-     "score_s": 0.094207
+     "render_s": 0.006577,
+     "annotations_s": 0.002081,
+     "segment_s": 0.0739,
+     "polygonize_s": 0.007486,
+     "score_s": 0.085331
     }
    },
    "dilate_5": {
@@ -4134,11 +4517,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007377,
-     "annotations_s": 0.002028,
-     "segment_s": 0.080739,
-     "polygonize_s": 0.009407,
-     "score_s": 0.097717
+     "render_s": 0.00637,
+     "annotations_s": 0.001921,
+     "segment_s": 0.07161,
+     "polygonize_s": 0.00741,
+     "score_s": 0.09257
     }
    },
    "shift_2": {
@@ -4173,11 +4556,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007336,
-     "annotations_s": 0.002086,
-     "segment_s": 0.040199,
-     "polygonize_s": 0.008953,
-     "score_s": 0.095528
+     "render_s": 0.006465,
+     "annotations_s": 0.00228,
+     "segment_s": 0.03752,
+     "polygonize_s": 0.007054,
+     "score_s": 0.083759
     }
    },
    "shift_5": {
@@ -4212,11 +4595,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007593,
-     "annotations_s": 0.00209,
-     "segment_s": 0.040108,
-     "polygonize_s": 0.009064,
-     "score_s": 0.094679
+     "render_s": 0.006436,
+     "annotations_s": 0.0021,
+     "segment_s": 0.03749,
+     "polygonize_s": 0.007157,
+     "score_s": 0.085665
     }
    },
    "scale_-2": {
@@ -4251,11 +4634,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007386,
-     "annotations_s": 0.002054,
-     "segment_s": 0.041405,
-     "polygonize_s": 0.00906,
-     "score_s": 0.093715
+     "render_s": 0.006548,
+     "annotations_s": 0.002277,
+     "segment_s": 0.038194,
+     "polygonize_s": 0.007048,
+     "score_s": 0.083316
     }
    },
    "scale_2": {
@@ -4290,11 +4673,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007496,
-     "annotations_s": 0.002091,
-     "segment_s": 0.04128,
-     "polygonize_s": 0.009213,
-     "score_s": 0.099149
+     "render_s": 0.006663,
+     "annotations_s": 0.002324,
+     "segment_s": 0.0401,
+     "polygonize_s": 0.00736,
+     "score_s": 0.087735
     }
    },
    "merge_20": {
@@ -4329,11 +4712,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007346,
-     "annotations_s": 0.002093,
-     "segment_s": 0.063473,
-     "polygonize_s": 0.008722,
-     "score_s": 0.091947
+     "render_s": 0.006573,
+     "annotations_s": 0.002199,
+     "segment_s": 0.056686,
+     "polygonize_s": 0.007226,
+     "score_s": 0.082431
     }
    },
    "split_3": {
@@ -4368,11 +4751,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.007289,
-     "annotations_s": 0.002058,
-     "segment_s": 0.051008,
-     "polygonize_s": 0.009461,
-     "score_s": 0.094602
+     "render_s": 0.006369,
+     "annotations_s": 0.002012,
+     "segment_s": 0.045779,
+     "polygonize_s": 0.007295,
+     "score_s": 0.083986
     }
    }
   },
@@ -4396,13 +4779,13 @@
    "area_abs_err_pct_median": 14.4865,
    "perimeter_abs_err_pct_median": 44.6102,
    "total_area_err_pct": 7.1488,
-   "seconds_median": 0.242,
+   "seconds_median": 0.2048,
    "timing_s": {
-    "render_s": 0.007355,
-    "annotations_s": 0.002108,
-    "segment_s": 0.089512,
-    "polygonize_s": 0.023047,
-    "score_s": 0.118158
+    "render_s": 0.006601,
+    "annotations_s": 0.002054,
+    "segment_s": 0.070501,
+    "polygonize_s": 0.01649,
+    "score_s": 0.108344
    },
    "validity": {
     "rooms": 42,
@@ -4421,6 +4804,52 @@
      ]
     }
    }
+  },
+  "segmented": {
+   "gt_rooms": 9,
+   "pred_rooms": 9,
+   "count_precision": 0.7778,
+   "count_recall": 0.7778,
+   "room_count_err": 0,
+   "mask_iou": 0.9628,
+   "background_mask_iou": 0.9588,
+   "area_abs_err_mean_px2": 12589.7657,
+   "area_abs_err_max_px2": 83646.5477,
+   "perimeter_abs_err_mean_px": 199.2939,
+   "count_f1": 0.7778,
+   "matched": 7,
+   "merged": 1,
+   "split": 0,
+   "matched_iou_mean": 0.9407,
+   "area_signed_err_pct_mean": 3.2802,
+   "area_abs_err_pct_median": 2.3255,
+   "perimeter_abs_err_pct_median": 5.0255,
+   "total_area_err_pct": 0.6393,
+   "seconds_median": 0.4143,
+   "timing_s": {
+    "render_s": 0.00767,
+    "annotations_s": 0.00268,
+    "segment_s": 0.29589,
+    "polygonize_s": 0.00953,
+    "score_s": 0.095923
+   },
+   "validity": {
+    "rooms": 9,
+    "valid_before_repair_rate": 0.4444444444444444,
+    "repaired_fraction": 0.5555555555555556,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 9,
+     "invalid_before_repair": 5,
+     "repaired_labels": [
+      1,
+      2,
+      3,
+      5,
+      6
+     ]
+    }
+   }
   }
  },
  "high_quality_1140": {
@@ -4436,9 +4865,9 @@
    "repaired": 1,
    "door_count": 9,
    "window_count": 4,
-   "render_s": 0.008854,
-   "annotations_s": 0.002533,
-   "measure_s": 3.1e-05,
+   "render_s": 0.082559,
+   "annotations_s": 0.002715,
+   "measure_s": 2.7e-05,
    "validity": {
     "rooms": 8,
     "valid_before_repair_rate": 0.875,
@@ -4501,11 +4930,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.009028,
-     "annotations_s": 0.002633,
-     "segment_s": 0.040777,
-     "polygonize_s": 0.009378,
-     "score_s": 0.078436
+     "render_s": 0.007806,
+     "annotations_s": 0.002636,
+     "segment_s": 0.035564,
+     "polygonize_s": 0.008139,
+     "score_s": 0.068451
     }
    },
    "erode_5": {
@@ -4540,11 +4969,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.009004,
-     "annotations_s": 0.002642,
-     "segment_s": 0.042518,
-     "polygonize_s": 0.00993,
-     "score_s": 0.077133
+     "render_s": 0.008056,
+     "annotations_s": 0.002834,
+     "segment_s": 0.037591,
+     "polygonize_s": 0.007612,
+     "score_s": 0.06721
     }
    },
    "dilate_2": {
@@ -4579,11 +5008,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.009317,
-     "annotations_s": 0.002719,
-     "segment_s": 0.072343,
-     "polygonize_s": 0.010016,
-     "score_s": 0.080859
+     "render_s": 0.008009,
+     "annotations_s": 0.002665,
+     "segment_s": 0.066862,
+     "polygonize_s": 0.007708,
+     "score_s": 0.073518
     }
    },
    "dilate_5": {
@@ -4618,11 +5047,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.009024,
-     "annotations_s": 0.002654,
-     "segment_s": 0.07253,
-     "polygonize_s": 0.009642,
-     "score_s": 0.085077
+     "render_s": 0.007988,
+     "annotations_s": 0.002817,
+     "segment_s": 0.065197,
+     "polygonize_s": 0.007923,
+     "score_s": 0.079313
     }
    },
    "shift_2": {
@@ -4657,11 +5086,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.009037,
-     "annotations_s": 0.002641,
-     "segment_s": 0.031711,
-     "polygonize_s": 0.009637,
-     "score_s": 0.079059
+     "render_s": 0.008026,
+     "annotations_s": 0.003756,
+     "segment_s": 0.029597,
+     "polygonize_s": 0.008011,
+     "score_s": 0.072012
     }
    },
    "shift_5": {
@@ -4696,11 +5125,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.009013,
-     "annotations_s": 0.002633,
-     "segment_s": 0.031738,
-     "polygonize_s": 0.009578,
-     "score_s": 0.079121
+     "render_s": 0.007738,
+     "annotations_s": 0.002624,
+     "segment_s": 0.029113,
+     "polygonize_s": 0.007829,
+     "score_s": 0.073784
     }
    },
    "scale_-2": {
@@ -4735,11 +5164,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.009041,
-     "annotations_s": 0.002686,
-     "segment_s": 0.033028,
-     "polygonize_s": 0.009382,
-     "score_s": 0.078655
+     "render_s": 0.008358,
+     "annotations_s": 0.002764,
+     "segment_s": 0.031938,
+     "polygonize_s": 0.008605,
+     "score_s": 0.077242
     }
    },
    "scale_2": {
@@ -4774,11 +5203,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.009118,
-     "annotations_s": 0.002742,
-     "segment_s": 0.033275,
-     "polygonize_s": 0.010003,
-     "score_s": 0.080586
+     "render_s": 0.008371,
+     "annotations_s": 0.002867,
+     "segment_s": 0.031961,
+     "polygonize_s": 0.00819,
+     "score_s": 0.072856
     }
    },
    "merge_20": {
@@ -4813,11 +5242,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.009019,
-     "annotations_s": 0.00278,
-     "segment_s": 0.055949,
-     "polygonize_s": 0.009655,
-     "score_s": 0.08191
+     "render_s": 0.008163,
+     "annotations_s": 0.003014,
+     "segment_s": 0.051534,
+     "polygonize_s": 0.008235,
+     "score_s": 0.076229
     }
    },
    "split_3": {
@@ -4852,11 +5281,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.009168,
-     "annotations_s": 0.002731,
-     "segment_s": 0.042305,
-     "polygonize_s": 0.01008,
-     "score_s": 0.079463
+     "render_s": 0.008293,
+     "annotations_s": 0.002936,
+     "segment_s": 0.040486,
+     "polygonize_s": 0.00854,
+     "score_s": 0.075063
     }
    }
   },
@@ -4880,13 +5309,13 @@
    "area_abs_err_pct_median": 18.68,
    "perimeter_abs_err_pct_median": 23.7859,
    "total_area_err_pct": 3.7502,
-   "seconds_median": 0.2538,
+   "seconds_median": 0.2201,
    "timing_s": {
-    "render_s": 0.009023,
-    "annotations_s": 0.002663,
-    "segment_s": 0.089621,
-    "polygonize_s": 0.028045,
-    "score_s": 0.122804
+    "render_s": 0.008498,
+    "annotations_s": 0.002848,
+    "segment_s": 0.073098,
+    "polygonize_s": 0.021636,
+    "score_s": 0.114241
    },
    "validity": {
     "rooms": 47,
@@ -4915,6 +5344,54 @@
      ]
     }
    }
+  },
+  "segmented": {
+   "gt_rooms": 8,
+   "pred_rooms": 7,
+   "count_precision": 1.0,
+   "count_recall": 0.875,
+   "room_count_err": -1,
+   "mask_iou": 0.9591,
+   "background_mask_iou": 0.9611,
+   "area_abs_err_mean_px2": 15958.5047,
+   "area_abs_err_max_px2": 95591.2988,
+   "perimeter_abs_err_mean_px": 371.7416,
+   "count_f1": 0.9333,
+   "matched": 7,
+   "merged": 1,
+   "split": 0,
+   "matched_iou_mean": 0.8917,
+   "area_signed_err_pct_mean": 6.0909,
+   "area_abs_err_pct_median": 4.3132,
+   "perimeter_abs_err_pct_median": 12.1475,
+   "total_area_err_pct": -1.9774,
+   "seconds_median": 0.4451,
+   "timing_s": {
+    "render_s": 0.008133,
+    "annotations_s": 0.002662,
+    "segment_s": 0.3246,
+    "polygonize_s": 0.010512,
+    "score_s": 0.098237
+   },
+   "validity": {
+    "rooms": 7,
+    "valid_before_repair_rate": 0.0,
+    "repaired_fraction": 1.0,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 7,
+     "invalid_before_repair": 7,
+     "repaired_labels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+     ]
+    }
+   }
   }
  },
  "synth-simple": {
@@ -4930,9 +5407,9 @@
    "repaired": 0,
    "door_count": 2,
    "window_count": 0,
-   "render_s": 0.002131,
-   "annotations_s": 0.000411,
-   "measure_s": 1e-05,
+   "render_s": 0.032762,
+   "annotations_s": 0.00095,
+   "measure_s": 1.4e-05,
    "validity": {
     "rooms": 3,
     "valid_before_repair_rate": 1.0,
@@ -4995,11 +5472,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002394,
-     "annotations_s": 0.000512,
-     "segment_s": 0.020602,
-     "polygonize_s": 0.003142,
-     "score_s": 0.041671
+     "render_s": 0.002459,
+     "annotations_s": 0.000822,
+     "segment_s": 0.01977,
+     "polygonize_s": 0.002908,
+     "score_s": 0.039611
     }
    },
    "erode_5": {
@@ -5034,11 +5511,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002465,
-     "annotations_s": 0.000494,
-     "segment_s": 0.020446,
-     "polygonize_s": 0.003008,
-     "score_s": 0.040909
+     "render_s": 0.00232,
+     "annotations_s": 0.000747,
+     "segment_s": 0.020505,
+     "polygonize_s": 0.002886,
+     "score_s": 0.038686
     }
    },
    "dilate_2": {
@@ -5073,11 +5550,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002404,
-     "annotations_s": 0.000515,
-     "segment_s": 0.034394,
-     "polygonize_s": 0.003197,
-     "score_s": 0.038294
+     "render_s": 0.002369,
+     "annotations_s": 0.000825,
+     "segment_s": 0.034772,
+     "polygonize_s": 0.003004,
+     "score_s": 0.036944
     }
    },
    "dilate_5": {
@@ -5112,11 +5589,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002379,
-     "annotations_s": 0.0005,
-     "segment_s": 0.034529,
-     "polygonize_s": 0.003146,
-     "score_s": 0.042279
+     "render_s": 0.00245,
+     "annotations_s": 0.000734,
+     "segment_s": 0.032687,
+     "polygonize_s": 0.002929,
+     "score_s": 0.04141
     }
    },
    "shift_2": {
@@ -5151,11 +5628,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002376,
-     "annotations_s": 0.000529,
-     "segment_s": 0.017833,
-     "polygonize_s": 0.003186,
-     "score_s": 0.04197
+     "render_s": 0.002514,
+     "annotations_s": 0.000845,
+     "segment_s": 0.017586,
+     "polygonize_s": 0.002854,
+     "score_s": 0.040675
     }
    },
    "shift_5": {
@@ -5190,11 +5667,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002412,
-     "annotations_s": 0.000526,
-     "segment_s": 0.017891,
-     "polygonize_s": 0.003075,
-     "score_s": 0.042331
+     "render_s": 0.002427,
+     "annotations_s": 0.001081,
+     "segment_s": 0.016895,
+     "polygonize_s": 0.002971,
+     "score_s": 0.039487
     }
    },
    "scale_-2": {
@@ -5229,11 +5706,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002434,
-     "annotations_s": 0.00065,
-     "segment_s": 0.018432,
-     "polygonize_s": 0.003097,
-     "score_s": 0.041243
+     "render_s": 0.002355,
+     "annotations_s": 0.000774,
+     "segment_s": 0.017294,
+     "polygonize_s": 0.00294,
+     "score_s": 0.039203
     }
    },
    "scale_2": {
@@ -5268,11 +5745,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002393,
-     "annotations_s": 0.000501,
-     "segment_s": 0.018367,
-     "polygonize_s": 0.003185,
-     "score_s": 0.042779
+     "render_s": 0.002459,
+     "annotations_s": 0.000768,
+     "segment_s": 0.018521,
+     "polygonize_s": 0.002972,
+     "score_s": 0.040271
     }
    },
    "merge_20": {
@@ -5307,11 +5784,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002432,
-     "annotations_s": 0.000534,
-     "segment_s": 0.023263,
-     "polygonize_s": 0.002989,
-     "score_s": 0.042124
+     "render_s": 0.002488,
+     "annotations_s": 0.000903,
+     "segment_s": 0.023169,
+     "polygonize_s": 0.002844,
+     "score_s": 0.041063
     }
    },
    "split_3": {
@@ -5346,11 +5823,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002382,
-     "annotations_s": 0.000506,
-     "segment_s": 0.022566,
-     "polygonize_s": 0.003341,
-     "score_s": 0.041865
+     "render_s": 0.002391,
+     "annotations_s": 0.00076,
+     "segment_s": 0.020664,
+     "polygonize_s": 0.003027,
+     "score_s": 0.039483
     }
    }
   },
@@ -5374,13 +5851,13 @@
    "area_abs_err_pct_median": 26.3118,
    "perimeter_abs_err_pct_median": 89.2247,
    "total_area_err_pct": -1.3809,
-   "seconds_median": 0.1159,
+   "seconds_median": 0.1025,
    "timing_s": {
-    "render_s": 0.002449,
-    "annotations_s": 0.000503,
-    "segment_s": 0.04961,
-    "polygonize_s": 0.004303,
-    "score_s": 0.058687
+    "render_s": 0.002742,
+    "annotations_s": 0.001041,
+    "segment_s": 0.03967,
+    "polygonize_s": 0.003819,
+    "score_s": 0.054644
    },
    "validity": {
     "rooms": 6,
@@ -5392,6 +5869,48 @@
      "invalid_before_repair": 1,
      "repaired_labels": [
       3
+     ]
+    }
+   }
+  },
+  "segmented": {
+   "gt_rooms": 3,
+   "pred_rooms": 2,
+   "count_precision": 1.0,
+   "count_recall": 0.6667,
+   "room_count_err": -1,
+   "mask_iou": 0.9901,
+   "background_mask_iou": 0.9789,
+   "area_abs_err_mean_px2": 54569.6309,
+   "area_abs_err_max_px2": 108691.6749,
+   "perimeter_abs_err_mean_px": 1013.5351,
+   "count_f1": 0.8,
+   "matched": 2,
+   "merged": 1,
+   "split": 0,
+   "matched_iou_mean": 0.8017,
+   "area_signed_err_pct_mean": 30.4402,
+   "area_abs_err_pct_median": 30.4402,
+   "perimeter_abs_err_pct_median": 59.6002,
+   "total_area_err_pct": -0.4098,
+   "seconds_median": 0.1964,
+   "timing_s": {
+    "render_s": 0.002806,
+    "annotations_s": 0.001369,
+    "segment_s": 0.137847,
+    "polygonize_s": 0.00377,
+    "score_s": 0.049812
+   },
+   "validity": {
+    "rooms": 2,
+    "valid_before_repair_rate": 0.5,
+    "repaired_fraction": 0.5,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 2,
+     "invalid_before_repair": 1,
+     "repaired_labels": [
+      1
      ]
     }
    }
@@ -5410,9 +5929,9 @@
    "repaired": 0,
    "door_count": 5,
    "window_count": 0,
-   "render_s": 0.002535,
-   "annotations_s": 0.000687,
-   "measure_s": 1.5e-05,
+   "render_s": 0.052457,
+   "annotations_s": 0.001629,
+   "measure_s": 2.6e-05,
    "validity": {
     "rooms": 6,
     "valid_before_repair_rate": 1.0,
@@ -5475,11 +5994,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.00277,
-     "annotations_s": 0.000797,
-     "segment_s": 0.033945,
-     "polygonize_s": 0.005458,
-     "score_s": 0.065866
+     "render_s": 0.002824,
+     "annotations_s": 0.001142,
+     "segment_s": 0.032096,
+     "polygonize_s": 0.004272,
+     "score_s": 0.057636
     }
    },
    "erode_5": {
@@ -5514,11 +6033,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002829,
-     "annotations_s": 0.000819,
-     "segment_s": 0.034209,
-     "polygonize_s": 0.005268,
-     "score_s": 0.065546
+     "render_s": 0.003101,
+     "annotations_s": 0.001459,
+     "segment_s": 0.030104,
+     "polygonize_s": 0.004248,
+     "score_s": 0.061542
     }
    },
    "dilate_2": {
@@ -5553,11 +6072,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002728,
-     "annotations_s": 0.000888,
-     "segment_s": 0.054829,
-     "polygonize_s": 0.0055,
-     "score_s": 0.061262
+     "render_s": 0.002686,
+     "annotations_s": 0.001154,
+     "segment_s": 0.051512,
+     "polygonize_s": 0.004449,
+     "score_s": 0.053427
     }
    },
    "dilate_5": {
@@ -5592,11 +6111,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002764,
-     "annotations_s": 0.0008,
-     "segment_s": 0.055085,
-     "polygonize_s": 0.005308,
-     "score_s": 0.066765
+     "render_s": 0.003084,
+     "annotations_s": 0.001197,
+     "segment_s": 0.050242,
+     "polygonize_s": 0.004365,
+     "score_s": 0.061627
     }
    },
    "shift_2": {
@@ -5631,11 +6150,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002786,
-     "annotations_s": 0.000818,
-     "segment_s": 0.028451,
-     "polygonize_s": 0.005198,
-     "score_s": 0.066398
+     "render_s": 0.002619,
+     "annotations_s": 0.001172,
+     "segment_s": 0.026603,
+     "polygonize_s": 0.004367,
+     "score_s": 0.058826
     }
    },
    "shift_5": {
@@ -5670,11 +6189,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.00276,
-     "annotations_s": 0.000804,
-     "segment_s": 0.028641,
-     "polygonize_s": 0.005403,
-     "score_s": 0.066699
+     "render_s": 0.002771,
+     "annotations_s": 0.001135,
+     "segment_s": 0.027752,
+     "polygonize_s": 0.004286,
+     "score_s": 0.06044
     }
    },
    "scale_-2": {
@@ -5709,11 +6228,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.00277,
-     "annotations_s": 0.000809,
-     "segment_s": 0.029538,
-     "polygonize_s": 0.005407,
-     "score_s": 0.065963
+     "render_s": 0.002866,
+     "annotations_s": 0.001209,
+     "segment_s": 0.028175,
+     "polygonize_s": 0.004698,
+     "score_s": 0.061202
     }
    },
    "scale_2": {
@@ -5748,11 +6267,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002803,
-     "annotations_s": 0.000802,
-     "segment_s": 0.029293,
-     "polygonize_s": 0.00535,
-     "score_s": 0.067399
+     "render_s": 0.003008,
+     "annotations_s": 0.001378,
+     "segment_s": 0.028243,
+     "polygonize_s": 0.004288,
+     "score_s": 0.062955
     }
    },
    "merge_20": {
@@ -5787,11 +6306,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002878,
-     "annotations_s": 0.000832,
-     "segment_s": 0.040951,
-     "polygonize_s": 0.004997,
-     "score_s": 0.066542
+     "render_s": 0.002936,
+     "annotations_s": 0.001221,
+     "segment_s": 0.035654,
+     "polygonize_s": 0.004027,
+     "score_s": 0.060349
     }
    },
    "split_3": {
@@ -5826,11 +6345,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.002816,
-     "annotations_s": 0.000898,
-     "segment_s": 0.03531,
-     "polygonize_s": 0.005513,
-     "score_s": 0.067018
+     "render_s": 0.002842,
+     "annotations_s": 0.001422,
+     "segment_s": 0.034823,
+     "polygonize_s": 0.004783,
+     "score_s": 0.058904
     }
    }
   },
@@ -5854,13 +6373,13 @@
    "area_abs_err_pct_median": 12.9191,
    "perimeter_abs_err_pct_median": 100.745,
    "total_area_err_pct": -1.6891,
-   "seconds_median": 0.1723,
+   "seconds_median": 0.1532,
    "timing_s": {
-    "render_s": 0.00285,
-    "annotations_s": 0.000838,
-    "segment_s": 0.05805,
-    "polygonize_s": 0.008729,
-    "score_s": 0.101075
+    "render_s": 0.003233,
+    "annotations_s": 0.00143,
+    "segment_s": 0.043675,
+    "polygonize_s": 0.006957,
+    "score_s": 0.097306
    },
    "validity": {
     "rooms": 13,
@@ -5875,6 +6394,50 @@
       6,
       7,
       12
+     ]
+    }
+   }
+  },
+  "segmented": {
+   "gt_rooms": 6,
+   "pred_rooms": 4,
+   "count_precision": 0.75,
+   "count_recall": 0.5,
+   "room_count_err": -2,
+   "mask_iou": 0.9087,
+   "background_mask_iou": 0.8022,
+   "area_abs_err_mean_px2": 10347.8717,
+   "area_abs_err_max_px2": 30555.0439,
+   "perimeter_abs_err_mean_px": 365.9598,
+   "count_f1": 0.6,
+   "matched": 3,
+   "merged": 2,
+   "split": 0,
+   "matched_iou_mean": 0.914,
+   "area_signed_err_pct_mean": 11.0015,
+   "area_abs_err_pct_median": 0.3626,
+   "perimeter_abs_err_pct_median": 10.4874,
+   "total_area_err_pct": -8.4778,
+   "seconds_median": 0.2851,
+   "timing_s": {
+    "render_s": 0.003363,
+    "annotations_s": 0.001538,
+    "segment_s": 0.193587,
+    "polygonize_s": 0.006027,
+    "score_s": 0.079277
+   },
+   "validity": {
+    "rooms": 4,
+    "valid_before_repair_rate": 0.25,
+    "repaired_fraction": 0.75,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 4,
+     "invalid_before_repair": 3,
+     "repaired_labels": [
+      2,
+      3,
+      4
      ]
     }
    }
@@ -5893,8 +6456,8 @@
    "repaired": 0,
    "door_count": 13,
    "window_count": 0,
-   "render_s": 0.002929,
-   "annotations_s": 0.001385,
+   "render_s": 0.033241,
+   "annotations_s": 0.001623,
    "measure_s": 2.4e-05,
    "validity": {
     "rooms": 12,
@@ -5958,11 +6521,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.003158,
-     "annotations_s": 0.001565,
-     "segment_s": 0.048763,
-     "polygonize_s": 0.008341,
-     "score_s": 0.089028
+     "render_s": 0.002875,
+     "annotations_s": 0.001504,
+     "segment_s": 0.046391,
+     "polygonize_s": 0.006885,
+     "score_s": 0.083577
     }
    },
    "erode_5": {
@@ -5997,11 +6560,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.003212,
-     "annotations_s": 0.001507,
-     "segment_s": 0.05011,
-     "polygonize_s": 0.008244,
-     "score_s": 0.088568
+     "render_s": 0.003518,
+     "annotations_s": 0.001702,
+     "segment_s": 0.048712,
+     "polygonize_s": 0.007825,
+     "score_s": 0.083455
     }
    },
    "dilate_2": {
@@ -6036,11 +6599,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.00324,
-     "annotations_s": 0.001524,
-     "segment_s": 0.075244,
-     "polygonize_s": 0.008613,
-     "score_s": 0.083198
+     "render_s": 0.003025,
+     "annotations_s": 0.001685,
+     "segment_s": 0.068951,
+     "polygonize_s": 0.007542,
+     "score_s": 0.076779
     }
    },
    "dilate_5": {
@@ -6075,11 +6638,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.003249,
-     "annotations_s": 0.001549,
-     "segment_s": 0.075315,
-     "polygonize_s": 0.008876,
-     "score_s": 0.091706
+     "render_s": 0.003096,
+     "annotations_s": 0.00194,
+     "segment_s": 0.068485,
+     "polygonize_s": 0.007354,
+     "score_s": 0.088278
     }
    },
    "shift_2": {
@@ -6114,11 +6677,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.003168,
-     "annotations_s": 0.001547,
-     "segment_s": 0.038645,
-     "polygonize_s": 0.008719,
-     "score_s": 0.090344
+     "render_s": 0.003112,
+     "annotations_s": 0.00188,
+     "segment_s": 0.039054,
+     "polygonize_s": 0.007322,
+     "score_s": 0.084428
     }
    },
    "shift_5": {
@@ -6153,11 +6716,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.003237,
-     "annotations_s": 0.001538,
-     "segment_s": 0.038965,
-     "polygonize_s": 0.008917,
-     "score_s": 0.090282
+     "render_s": 0.003249,
+     "annotations_s": 0.001639,
+     "segment_s": 0.036019,
+     "polygonize_s": 0.00732,
+     "score_s": 0.082414
     }
    },
    "scale_-2": {
@@ -6192,11 +6755,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.003136,
-     "annotations_s": 0.001479,
-     "segment_s": 0.040018,
-     "polygonize_s": 0.008572,
-     "score_s": 0.089021
+     "render_s": 0.003341,
+     "annotations_s": 0.002017,
+     "segment_s": 0.036069,
+     "polygonize_s": 0.006763,
+     "score_s": 0.078743
     }
    },
    "scale_2": {
@@ -6231,11 +6794,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.003238,
-     "annotations_s": 0.001507,
-     "segment_s": 0.039956,
-     "polygonize_s": 0.008567,
-     "score_s": 0.09268
+     "render_s": 0.003034,
+     "annotations_s": 0.001571,
+     "segment_s": 0.038497,
+     "polygonize_s": 0.006841,
+     "score_s": 0.086275
     }
    },
    "merge_20": {
@@ -6270,11 +6833,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.003221,
-     "annotations_s": 0.001628,
-     "segment_s": 0.06889,
-     "polygonize_s": 0.008458,
-     "score_s": 0.090649
+     "render_s": 0.003227,
+     "annotations_s": 0.001921,
+     "segment_s": 0.062157,
+     "polygonize_s": 0.006666,
+     "score_s": 0.079233
     }
    },
    "split_3": {
@@ -6309,11 +6872,11 @@
      }
     },
     "timing_s": {
-     "render_s": 0.003166,
-     "annotations_s": 0.001502,
-     "segment_s": 0.047867,
-     "polygonize_s": 0.008779,
-     "score_s": 0.090258
+     "render_s": 0.003082,
+     "annotations_s": 0.002912,
+     "segment_s": 0.045122,
+     "polygonize_s": 0.006903,
+     "score_s": 0.079285
     }
    }
   },
@@ -6337,13 +6900,13 @@
    "area_abs_err_pct_median": null,
    "perimeter_abs_err_pct_median": null,
    "total_area_err_pct": -2.2068,
-   "seconds_median": 0.258,
+   "seconds_median": 0.2222,
    "timing_s": {
-    "render_s": 0.00329,
-    "annotations_s": 0.001503,
-    "segment_s": 0.077302,
-    "polygonize_s": 0.015555,
-    "score_s": 0.158091
+    "render_s": 0.003906,
+    "annotations_s": 0.002167,
+    "segment_s": 0.060711,
+    "polygonize_s": 0.012454,
+    "score_s": 0.141963
    },
    "validity": {
     "rooms": 23,
@@ -6354,6 +6917,50 @@
      "polygons_before_repair": 23,
      "invalid_before_repair": 1,
      "repaired_labels": [
+      3
+     ]
+    }
+   }
+  },
+  "segmented": {
+   "gt_rooms": 12,
+   "pred_rooms": 3,
+   "count_precision": 0.0,
+   "count_recall": 0.0,
+   "room_count_err": -9,
+   "mask_iou": 0.9892,
+   "background_mask_iou": 0.9687,
+   "area_abs_err_mean_px2": null,
+   "area_abs_err_max_px2": null,
+   "perimeter_abs_err_mean_px": null,
+   "count_f1": 0.0,
+   "matched": 0,
+   "merged": 3,
+   "split": 0,
+   "matched_iou_mean": null,
+   "area_signed_err_pct_mean": null,
+   "area_abs_err_pct_median": null,
+   "perimeter_abs_err_pct_median": null,
+   "total_area_err_pct": 0.5711,
+   "seconds_median": 0.3909,
+   "timing_s": {
+    "render_s": 0.003465,
+    "annotations_s": 0.002251,
+    "segment_s": 0.254131,
+    "polygonize_s": 0.006714,
+    "score_s": 0.124463
+   },
+   "validity": {
+    "rooms": 3,
+    "valid_before_repair_rate": 0.0,
+    "repaired_fraction": 1.0,
+    "valid_after_repair_rate": 1.0,
+    "contour_audit": {
+     "polygons_before_repair": 3,
+     "invalid_before_repair": 3,
+     "repaired_labels": [
+      1,
+      2,
       3
      ]
     }

@@ -23,6 +23,9 @@ dev = [
     "matplotlib>=3.11.2",
     "pytest>=8.0",
 ]
+seg = [
+    "torch>=2.14.1",
+]
 
 [build-system]
 requires = ["hatchling"]

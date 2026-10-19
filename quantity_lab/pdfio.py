@@ -26,6 +26,13 @@ def image_to_pdf(image: Path, out: Path) -> Path:
     return out
 
 
+def render_rgb(pdf: Path, page: int = 1, dpi: int = 72) -> np.ndarray:
+    """Page as an RGB uint8 array (H x W x 3), for the trained model, which reads colour."""
+    with pymupdf.open(pdf) as doc:
+        pix = doc[page - 1].get_pixmap(dpi=dpi, colorspace=pymupdf.csRGB, alpha=False)
+    return np.frombuffer(pix.samples, np.uint8).reshape(pix.height, pix.width, 3).copy()
+
+
 def render_gray(pdf: Path, page: int = 1, dpi: int = 72) -> np.ndarray:
     """Page as a grayscale uint8 array. At 72 DPI one PDF point is one pixel, i.e. the original image resolution."""
     with pymupdf.open(pdf) as doc:

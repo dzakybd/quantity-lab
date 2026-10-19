@@ -1,5 +1,6 @@
-"""One plan, one mode: oracle (annotated rooms), perturbed (a controlled error on the oracle mask) or predicted
-(the OpenCV baseline). Each returns the measured rooms plus, for the last two, a comparison with the oracle."""
+"""One plan, one mode: oracle (annotated rooms), perturbed (a controlled error on the oracle mask), predicted
+(the OpenCV baseline) or segmented (the trained CubiCasa5K model). Each returns the measured rooms plus, for all
+but oracle, a comparison with the oracle."""
 
 import csv
 import json
@@ -14,7 +15,8 @@ from quantity_lab.annotations import load_plan
 from quantity_lab.baseline import BaselineParams, segment_rooms
 from quantity_lab.geometry import Area, measure, polygonize, rasterize, repair
 from quantity_lab.metrics import compare
-from quantity_lab.pdfio import render_gray
+from quantity_lab.pdfio import render_gray, render_rgb
+from quantity_lab.segmentation import SegParams, rooms_from_maps
 
 PERTURBATIONS = {
     "erode": lambda m, px: perturb.erode(m, px),
@@ -47,6 +49,7 @@ def run(
     perturbation: str | None = None,
     pixels: int = 2,
     params: BaselineParams | None = None,
+    seg_params: SegParams | None = None,
 ) -> dict:
     t = {}
     t0 = time.perf_counter()
@@ -69,6 +72,10 @@ def run(
             mask = PERTURBATIONS[perturbation](rasterize(gt, size), pixels)
         elif mode == "predicted":
             mask = segment_rooms(gray, params or BaselineParams())
+        elif mode == "segmented":
+            from quantity_lab.segmentation import predict  # needs PyTorch: uv sync --group seg
+
+            mask = rooms_from_maps(*predict(render_rgb(pdf)), seg_params or SegParams())
         else:
             raise ValueError(f"unknown mode {mode}")
         t["segment_s"] = time.perf_counter() - t0

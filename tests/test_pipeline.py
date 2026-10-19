@@ -4,9 +4,11 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 from PIL import Image
 
 from quantity_lab.pdfio import image_to_pdf
+from quantity_lab.segmentation import THIRD_PARTY
 
 PLAN = Path(__file__).parent / "fixtures" / "plan.svg"
 
@@ -103,3 +105,13 @@ def test_repair_flags_and_validity_survive_export(tmp_path):
 
     row = next(csv.DictReader((tmp_path / "audit" / "quantities.csv").open()))
     assert row["mode"] == "oracle" and row["unit"] == "px2"
+
+
+@pytest.mark.skipif(not (THIRD_PARTY / "model_best_val_loss_var.pkl").exists(), reason="CubiCasa5K weights not fetched")
+def test_cli_segmented(tmp_path):
+    pytest.importorskip("torch")
+    out = tmp_path / "seg"
+    r = _run("--input", _pdf(tmp_path), "--annotations", PLAN, "--mode", "segmented", "--output", out)
+    assert r.returncode == 0, r.stderr
+    data = json.loads((out / "rooms.json").read_text())
+    assert data["mode"] == "segmented" and "comparison" in data

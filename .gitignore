@@ -11,3 +11,4 @@ runs/**/*.svg
 space/data/
 kaggle/
 runs/outputs/
+third_party/
