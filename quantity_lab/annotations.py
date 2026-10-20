@@ -1,4 +1,4 @@
-"""Read a CubiCasa5K `model.svg`: room polygons (`Space <type>`), wall polygons, door and window counts.
+"""Read a CubiCasa5K `model.svg`: room polygons (`Space <type>`), wall and door polygons, door and window counts.
 
 Group `transform="matrix(...)"` attributes are applied, so multi-floor plans land in image pixel coordinates.
 """
@@ -32,6 +32,7 @@ class Plan:
     size: tuple[int, int]  # (width, height) in px, from the SVG
     rooms: list[PlanRoom] = field(default_factory=list)
     walls: list[Area] = field(default_factory=list)
+    doors: list[Area] = field(default_factory=list)  # door polygons (the opening in the wall), where drawn
     door_count: int = 0
     window_count: int = 0
     excluded: dict[str, int] = field(default_factory=dict)  # other classes seen, not used
@@ -99,6 +100,9 @@ def load_plan(svg: Path) -> Plan:
                 plan.walls.append(repair(poly)[0])
         elif cls.startswith("Door"):
             plan.door_count += 1
+            poly = _polygon(el, m)
+            if poly is not None:
+                plan.doors.append(repair(poly)[0])
         elif cls.startswith("Window"):
             plan.window_count += 1
         elif cls and el.tag == f"{NS}g" and cls.split()[0] not in ("Model", "Floor", "Floorplan"):

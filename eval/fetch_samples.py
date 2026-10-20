@@ -6,9 +6,11 @@ Needs a Kaggle API token (KAGGLE_API_TOKEN). Files land in samples/, which is gi
 Train plans: the first `high_quality` entry and the first two `high_quality_architectural` entries of train.txt,
 skipping plans whose annotation covers less than 60% of the drawing's ink (partly annotated sheets).
 
-Usage: uv run python -m eval.fetch_samples
+Usage: uv run python -m eval.fetch_samples [--val]
 """
 
+import argparse
+import random
 import subprocess
 import tempfile
 from pathlib import Path
@@ -16,7 +18,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from eval.common import SAMPLES, TEST, TRAIN_LIST, plan_dir
+from eval.common import SAMPLES, TEST, TRAIN_LIST, VAL_LIST, plan_dir
 from quantity_lab.annotations import load_plan
 from quantity_lab.geometry import rasterize
 
@@ -67,7 +69,31 @@ def coverage(d: Path) -> float:
     return float((ink & covered).sum() / max(1, ink.sum()))
 
 
+def fetch_val(n: int = 10, seed: int = 20261021) -> list[str]:
+    """Plans from the validation split for tuning the trained model's post-processing. The model was trained on the
+    train split, so its output there is better than on unseen plans; val was only used to pick its checkpoint.
+    The val list is shuffled with `seed`; the first `n` plans with >= 60% coverage are kept."""
+    with tempfile.TemporaryDirectory() as tmp:
+        lst = [e.strip("/") for e in kaggle_get("val.txt", Path(tmp)).read_text().split()]
+    random.Random(seed).shuffle(lst)
+    chosen = []
+    for plan in lst:
+        cov = coverage(fetch(plan))
+        print("val candidate", plan, f"coverage {cov:.2f}")
+        if cov >= 0.6:
+            chosen.append(plan)
+        if len(chosen) == n:
+            break
+    VAL_LIST.write_text("\n".join(chosen) + "\n")
+    return chosen
+
+
 def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--val", action="store_true", help="only fetch the validation plans used by eval.tune_seg")
+    if ap.parse_args().val:
+        print("val:", fetch_val())
+        return
     kaggle_get("test.txt", SAMPLES)
     for plan in TEST:
         print("test", plan, fetch(plan))

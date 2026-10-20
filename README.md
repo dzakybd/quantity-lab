@@ -92,7 +92,7 @@ What this shows:
 
 The baseline fails as a room counter. It splits rooms at furniture and fixture lines, merges rooms through open doorways and open plans, and its settings did not carry over between drawing styles: tuned on three train plans, it scored 0.33 count F1 even there. Across the ten plans, mean count F1 is 0.101 and the room-count MAE is 33.3. Note `9453`: **total area within 1.3% while matching zero rooms**. A right total can hide wrong rooms. HQ = `high_quality`, HQA = `high_quality_architectural`.
 
-**Mode C: trained model (count F1 / mask IoU / total-area error).** Mean count F1 **0.752** (median 0.757, range 0.400–0.933), mask IoU 0.93, room-count MAE 1.7, median per-plan room-area error 1.9%. Walls come out clean. The pixel-to-room step has four choices, all picked on the three train plans and frozen (`runs/seg_params.json`): no class split (it lowered train F1 0.68 → 0.52: the class map is noisy inside a room), no door closing (99% of predicted door pixels are already labelled wall), a minimum room share of 0.5% of the floor, and a **doorway split** (`neck_share` 0.04): floor cores farther than 0.04·√(floor area) from walls seed one room each and grow back over the floor together. Without the split the model scored 0.712 (count MAE 2.7). A first version of the split used a watershed, which settled ties arbitrarily and handed a ring along one room's walls to its neighbour; it moved the test plans only to 0.720 and is replaced (`tests/test_segmentation.py` pins the case). The weakest plan is still `9453`: **mask IoU 0.91 and total area within 0.5%, while only 3 of 9 rooms match**. Most model rooms (81%) need contour repair. Segmentation plus the split takes a median 0.52 s per plan on an M1 Pro GPU (MPS).
+**Mode C: trained model (count F1 / mask IoU / total-area error).** Mean count F1 **0.731** (median 0.700, range 0.400–1.000), mask IoU 0.88, room-count MAE 3.1, median per-plan room-area error 8.0%, mean |total-area error| 8.5%. The pixel-to-room step (class split, minimum room share, doorway split; `runs/seg_params.json`) is chosen on **ten validation plans** (`samples/VAL.txt`, `eval.fetch_samples --val`): the model was trained on the train split, so its output there is cleaner than on unseen plans. Validation picked class splitting on, a 1% minimum room share and a small doorway split (`neck_share` 0.01). For comparison, the same step tuned on three train plans scored higher on these test plans (count F1 0.752, total-area error 3.3%); it is not used, because switching after seeing the test plans would be choosing on them. The doorway split grows floor cores back over the floor together (a watershed version settled ties arbitrarily and is replaced; `tests/test_segmentation.py` pins the case). The weakest plan is `9453`: **mask IoU 0.82 while only 5 of 9 rooms match**. Most model rooms (90%) need contour repair. Segmentation plus post-processing takes a median 0.59 s per plan on an M1 Pro GPU (MPS).
 
 Mask IoU, area/perimeter errors, polygon validity before and after repair, and stage timings (mean, median, min, max) are in `runs/summary.json`. Rooms are matched one-to-one at IoU ≥ 0.5. `runs/verification.json` records the export checks and the repeat run of both predictors on every test plan (identical metrics).
 
@@ -103,7 +103,9 @@ Synthetic plans (clean, CubiCasa-style) are in `runs/metrics.json`. They use the
 ```bash
 uv run python -m eval.fetch_samples   # needs KAGGLE_API_TOKEN; Kaggle mirror qmarva/cubicasa5k
 uv run python -m eval.tune            # train plans only
-uv run --group seg python -m eval.tune_seg   # train plans only; needs third_party/ (see above)
+uv run python -m eval.fetch_samples --val      # validation plans for the next step
+uv run --group seg python -m eval.tune_seg   # validation plans only; needs third_party/ (see above)
+uv run python -m eval.export_vector [--val]  # vector PDFs of real layouts for floorplan-parser's room step
 uv run --group seg python -m eval.benchmark
 uv run python -m eval.report
 uv run --group seg python -m eval.verify
@@ -115,7 +117,7 @@ uv run pytest -q
 
 - **Ten test plans,** three of which were inspected before the set was expanded. These show how the errors behave, not a general accuracy figure.
 - **No physical units.** A real takeoff needs a validated scale (a scale bar or a known dimension).
-- **One pretrained model, tested on its own dataset,** and post-processing chosen on three train plans. Other drawing styles will do worse, and open plans and wide openings still merge rooms.
+- **One pretrained model, tested on its own dataset,** and post-processing chosen on ten validation plans; which tuning split is better is not settled by ten test plans. Other drawing styles will do worse, and open plans and wide openings still merge rooms.
 - **Wall length is not measured.** The area of a wall polygon is not wall length, and a centreline method was out of scope.
 
 ## Data and licence

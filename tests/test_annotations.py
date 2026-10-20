@@ -37,3 +37,9 @@ def test_empty_plan(tmp_path):
     p.write_text('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"></svg>')
     plan = load_plan(p)
     assert plan.rooms == [] and plan.door_count == 0
+
+
+def test_door_polygons_are_read():
+    plan = load_plan(PLAN)
+    assert len(plan.doors) <= plan.door_count
+    assert all(d.is_valid and d.area > 0 for d in plan.doors)

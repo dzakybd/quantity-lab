@@ -23,6 +23,8 @@ TEST = [
 ]
 # CubiCasa5K train split: the only plans the baseline is tuned on (chosen by eval/fetch_samples.py, see TRAIN.txt)
 TRAIN_LIST = SAMPLES / "TRAIN.txt"
+# CubiCasa5K validation split: where the trained model's post-processing is tuned (eval/fetch_samples.py --val)
+VAL_LIST = SAMPLES / "VAL.txt"
 
 
 def plan_dir(plan: str) -> Path:
@@ -31,3 +33,7 @@ def plan_dir(plan: str) -> Path:
 
 def train_plans() -> list[str]:
     return [line.strip() for line in TRAIN_LIST.read_text().splitlines() if line.strip()]
+
+
+def val_plans() -> list[str]:
+    return [line.strip() for line in VAL_LIST.read_text().splitlines() if line.strip()]

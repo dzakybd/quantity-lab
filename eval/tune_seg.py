@@ -1,7 +1,10 @@
-"""Pick the trained model's post-processing on CubiCasa5K train plans only, then freeze it in runs/seg_params.json.
+"""Pick the trained model's post-processing on CubiCasa5K validation plans only, then freeze it in runs/seg_params.json.
+
+Validation, not train: the model was trained on the train split, so its output there is better than on unseen
+plans; validation was only used to pick its checkpoint. The test plans are never read.
 
 The model itself is not retrained; only how its pixel classes become rooms (close at doors? split by class?
-smallest room? split at narrow openings?) is chosen here, with the same objective as eval.tune. The test plans are never read.
+smallest room? split at narrow openings?) is chosen here, with the same objective as eval.tune.
 
 Usage: uv run --group seg python -m eval.tune_seg
 """
@@ -13,7 +16,7 @@ import statistics
 import numpy as np
 from PIL import Image
 
-from eval.common import RUNS, plan_dir, train_plans
+from eval.common import RUNS, plan_dir, val_plans
 from quantity_lab.annotations import load_plan
 from quantity_lab.geometry import polygonize
 from quantity_lab.metrics import compare
@@ -22,13 +25,13 @@ from quantity_lab.segmentation import SegParams, predict, rooms_from_maps
 GRID = {
     "close_doors": [False],  # True changed nothing in the first grid: 99% of predicted door pixels are labelled wall
     "split_by_class": [False, True],
-    "min_room_share": [0.0025, 0.005, 0.01],
+    "min_room_share": [0.0025, 0.005, 0.01, 0.02],
     "neck_share": [0.0, 0.01, 0.02, 0.03, 0.04, 0.06],
 }
 
 
 def main() -> None:
-    plans = train_plans()
+    plans = val_plans()
     data = []
     for plan in plans:
         d = plan_dir(plan)

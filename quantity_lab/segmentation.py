@@ -28,9 +28,9 @@ THIRD_PARTY = Path(__file__).resolve().parent.parent / "third_party"
 @dataclass(frozen=True)
 class SegParams:
     close_doors: bool = False  # treat predicted door icons as walls, so rooms do not leak through doorways
-    split_by_class: bool = False  # a change of predicted room class also separates rooms (open kitchens)
-    min_room_share: float = 0.005  # floor pieces below this share of all predicted floor are not rooms (scale-free)
-    neck_share: float = 0.04  # > 0: split floor at openings narrower than 2 x this x sqrt(floor area) (0 = off)
+    split_by_class: bool = True  # a change of predicted room class also separates rooms (open kitchens)
+    min_room_share: float = 0.01  # floor pieces below this share of all predicted floor are not rooms (scale-free)
+    neck_share: float = 0.01  # > 0: split floor at openings narrower than 2 x this x sqrt(floor area) (0 = off)
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -88,7 +88,7 @@ def split_necks(floor: np.ndarray, neck_share: float) -> np.ndarray:
     cross = np.array([[0, 1, 0], [1, 1, 1], [0, 1, 0]], np.uint8)
     todo = floor & (lab == 0)
     while todo.any():
-        grown = cv2.dilate(lab.astype(np.float32), cross).astype(np.int32)  # a free pixel takes a labelled neighbour
+        grown = cv2.dilate(lab.astype(np.uint16), cross).astype(np.int32)  # a free pixel takes a labelled neighbour
         take = todo & (grown > 0)
         if not take.any():
             break
