@@ -85,10 +85,10 @@ def iou_f1(held: list[dict], lang: str, out: Path) -> None:
     worst = min(held, key=lambda v: v["segmented"]["count_f1"])["segmented"]
     ax.annotate(
         f"IoU {worst['mask_iou']:.2f}, total area {worst['total_area_err_pct']:+.1f}%,\n"
-        f"but {worst['gt_rooms']} rooms came out as {worst['pred_rooms']}"
+        f"but only {worst['matched']} of {worst['gt_rooms']} rooms matched"
         if en
-        else f"IoU {worst['mask_iou']:.2f}, luas total {worst['total_area_err_pct']:+.1f}%,\n"
-        f"tapi {worst['gt_rooms']} ruangan terbaca jadi {worst['pred_rooms']}".replace(".", ","),
+        else f"IoU {worst['mask_iou']:.2f}, luas total {worst['total_area_err_pct']:+.1f}%,\n".replace(".", ",")
+        + f"tapi hanya {worst['matched']} dari {worst['gt_rooms']} ruangan yang cocok",
         (worst["mask_iou"], worst["count_f1"]),
         xytext=(0.55, 0.3),
         arrowprops={"arrowstyle": "-", "color": "#6b6b66"},

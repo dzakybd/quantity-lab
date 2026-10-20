@@ -1,6 +1,6 @@
 {
  "params_sha256": "80a3a5952ca63a82be91a7b821b98c571c5344493c2a77112510322c38d8bc53",
- "seg_params_sha256": "03d35bd49a27ec72918cb14f45a4fff7199f1f45142969e11bce4a312fbb3e0a",
+ "seg_params_sha256": "d16d7a5a6bb93d909482fdb4cd82c4dff058595833834ad118c851e5db72bc02",
  "seg_model": "CubiCasa5K hg_furukawa_original, model_best_val_loss_var.pkl (train split; not retrained)",
  "seg_params": {
   "close_doors": false,

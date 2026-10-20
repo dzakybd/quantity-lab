@@ -75,3 +75,13 @@ def test_neck_split_leaves_a_plain_room_whole():
         rooms, np.zeros_like(rooms), SegParams(split_by_class=False, min_room_share=0.01, neck_share=0.08)
     )
     assert len(set(np.unique(lab)) - {0}) == 1
+
+
+def test_neck_split_keeps_each_room_whole_up_to_its_walls():
+    maps = _two_rooms_one_doorway()
+    lab = rooms_from_maps(
+        *maps, SegParams(close_doors=False, split_by_class=False, min_room_share=0.01, neck_share=0.08)
+    )
+    left, right = lab[60, 60], lab[60, 200]
+    assert (lab[10:110, 10:125] == left).all()  # the whole left room, including the pixels next to its walls
+    assert (lab[10:110, 135:250] == right).all()

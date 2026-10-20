@@ -13,7 +13,6 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-from scipy import ndimage
 
 # room channels of the CubiCasa5K model, in output order
 ROOM_CLASSES = ["Background", "Outdoor", "Wall", "Kitchen", "Living Room", "Bedroom", "Bath", "Hallway", "Railing",
@@ -73,9 +72,10 @@ def predict(rgb: np.ndarray, third_party: Path = THIRD_PARTY) -> tuple[np.ndarra
 
 
 def split_necks(floor: np.ndarray, neck_share: float) -> np.ndarray:
-    """Label mask that splits `floor` at narrow openings such as doorways (marker watershed on the distance to the
-    nearest non-floor pixel). Cores farther than r = neck_share * sqrt(floor area) from any wall seed one room each;
-    every floor pixel then joins the core it reaches first. A floor region with no core stays one room."""
+    """Label mask that splits `floor` at narrow openings such as doorways. Cores farther than
+    r = neck_share * sqrt(floor area) from any non-floor pixel seed one room each; the cores then grow together, one
+    pixel per step and through floor only, so every floor pixel joins the core it is nearest to along the floor.
+    A floor region with no core stays one room."""
     dist = cv2.distanceTransform(floor.astype(np.uint8), cv2.DIST_L2, 5)
     _, seeds = cv2.connectedComponents((dist > neck_share * np.sqrt(floor.sum())).astype(np.uint8), connectivity=4)
     nc, comp = cv2.connectedComponents(floor.astype(np.uint8), connectivity=4)
@@ -84,12 +84,16 @@ def split_necks(floor: np.ndarray, neck_share: float) -> np.ndarray:
     unseeded = np.flatnonzero(~seeded[1:]) + 1
     extra = np.zeros(nc, np.int32)
     extra[unseeded] = seeds.max() + 1 + np.arange(len(unseeded))
-    markers = np.where(seeds > 0, seeds, extra[comp]).astype(np.int32)
-    markers[~floor] = 0
-    # walls sit at the top of the elevation range, so a room reaches every floor pixel through floor first
-    elevation = ((dist.max() - dist) / max(float(dist.max()), 1e-9) * 65000).astype(np.uint16)
-    elevation[~floor] = 65535
-    lab = ndimage.watershed_ift(elevation, markers)
+    lab = np.where(seeds > 0, seeds, extra[comp]).astype(np.int32)
+    cross = np.array([[0, 1, 0], [1, 1, 1], [0, 1, 0]], np.uint8)
+    todo = floor & (lab == 0)
+    while todo.any():
+        grown = cv2.dilate(lab.astype(np.float32), cross).astype(np.int32)  # a free pixel takes a labelled neighbour
+        take = todo & (grown > 0)
+        if not take.any():
+            break
+        lab[take] = grown[take]
+        todo &= ~take
     lab[~floor] = 0
     return lab
 
