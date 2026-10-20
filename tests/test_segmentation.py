@@ -43,3 +43,35 @@ def test_outdoor_wall_and_small_pieces_are_not_rooms():
 def test_params_roundtrip():
     p = SegParams(close_doors=False, split_by_class=True, min_room_share=0.0050)
     assert SegParams.from_dict(p.to_dict()) == p
+
+
+def _two_rooms_one_doorway():
+    """Two same-class rooms joined by a 10 px doorway: walls alone see one region."""
+    rooms = np.full((120, 260), WALL, np.int64)
+    rooms[10:110, 10:125] = LIVING
+    rooms[10:110, 135:250] = LIVING
+    rooms[55:65, 125:135] = LIVING  # the doorway
+    return rooms, np.zeros_like(rooms)
+
+
+def test_neck_split_separates_rooms_at_a_doorway():
+    maps = _two_rooms_one_doorway()
+    whole = rooms_from_maps(
+        *maps, SegParams(close_doors=False, split_by_class=False, min_room_share=0.01, neck_share=0.0)
+    )
+    assert len(set(np.unique(whole)) - {0}) == 1
+    lab = rooms_from_maps(
+        *maps, SegParams(close_doors=False, split_by_class=False, min_room_share=0.01, neck_share=0.08)
+    )
+    assert len(set(np.unique(lab)) - {0}) == 2
+    assert lab[60, 60] != lab[60, 200] and lab[60, 60] != 0 and lab[60, 200] != 0
+    assert (lab > 0).sum() == (whole > 0).sum()  # splitting moves no floor in or out
+
+
+def test_neck_split_leaves_a_plain_room_whole():
+    rooms = np.full((120, 160), WALL, np.int64)
+    rooms[10:110, 10:150] = KITCHEN
+    lab = rooms_from_maps(
+        rooms, np.zeros_like(rooms), SegParams(split_by_class=False, min_room_share=0.01, neck_share=0.08)
+    )
+    assert len(set(np.unique(lab)) - {0}) == 1

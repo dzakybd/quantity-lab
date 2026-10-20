@@ -8,51 +8,49 @@
  "model": "CubiCasa5K hg_furukawa_original, model_best_val_loss_var.pkl (trained on the train split, not retrained)",
  "grid": {
   "close_doors": [
-   false,
-   true
+   false
   ],
   "split_by_class": [
    false,
    true
   ],
   "min_room_share": [
-   0.0,
    0.0025,
    0.005,
+   0.01
+  ],
+  "neck_share": [
+   0.0,
    0.01,
    0.02,
-   0.03
+   0.03,
+   0.04,
+   0.06
   ]
  },
  "chosen": {
   "close_doors": false,
   "split_by_class": false,
-  "min_room_share": 0.005
+  "min_room_share": 0.005,
+  "neck_share": 0.04
  },
  "chosen_score": {
   "params": {
    "close_doors": false,
    "split_by_class": false,
-   "min_room_share": 0.005
+   "min_room_share": 0.005,
+   "neck_share": 0.04
   },
-  "count_f1": 0.683,
-  "abs_total_area_err_pct": 7.21
+  "count_f1": 0.7503,
+  "abs_total_area_err_pct": 7.3
  },
  "all_trials": [
   {
    "params": {
     "close_doors": false,
     "split_by_class": false,
-    "min_room_share": 0.0
-   },
-   "count_f1": 0.1162,
-   "abs_total_area_err_pct": 7.29
-  },
-  {
-   "params": {
-    "close_doors": false,
-    "split_by_class": false,
-    "min_room_share": 0.0025
+    "min_room_share": 0.0025,
+    "neck_share": 0.0
    },
    "count_f1": 0.6764,
    "abs_total_area_err_pct": 7.11
@@ -61,7 +59,58 @@
    "params": {
     "close_doors": false,
     "split_by_class": false,
-    "min_room_share": 0.005
+    "min_room_share": 0.0025,
+    "neck_share": 0.01
+   },
+   "count_f1": 0.6098,
+   "abs_total_area_err_pct": 6.93
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.0025,
+    "neck_share": 0.02
+   },
+   "count_f1": 0.6502,
+   "abs_total_area_err_pct": 6.92
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.0025,
+    "neck_share": 0.03
+   },
+   "count_f1": 0.677,
+   "abs_total_area_err_pct": 7.12
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.0025,
+    "neck_share": 0.04
+   },
+   "count_f1": 0.7402,
+   "abs_total_area_err_pct": 7.08
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.0025,
+    "neck_share": 0.06
+   },
+   "count_f1": 0.672,
+   "abs_total_area_err_pct": 7.12
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.005,
+    "neck_share": 0.0
    },
    "count_f1": 0.683,
    "abs_total_area_err_pct": 7.21
@@ -70,7 +119,58 @@
    "params": {
     "close_doors": false,
     "split_by_class": false,
-    "min_room_share": 0.01
+    "min_room_share": 0.005,
+    "neck_share": 0.01
+   },
+   "count_f1": 0.6236,
+   "abs_total_area_err_pct": 6.89
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.005,
+    "neck_share": 0.02
+   },
+   "count_f1": 0.6553,
+   "abs_total_area_err_pct": 7.02
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.005,
+    "neck_share": 0.03
+   },
+   "count_f1": 0.6819,
+   "abs_total_area_err_pct": 7.22
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.005,
+    "neck_share": 0.04
+   },
+   "count_f1": 0.7503,
+   "abs_total_area_err_pct": 7.3
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.005,
+    "neck_share": 0.06
+   },
+   "count_f1": 0.6816,
+   "abs_total_area_err_pct": 7.33
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.01,
+    "neck_share": 0.0
    },
    "count_f1": 0.6525,
    "abs_total_area_err_pct": 7.95
@@ -79,34 +179,58 @@
    "params": {
     "close_doors": false,
     "split_by_class": false,
-    "min_room_share": 0.02
+    "min_room_share": 0.01,
+    "neck_share": 0.01
    },
-   "count_f1": 0.598,
-   "abs_total_area_err_pct": 9.44
+   "count_f1": 0.6265,
+   "abs_total_area_err_pct": 6.87
   },
   {
    "params": {
     "close_doors": false,
     "split_by_class": false,
-    "min_room_share": 0.03
+    "min_room_share": 0.01,
+    "neck_share": 0.02
    },
-   "count_f1": 0.495,
-   "abs_total_area_err_pct": 8.37
+   "count_f1": 0.6294,
+   "abs_total_area_err_pct": 8.03
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.01,
+    "neck_share": 0.03
+   },
+   "count_f1": 0.6579,
+   "abs_total_area_err_pct": 8.22
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.01,
+    "neck_share": 0.04
+   },
+   "count_f1": 0.7211,
+   "abs_total_area_err_pct": 8.04
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.01,
+    "neck_share": 0.06
+   },
+   "count_f1": 0.6593,
+   "abs_total_area_err_pct": 8.5
   },
   {
    "params": {
     "close_doors": false,
     "split_by_class": true,
-    "min_room_share": 0.0
-   },
-   "count_f1": 0.0171,
-   "abs_total_area_err_pct": 7.31
-  },
-  {
-   "params": {
-    "close_doors": false,
-    "split_by_class": true,
-    "min_room_share": 0.0025
+    "min_room_share": 0.0025,
+    "neck_share": 0.0
    },
    "count_f1": 0.4697,
    "abs_total_area_err_pct": 7.75
@@ -115,7 +239,58 @@
    "params": {
     "close_doors": false,
     "split_by_class": true,
-    "min_room_share": 0.005
+    "min_room_share": 0.0025,
+    "neck_share": 0.01
+   },
+   "count_f1": 0.4394,
+   "abs_total_area_err_pct": 7.94
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": true,
+    "min_room_share": 0.0025,
+    "neck_share": 0.02
+   },
+   "count_f1": 0.4436,
+   "abs_total_area_err_pct": 8.27
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": true,
+    "min_room_share": 0.0025,
+    "neck_share": 0.03
+   },
+   "count_f1": 0.4685,
+   "abs_total_area_err_pct": 7.76
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": true,
+    "min_room_share": 0.0025,
+    "neck_share": 0.04
+   },
+   "count_f1": 0.4566,
+   "abs_total_area_err_pct": 7.79
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": true,
+    "min_room_share": 0.0025,
+    "neck_share": 0.06
+   },
+   "count_f1": 0.4564,
+   "abs_total_area_err_pct": 7.84
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": true,
+    "min_room_share": 0.005,
+    "neck_share": 0.0
    },
    "count_f1": 0.5239,
    "abs_total_area_err_pct": 9.07
@@ -124,7 +299,58 @@
    "params": {
     "close_doors": false,
     "split_by_class": true,
-    "min_room_share": 0.01
+    "min_room_share": 0.005,
+    "neck_share": 0.01
+   },
+   "count_f1": 0.503,
+   "abs_total_area_err_pct": 9.5
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": true,
+    "min_room_share": 0.005,
+    "neck_share": 0.02
+   },
+   "count_f1": 0.4999,
+   "abs_total_area_err_pct": 9.9
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": true,
+    "min_room_share": 0.005,
+    "neck_share": 0.03
+   },
+   "count_f1": 0.5271,
+   "abs_total_area_err_pct": 9.59
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": true,
+    "min_room_share": 0.005,
+    "neck_share": 0.04
+   },
+   "count_f1": 0.502,
+   "abs_total_area_err_pct": 9.06
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": true,
+    "min_room_share": 0.005,
+    "neck_share": 0.06
+   },
+   "count_f1": 0.4994,
+   "abs_total_area_err_pct": 9.36
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": true,
+    "min_room_share": 0.01,
+    "neck_share": 0.0
    },
    "count_f1": 0.4796,
    "abs_total_area_err_pct": 12.53
@@ -133,127 +359,51 @@
    "params": {
     "close_doors": false,
     "split_by_class": true,
-    "min_room_share": 0.02
+    "min_room_share": 0.01,
+    "neck_share": 0.01
    },
-   "count_f1": 0.5605,
-   "abs_total_area_err_pct": 13.69
+   "count_f1": 0.4979,
+   "abs_total_area_err_pct": 12.16
   },
   {
    "params": {
     "close_doors": false,
     "split_by_class": true,
-    "min_room_share": 0.03
+    "min_room_share": 0.01,
+    "neck_share": 0.02
    },
-   "count_f1": 0.5438,
-   "abs_total_area_err_pct": 18.08
+   "count_f1": 0.4947,
+   "abs_total_area_err_pct": 13.24
   },
   {
    "params": {
-    "close_doors": true,
-    "split_by_class": false,
-    "min_room_share": 0.0
-   },
-   "count_f1": 0.1138,
-   "abs_total_area_err_pct": 7.29
-  },
-  {
-   "params": {
-    "close_doors": true,
-    "split_by_class": false,
-    "min_room_share": 0.0025
-   },
-   "count_f1": 0.6764,
-   "abs_total_area_err_pct": 7.1
-  },
-  {
-   "params": {
-    "close_doors": true,
-    "split_by_class": false,
-    "min_room_share": 0.005
-   },
-   "count_f1": 0.683,
-   "abs_total_area_err_pct": 7.21
-  },
-  {
-   "params": {
-    "close_doors": true,
-    "split_by_class": false,
-    "min_room_share": 0.01
-   },
-   "count_f1": 0.6525,
-   "abs_total_area_err_pct": 7.94
-  },
-  {
-   "params": {
-    "close_doors": true,
-    "split_by_class": false,
-    "min_room_share": 0.02
-   },
-   "count_f1": 0.598,
-   "abs_total_area_err_pct": 9.43
-  },
-  {
-   "params": {
-    "close_doors": true,
-    "split_by_class": false,
-    "min_room_share": 0.03
-   },
-   "count_f1": 0.495,
-   "abs_total_area_err_pct": 8.37
-  },
-  {
-   "params": {
-    "close_doors": true,
+    "close_doors": false,
     "split_by_class": true,
-    "min_room_share": 0.0
+    "min_room_share": 0.01,
+    "neck_share": 0.03
    },
-   "count_f1": 0.0172,
-   "abs_total_area_err_pct": 7.31
+   "count_f1": 0.5019,
+   "abs_total_area_err_pct": 12.78
   },
   {
    "params": {
-    "close_doors": true,
+    "close_doors": false,
     "split_by_class": true,
-    "min_room_share": 0.0025
+    "min_room_share": 0.01,
+    "neck_share": 0.04
    },
-   "count_f1": 0.4697,
-   "abs_total_area_err_pct": 7.74
+   "count_f1": 0.473,
+   "abs_total_area_err_pct": 11.52
   },
   {
    "params": {
-    "close_doors": true,
+    "close_doors": false,
     "split_by_class": true,
-    "min_room_share": 0.005
+    "min_room_share": 0.01,
+    "neck_share": 0.06
    },
-   "count_f1": 0.5239,
-   "abs_total_area_err_pct": 9.08
-  },
-  {
-   "params": {
-    "close_doors": true,
-    "split_by_class": true,
-    "min_room_share": 0.01
-   },
-   "count_f1": 0.4796,
-   "abs_total_area_err_pct": 12.53
-  },
-  {
-   "params": {
-    "close_doors": true,
-    "split_by_class": true,
-    "min_room_share": 0.02
-   },
-   "count_f1": 0.5605,
-   "abs_total_area_err_pct": 13.7
-  },
-  {
-   "params": {
-    "close_doors": true,
-    "split_by_class": true,
-    "min_room_share": 0.03
-   },
-   "count_f1": 0.5438,
-   "abs_total_area_err_pct": 18.09
+   "count_f1": 0.4719,
+   "abs_total_area_err_pct": 12.52
   }
  ]
 }

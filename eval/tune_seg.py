@@ -1,7 +1,7 @@
 """Pick the trained model's post-processing on CubiCasa5K train plans only, then freeze it in runs/seg_params.json.
 
 The model itself is not retrained; only how its pixel classes become rooms (close at doors? split by class?
-smallest room?) is chosen here, with the same objective as eval.tune. The test plans are never read.
+smallest room? split at narrow openings?) is chosen here, with the same objective as eval.tune. The test plans are never read.
 
 Usage: uv run --group seg python -m eval.tune_seg
 """
@@ -20,9 +20,10 @@ from quantity_lab.metrics import compare
 from quantity_lab.segmentation import SegParams, predict, rooms_from_maps
 
 GRID = {
-    "close_doors": [False, True],
+    "close_doors": [False],  # True changed nothing in the first grid: 99% of predicted door pixels are labelled wall
     "split_by_class": [False, True],
-    "min_room_share": [0.0, 0.0025, 0.005, 0.01, 0.02, 0.03],
+    "min_room_share": [0.0025, 0.005, 0.01],
+    "neck_share": [0.0, 0.01, 0.02, 0.03, 0.04, 0.06],
 }
 
 

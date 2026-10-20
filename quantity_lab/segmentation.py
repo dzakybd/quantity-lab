@@ -13,6 +13,7 @@ from pathlib import Path
 
 import cv2
 import numpy as np
+from scipy import ndimage
 
 # room channels of the CubiCasa5K model, in output order
 ROOM_CLASSES = ["Background", "Outdoor", "Wall", "Kitchen", "Living Room", "Bedroom", "Bath", "Hallway", "Railing",
@@ -30,6 +31,7 @@ class SegParams:
     close_doors: bool = False  # treat predicted door icons as walls, so rooms do not leak through doorways
     split_by_class: bool = False  # a change of predicted room class also separates rooms (open kitchens)
     min_room_share: float = 0.005  # floor pieces below this share of all predicted floor are not rooms (scale-free)
+    neck_share: float = 0.04  # > 0: split floor at openings narrower than 2 x this x sqrt(floor area) (0 = off)
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -70,6 +72,28 @@ def predict(rgb: np.ndarray, third_party: Path = THIRD_PARTY) -> tuple[np.ndarra
     return rooms.cpu().numpy(), icons.cpu().numpy()
 
 
+def split_necks(floor: np.ndarray, neck_share: float) -> np.ndarray:
+    """Label mask that splits `floor` at narrow openings such as doorways (marker watershed on the distance to the
+    nearest non-floor pixel). Cores farther than r = neck_share * sqrt(floor area) from any wall seed one room each;
+    every floor pixel then joins the core it reaches first. A floor region with no core stays one room."""
+    dist = cv2.distanceTransform(floor.astype(np.uint8), cv2.DIST_L2, 5)
+    _, seeds = cv2.connectedComponents((dist > neck_share * np.sqrt(floor.sum())).astype(np.uint8), connectivity=4)
+    nc, comp = cv2.connectedComponents(floor.astype(np.uint8), connectivity=4)
+    seeded = np.zeros(nc, bool)
+    seeded[np.unique(comp[seeds > 0])] = True
+    unseeded = np.flatnonzero(~seeded[1:]) + 1
+    extra = np.zeros(nc, np.int32)
+    extra[unseeded] = seeds.max() + 1 + np.arange(len(unseeded))
+    markers = np.where(seeds > 0, seeds, extra[comp]).astype(np.int32)
+    markers[~floor] = 0
+    # walls sit at the top of the elevation range, so a room reaches every floor pixel through floor first
+    elevation = ((dist.max() - dist) / max(float(dist.max()), 1e-9) * 65000).astype(np.uint16)
+    elevation[~floor] = 65535
+    lab = ndimage.watershed_ift(elevation, markers)
+    lab[~floor] = 0
+    return lab
+
+
 def rooms_from_maps(rooms: np.ndarray, icons: np.ndarray, p: SegParams) -> np.ndarray:
     """Room label mask (0 = not a room): 4-connected floor regions between walls, railings and (optionally) doors."""
     floor = np.isin(rooms, FLOOR)
@@ -80,9 +104,15 @@ def rooms_from_maps(rooms: np.ndarray, icons: np.ndarray, p: SegParams) -> np.nd
     k = 1
     groups = [rooms == c for c in FLOOR] if p.split_by_class else [np.ones_like(floor)]
     for g in groups:
-        n, lab, stats, _ = cv2.connectedComponentsWithStats((floor & g).astype(np.uint8), connectivity=4)
-        for i in range(1, n):
-            if stats[i, cv2.CC_STAT_AREA] >= min_px2:
-                out[lab == i] = k
-                k += 1
+        part = floor & g
+        if p.neck_share > 0:
+            lab = split_necks(part, p.neck_share)
+        else:
+            _, lab = cv2.connectedComponents(part.astype(np.uint8), connectivity=4)
+        sizes = np.bincount(lab.ravel())
+        for i in np.flatnonzero(sizes >= min_px2):
+            if i == 0:
+                continue
+            out[lab == i] = k
+            k += 1
     return out
