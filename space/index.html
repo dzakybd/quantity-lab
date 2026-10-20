@@ -42,8 +42,8 @@ footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
 </head>
 <body>
 <main>
-  <h1>How much can a 2-pixel error distort a floor-plan estimate?</h1>
-  <p class="muted">quantity-lab measures room area, perimeter and count on floor plans three ways: the annotated rooms (oracle), the same rooms with a controlled error, and a classical OpenCV baseline that labels the free space between walls. Units are image pixels; no physical scale is claimed.</p>
+  <h1>Right total, wrong rooms: what overlap scores miss in floor-plan takeoffs</h1>
+  <p class="muted">quantity-lab measures room area, perimeter and count on floor plans three ways: the annotated rooms (oracle), the same rooms with a controlled error, and two real room finders: a classical OpenCV baseline that labels the free space between walls, and the pretrained CubiCasa5K segmentation model. Units are image pixels; no physical scale is claimed.</p>
   <pre>uv run python -m quantity_lab --input plan.pdf --annotations model.svg --mode perturbed --perturbation erode --pixels 2 --output out/plan</pre>
   <p class="muted" style="margin-top:8px">Code (MIT): <a href="https://github.com/dzakybd/quantity-lab">github.com/dzakybd/quantity-lab</a>. Write-up: <a href="https://dzaky.ai.id/en/blog/quantity-lab-takeoff-errors">dzaky.ai.id</a>. Results were computed ahead of time; this page runs no model.</p>
 
@@ -64,19 +64,19 @@ footer { margin-top: 28px; font-size: 13px; color: var(--muted); }
 
   <section class="panel" style="margin-top:16px">
     <h2>Controlled errors on ten held-out CubiCasa5K plans (ranges; numbers only)</h2>
-    <p class="muted" style="font-size:13px">Mean signed room-area error, per plan: simple (5 rooms) / medium (9) / dense (28).</p>
+    <p class="muted" style="font-size:13px">Ranges over the ten plans: mean signed room-area error, total-area error and room F1.</p>
     <div class="scroll"><table id="perturb"></table></div>
   </section>
   <section class="panel">
-    <h2>OpenCV baseline on the same plans</h2>
-    <p class="muted" style="font-size:13px">Tuned on three CubiCasa5K train plans, then frozen.</p>
+    <h2>Two room finders on the same plans</h2>
+    <p class="muted" style="font-size:13px">OpenCV baseline tuned on three train plans; the trained model's pixel-to-room step tuned on ten validation plans. Both frozen before these plans were scored. High pixel overlap (IoU) does not mean the rooms are right.</p>
     <div class="scroll"><table id="pred"></table></div>
   </section>
 
   <footer>CubiCasa5K: Kalervo et al., SCIA 2019, <a href="https://zenodo.org/records/2613548">zenodo.org/records/2613548</a> (CC BY-NC-SA 4.0). No CubiCasa5K image is shown or included here; every picture is a synthetic plan made for this project.</footer>
 </main>
 <script>
-const VIEWS = { "oracle": "Oracle", "perturbed_erode_2": "Pulled in 2 px", "perturbed_erode_5": "Pulled in 5 px", "perturbed_dilate_5": "Pushed out 5 px", "perturbed_merge_20": "Missing divider", "perturbed_split_3": "Spurious line", "predicted": "OpenCV baseline" };
+const VIEWS = { "oracle": "Oracle", "perturbed_erode_2": "Pulled in 2 px", "perturbed_erode_5": "Pulled in 5 px", "perturbed_dilate_5": "Pushed out 5 px", "perturbed_merge_20": "Missing divider", "perturbed_split_3": "Spurious line", "predicted": "OpenCV baseline", "segmented": "Trained model" };
 const ERRS = { "erode_2": "Pulled in 2 px", "erode_5": "Pulled in 5 px", "dilate_2": "Pushed out 2 px", "dilate_5": "Pushed out 5 px", "shift_5": "Shifted 5 px", "scale_2": "Scale +2%", "merge_20": "Missing divider", "split_3": "Spurious line" };
 let data, cur = { p: 0, v: "oracle" };
 const fmt = (v, d = 1) => v === null || v === undefined ? "—" : (v > 0 ? "+" : "") + Number(v).toFixed(d);
@@ -94,21 +94,22 @@ function render() {
   document.getElementById("scoreTitle").textContent = `${p.title} · ${VIEWS[cur.v]}`;
   document.getElementById("stats").innerHTML = [
     [s.count_f1.toFixed(2), "room count F1"], [fmt(s.area_signed_err_pct_mean) + "%", "room area error (matched)"],
-    [fmt(s.total_area_err_pct) + "%", "total area error"], [cur.v === "oracle" ? p.rooms : (s.pred_rooms ?? "—"), cur.v === "oracle" ? "reference rooms" : "rooms found (baseline)"],
+    [fmt(s.total_area_err_pct) + "%", "total area error"], [cur.v === "oracle" ? p.rooms : (s.pred_rooms ?? "—"), cur.v === "oracle" ? "reference rooms" : "rooms found"],
   ].map(([b, t]) => `<div class="stat"><b>${b}</b><span>${t}</span></div>`).join("");
 }
-function range(rows, key, digits = 1) {
+function range(rows, key, digits = 1, signed = true) {
   const values = rows.map(r => parseFloat(r[key])).filter(Number.isFinite);
-  return values.length ? `${fmt(Math.min(...values), digits)} to ${fmt(Math.max(...values), digits)}` : "—";
+  const f = v => signed ? fmt(v, digits) : v.toFixed(digits);
+  return values.length ? `${f(Math.min(...values))} to ${f(Math.max(...values))}` : "—";
 }
 function tables() {
   const by = {};
   data.perturbations.forEach(r => { (by[`${r.perturbation}_${r.pixels}`] ||= []).push(r); });
   document.getElementById("perturb").innerHTML = "<tr><th>Error</th><th>Room area</th><th>Total area</th><th>Count F1</th></tr>" +
-    Object.entries(ERRS).filter(([k]) => by[k]).map(([k, t]) => `<tr><td>${t}</td><td>${range(by[k], "area_signed_err_pct_mean")}%</td><td>${range(by[k], "total_area_err_pct")}%</td><td>${range(by[k], "count_f1", 2)}</td></tr>`).join("");
+    Object.entries(ERRS).filter(([k]) => by[k]).map(([k, t]) => `<tr><td>${t}</td><td>${range(by[k], "area_signed_err_pct_mean")}%</td><td>${range(by[k], "total_area_err_pct")}%</td><td>${range(by[k], "count_f1", 2, false)}</td></tr>`).join("");
   const names = { "high_quality_488": "Simple", "high_quality_architectural_9453": "Medium (open kitchen)", "high_quality_architectural_6276": "Dense (two floors)" };
-  document.getElementById("pred").innerHTML = "<tr><th>Plan</th><th>Reference rooms</th><th>Found</th><th>Matched</th><th>Count F1</th><th>Total area</th></tr>" +
-    Object.entries(data.held_out).map(([k, v]) => { const p = v.predicted; return `<tr><td>${names[k] || k}</td><td>${p.gt_rooms}</td><td>${p.pred_rooms}</td><td>${p.matched}</td><td>${p.count_f1.toFixed(2)}</td><td>${fmt(p.total_area_err_pct)}%</td></tr>`; }).join("");
+  document.getElementById("pred").innerHTML = "<tr><th>Plan</th><th>Rooms</th><th>OpenCV F1</th><th>OpenCV IoU</th><th>Model found</th><th>Model matched</th><th>Model F1</th><th>Model IoU</th><th>Model total area</th></tr>" +
+    Object.entries(data.held_out).map(([k, v]) => { const p = v.predicted, m = v.segmented; return `<tr><td>${names[k] || k}</td><td>${p.gt_rooms}</td><td>${p.count_f1.toFixed(2)}</td><td>${p.mask_iou.toFixed(2)}</td><td>${m.pred_rooms}</td><td>${m.matched}</td><td>${m.count_f1.toFixed(2)}</td><td>${m.mask_iou.toFixed(2)}</td><td>${fmt(m.total_area_err_pct)}%</td></tr>`; }).join("");
 }
 fetch("data/results.json").then(r => r.json()).then(j => { data = j; render(); tables(); });
 </script>

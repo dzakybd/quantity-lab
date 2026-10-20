@@ -15,7 +15,7 @@ from PIL import Image
 REPO = Path(__file__).resolve().parent.parent
 RUNS = REPO / "runs"
 VIEWS = ["oracle", "perturbed_erode_2", "perturbed_erode_5", "perturbed_dilate_5", "perturbed_merge_20",
-         "perturbed_split_3", "predicted"]  # fmt: skip
+         "perturbed_split_3", "predicted", "segmented"]  # fmt: skip
 TITLES = {"synth-simple": "Simple: 3 rooms", "synth-medium": "Medium: open kitchen", "synth-dense": "Dense: 12 rooms"}
 WEB = 1100
 
@@ -36,11 +36,13 @@ def main() -> None:
         scores = {"oracle": {"count_f1": 1.0, "total_area_err_pct": 0.0, "area_signed_err_pct_mean": 0.0}}
         scores |= {v: m["perturbed"][v.removeprefix("perturbed_")] for v in VIEWS if v.startswith("perturbed_")}
         scores["predicted"] = m["predicted"]
+        scores["segmented"] = m["segmented"]
         plans.append({"id": pid, "title": title, "rooms": m["oracle"]["room_count"], "scores": scores})
     held = {k: v for k, v in metrics.items() if v["dataset"] == "held-out"}
     out = {"plans": plans, "held_out": held,
            "perturbations": [r for r in csv.DictReader((RUNS / "perturbation_results.csv").open()) if r["dataset"] == "held-out"],
-           "params": json.loads((RUNS / "params.json").read_text())["chosen"]}  # fmt: skip
+           "params": json.loads((RUNS / "params.json").read_text())["chosen"],
+           "seg_params": json.loads((RUNS / "seg_params.json").read_text())["chosen"]}  # fmt: skip
     (data / "results.json").write_text(json.dumps(out, indent=1))
     print(f"{len(plans)} synthetic plans x {len(VIEWS)} views -> {data}")
 
