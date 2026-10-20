@@ -6,7 +6,7 @@ Needs a Kaggle API token (KAGGLE_API_TOKEN). Files land in samples/, which is gi
 Train plans: the first `high_quality` entry and the first two `high_quality_architectural` entries of train.txt,
 skipping plans whose annotation covers less than 60% of the drawing's ink (partly annotated sheets).
 
-Usage: uv run python -m eval.fetch_samples [--val]
+Usage: uv run python -m eval.fetch_samples [--val | --all-test]
 """
 
 import argparse
@@ -69,7 +69,7 @@ def coverage(d: Path) -> float:
     return float((ink & covered).sum() / max(1, ink.sum()))
 
 
-def fetch_val(n: int = 10, seed: int = 20261021) -> list[str]:
+def fetch_val(n: int = 30, seed: int = 20261021) -> list[str]:
     """Plans from the validation split for tuning the trained model's post-processing. The model was trained on the
     train split, so its output there is better than on unseen plans; val was only used to pick its checkpoint.
     The val list is shuffled with `seed`; the first `n` plans with >= 60% coverage are kept."""
@@ -88,10 +88,27 @@ def fetch_val(n: int = 10, seed: int = 20261021) -> list[str]:
     return chosen
 
 
+def fetch_all_test() -> list[str]:
+    """Every plan in the official test split (400), for eval.full_test. Skips plans already on disk."""
+    plans = [e.strip("/") for e in (SAMPLES / "test.txt").read_text().split()]
+    for done, plan in enumerate(plans, 1):
+        d = plan_dir(plan)
+        if not all((d / f).exists() for f in FILES):
+            fetch(plan)
+        if done % 25 == 0:
+            print("fetched", done, "of", len(plans), flush=True)
+    return plans
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--all-test", action="store_true", help="fetch the whole test split for eval.full_test")
     ap.add_argument("--val", action="store_true", help="only fetch the validation plans used by eval.tune_seg")
-    if ap.parse_args().val:
+    args = ap.parse_args()
+    if args.all_test:
+        print("test plans:", len(fetch_all_test()))
+        return
+    if args.val:
         print("val:", fetch_val())
         return
     kaggle_get("test.txt", SAMPLES)

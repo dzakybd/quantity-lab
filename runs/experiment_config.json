@@ -1,12 +1,12 @@
 {
  "params_sha256": "80a3a5952ca63a82be91a7b821b98c571c5344493c2a77112510322c38d8bc53",
- "seg_params_sha256": "0646f737d1a99e7698c790f24f94c2ecc06c1f3eae65822295d54294ea5d4fe2",
+ "seg_params_sha256": "189782c40721847c1c3de8a30eab1dd77d040230c4752555d20609ee8a2638a3",
  "seg_model": "CubiCasa5K hg_furukawa_original, model_best_val_loss_var.pkl (train split; not retrained)",
  "seg_params": {
   "close_doors": false,
-  "split_by_class": true,
+  "split_by_class": false,
   "min_room_share": 0.01,
-  "neck_share": 0.01
+  "neck_share": 0.06
  },
  "sample_manifest": {
   "source": "https://zenodo.org/records/2613548/files/cubicasa5k.zip?download=1",

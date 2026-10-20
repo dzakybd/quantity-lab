@@ -9,7 +9,27 @@
   "colorful/3182",
   "colorful/14928",
   "high_quality_architectural/174",
-  "high_quality_architectural/7570"
+  "high_quality_architectural/7570",
+  "colorful/1148",
+  "high_quality_architectural/6602",
+  "high_quality_architectural/7864",
+  "high_quality_architectural/1361",
+  "high_quality/1885",
+  "high_quality/3935",
+  "high_quality/6388",
+  "high_quality/14255",
+  "high_quality_architectural/6387",
+  "high_quality/4871",
+  "high_quality_architectural/7799",
+  "high_quality_architectural/6033",
+  "high_quality_architectural/9556",
+  "high_quality_architectural/865",
+  "high_quality_architectural/638",
+  "high_quality_architectural/3612",
+  "high_quality/4550",
+  "high_quality_architectural/5599",
+  "high_quality_architectural/1967",
+  "high_quality/1208"
  ],
  "objective": "mean room count F1, ties broken by mean |total area error|",
  "model": "CubiCasa5K hg_furukawa_original, model_best_val_loss_var.pkl (trained on the train split, not retrained)",
@@ -38,19 +58,19 @@
  },
  "chosen": {
   "close_doors": false,
-  "split_by_class": true,
+  "split_by_class": false,
   "min_room_share": 0.01,
-  "neck_share": 0.01
+  "neck_share": 0.06
  },
  "chosen_score": {
   "params": {
    "close_doors": false,
-   "split_by_class": true,
+   "split_by_class": false,
    "min_room_share": 0.01,
-   "neck_share": 0.01
+   "neck_share": 0.06
   },
-  "count_f1": 0.6416,
-  "abs_total_area_err_pct": 15.12
+  "count_f1": 0.7325,
+  "abs_total_area_err_pct": 9.25
  },
  "all_trials": [
   {
@@ -60,8 +80,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.0
    },
-   "count_f1": 0.5721,
-   "abs_total_area_err_pct": 9.5
+   "count_f1": 0.628,
+   "abs_total_area_err_pct": 9.03
   },
   {
    "params": {
@@ -70,8 +90,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.01
    },
-   "count_f1": 0.5702,
-   "abs_total_area_err_pct": 9.43
+   "count_f1": 0.6708,
+   "abs_total_area_err_pct": 9.05
   },
   {
    "params": {
@@ -80,8 +100,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.02
    },
-   "count_f1": 0.5914,
-   "abs_total_area_err_pct": 9.43
+   "count_f1": 0.6766,
+   "abs_total_area_err_pct": 9.02
   },
   {
    "params": {
@@ -90,8 +110,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.03
    },
-   "count_f1": 0.5898,
-   "abs_total_area_err_pct": 9.51
+   "count_f1": 0.6861,
+   "abs_total_area_err_pct": 9.05
   },
   {
    "params": {
@@ -100,8 +120,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.04
    },
-   "count_f1": 0.5837,
-   "abs_total_area_err_pct": 9.53
+   "count_f1": 0.6946,
+   "abs_total_area_err_pct": 9.05
   },
   {
    "params": {
@@ -110,8 +130,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.06
    },
-   "count_f1": 0.6015,
-   "abs_total_area_err_pct": 9.5
+   "count_f1": 0.7135,
+   "abs_total_area_err_pct": 9.03
   },
   {
    "params": {
@@ -120,8 +140,8 @@
     "min_room_share": 0.005,
     "neck_share": 0.0
    },
-   "count_f1": 0.5738,
-   "abs_total_area_err_pct": 9.46
+   "count_f1": 0.6335,
+   "abs_total_area_err_pct": 9.03
   },
   {
    "params": {
@@ -130,8 +150,8 @@
     "min_room_share": 0.005,
     "neck_share": 0.01
    },
-   "count_f1": 0.5857,
-   "abs_total_area_err_pct": 9.35
+   "count_f1": 0.6853,
+   "abs_total_area_err_pct": 9.06
   },
   {
    "params": {
@@ -140,98 +160,98 @@
     "min_room_share": 0.005,
     "neck_share": 0.02
    },
-   "count_f1": 0.603,
+   "count_f1": 0.6915,
+   "abs_total_area_err_pct": 9.07
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.005,
+    "neck_share": 0.03
+   },
+   "count_f1": 0.6987,
+   "abs_total_area_err_pct": 9.07
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.005,
+    "neck_share": 0.04
+   },
+   "count_f1": 0.7092,
+   "abs_total_area_err_pct": 9.11
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.005,
+    "neck_share": 0.06
+   },
+   "count_f1": 0.7247,
+   "abs_total_area_err_pct": 9.05
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.01,
+    "neck_share": 0.0
+   },
+   "count_f1": 0.6331,
+   "abs_total_area_err_pct": 9.15
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.01,
+    "neck_share": 0.01
+   },
+   "count_f1": 0.6871,
+   "abs_total_area_err_pct": 9.15
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.01,
+    "neck_share": 0.02
+   },
+   "count_f1": 0.6975,
+   "abs_total_area_err_pct": 9.3
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.01,
+    "neck_share": 0.03
+   },
+   "count_f1": 0.7076,
+   "abs_total_area_err_pct": 9.4
+  },
+  {
+   "params": {
+    "close_doors": false,
+    "split_by_class": false,
+    "min_room_share": 0.01,
+    "neck_share": 0.04
+   },
+   "count_f1": 0.7179,
    "abs_total_area_err_pct": 9.56
   },
   {
    "params": {
     "close_doors": false,
     "split_by_class": false,
-    "min_room_share": 0.005,
-    "neck_share": 0.03
-   },
-   "count_f1": 0.6056,
-   "abs_total_area_err_pct": 9.53
-  },
-  {
-   "params": {
-    "close_doors": false,
-    "split_by_class": false,
-    "min_room_share": 0.005,
-    "neck_share": 0.04
-   },
-   "count_f1": 0.5958,
-   "abs_total_area_err_pct": 9.66
-  },
-  {
-   "params": {
-    "close_doors": false,
-    "split_by_class": false,
-    "min_room_share": 0.005,
-    "neck_share": 0.06
-   },
-   "count_f1": 0.6035,
-   "abs_total_area_err_pct": 9.46
-  },
-  {
-   "params": {
-    "close_doors": false,
-    "split_by_class": false,
-    "min_room_share": 0.01,
-    "neck_share": 0.0
-   },
-   "count_f1": 0.5751,
-   "abs_total_area_err_pct": 9.72
-  },
-  {
-   "params": {
-    "close_doors": false,
-    "split_by_class": false,
-    "min_room_share": 0.01,
-    "neck_share": 0.01
-   },
-   "count_f1": 0.5923,
-   "abs_total_area_err_pct": 9.44
-  },
-  {
-   "params": {
-    "close_doors": false,
-    "split_by_class": false,
-    "min_room_share": 0.01,
-    "neck_share": 0.02
-   },
-   "count_f1": 0.6139,
-   "abs_total_area_err_pct": 9.94
-  },
-  {
-   "params": {
-    "close_doors": false,
-    "split_by_class": false,
-    "min_room_share": 0.01,
-    "neck_share": 0.03
-   },
-   "count_f1": 0.6191,
-   "abs_total_area_err_pct": 10.08
-  },
-  {
-   "params": {
-    "close_doors": false,
-    "split_by_class": false,
-    "min_room_share": 0.01,
-    "neck_share": 0.04
-   },
-   "count_f1": 0.6102,
-   "abs_total_area_err_pct": 10.38
-  },
-  {
-   "params": {
-    "close_doors": false,
-    "split_by_class": false,
     "min_room_share": 0.01,
     "neck_share": 0.06
    },
-   "count_f1": 0.6116,
-   "abs_total_area_err_pct": 9.57
+   "count_f1": 0.7325,
+   "abs_total_area_err_pct": 9.25
   },
   {
    "params": {
@@ -240,8 +260,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.0
    },
-   "count_f1": 0.5333,
-   "abs_total_area_err_pct": 11.05
+   "count_f1": 0.5991,
+   "abs_total_area_err_pct": 10.09
   },
   {
    "params": {
@@ -250,8 +270,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.01
    },
-   "count_f1": 0.5402,
-   "abs_total_area_err_pct": 11.23
+   "count_f1": 0.6482,
+   "abs_total_area_err_pct": 10.51
   },
   {
    "params": {
@@ -260,8 +280,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.02
    },
-   "count_f1": 0.5707,
-   "abs_total_area_err_pct": 11.82
+   "count_f1": 0.6684,
+   "abs_total_area_err_pct": 10.93
   },
   {
    "params": {
@@ -270,8 +290,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.03
    },
-   "count_f1": 0.5797,
-   "abs_total_area_err_pct": 11.64
+   "count_f1": 0.6758,
+   "abs_total_area_err_pct": 10.97
   },
   {
    "params": {
@@ -280,8 +300,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.04
    },
-   "count_f1": 0.5768,
-   "abs_total_area_err_pct": 12.64
+   "count_f1": 0.6841,
+   "abs_total_area_err_pct": 11.45
   },
   {
    "params": {
@@ -290,8 +310,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.06
    },
-   "count_f1": 0.567,
-   "abs_total_area_err_pct": 10.99
+   "count_f1": 0.7098,
+   "abs_total_area_err_pct": 10.49
   },
   {
    "params": {
@@ -300,8 +320,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.0
    },
-   "count_f1": 0.5304,
-   "abs_total_area_err_pct": 10.33
+   "count_f1": 0.5498,
+   "abs_total_area_err_pct": 9.92
   },
   {
    "params": {
@@ -310,8 +330,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.01
    },
-   "count_f1": 0.5207,
-   "abs_total_area_err_pct": 11.44
+   "count_f1": 0.5404,
+   "abs_total_area_err_pct": 10.83
   },
   {
    "params": {
@@ -320,8 +340,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.02
    },
-   "count_f1": 0.4653,
-   "abs_total_area_err_pct": 11.31
+   "count_f1": 0.5264,
+   "abs_total_area_err_pct": 10.85
   },
   {
    "params": {
@@ -330,8 +350,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.03
    },
-   "count_f1": 0.4549,
-   "abs_total_area_err_pct": 10.92
+   "count_f1": 0.5078,
+   "abs_total_area_err_pct": 10.4
   },
   {
    "params": {
@@ -340,8 +360,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.04
    },
-   "count_f1": 0.4627,
-   "abs_total_area_err_pct": 10.78
+   "count_f1": 0.5154,
+   "abs_total_area_err_pct": 10.28
   },
   {
    "params": {
@@ -350,8 +370,8 @@
     "min_room_share": 0.0025,
     "neck_share": 0.06
    },
-   "count_f1": 0.4707,
-   "abs_total_area_err_pct": 10.53
+   "count_f1": 0.5139,
+   "abs_total_area_err_pct": 10.09
   },
   {
    "params": {
@@ -360,8 +380,8 @@
     "min_room_share": 0.005,
     "neck_share": 0.0
    },
-   "count_f1": 0.576,
-   "abs_total_area_err_pct": 11.18
+   "count_f1": 0.5997,
+   "abs_total_area_err_pct": 10.57
   },
   {
    "params": {
@@ -370,8 +390,8 @@
     "min_room_share": 0.005,
     "neck_share": 0.01
    },
-   "count_f1": 0.5792,
-   "abs_total_area_err_pct": 12.94
+   "count_f1": 0.5965,
+   "abs_total_area_err_pct": 11.76
   },
   {
    "params": {
@@ -380,8 +400,8 @@
     "min_room_share": 0.005,
     "neck_share": 0.02
    },
-   "count_f1": 0.5432,
-   "abs_total_area_err_pct": 13.94
+   "count_f1": 0.5912,
+   "abs_total_area_err_pct": 12.16
   },
   {
    "params": {
@@ -390,8 +410,8 @@
     "min_room_share": 0.005,
     "neck_share": 0.03
    },
-   "count_f1": 0.5331,
-   "abs_total_area_err_pct": 13.21
+   "count_f1": 0.5809,
+   "abs_total_area_err_pct": 11.8
   },
   {
    "params": {
@@ -400,8 +420,8 @@
     "min_room_share": 0.005,
     "neck_share": 0.04
    },
-   "count_f1": 0.5212,
-   "abs_total_area_err_pct": 12.3
+   "count_f1": 0.578,
+   "abs_total_area_err_pct": 11.22
   },
   {
    "params": {
@@ -410,8 +430,8 @@
     "min_room_share": 0.005,
     "neck_share": 0.06
    },
-   "count_f1": 0.5234,
-   "abs_total_area_err_pct": 11.73
+   "count_f1": 0.5744,
+   "abs_total_area_err_pct": 11.03
   },
   {
    "params": {
@@ -420,8 +440,8 @@
     "min_room_share": 0.01,
     "neck_share": 0.0
    },
-   "count_f1": 0.6393,
-   "abs_total_area_err_pct": 12.67
+   "count_f1": 0.6532,
+   "abs_total_area_err_pct": 11.72
   },
   {
    "params": {
@@ -430,8 +450,8 @@
     "min_room_share": 0.01,
     "neck_share": 0.01
    },
-   "count_f1": 0.6416,
-   "abs_total_area_err_pct": 15.12
+   "count_f1": 0.6562,
+   "abs_total_area_err_pct": 13.3
   },
   {
    "params": {
@@ -440,8 +460,8 @@
     "min_room_share": 0.01,
     "neck_share": 0.02
    },
-   "count_f1": 0.6042,
-   "abs_total_area_err_pct": 16.39
+   "count_f1": 0.6528,
+   "abs_total_area_err_pct": 13.71
   },
   {
    "params": {
@@ -450,8 +470,8 @@
     "min_room_share": 0.01,
     "neck_share": 0.03
    },
-   "count_f1": 0.5978,
-   "abs_total_area_err_pct": 15.82
+   "count_f1": 0.6496,
+   "abs_total_area_err_pct": 13.64
   },
   {
    "params": {
@@ -460,8 +480,8 @@
     "min_room_share": 0.01,
     "neck_share": 0.04
    },
-   "count_f1": 0.5836,
-   "abs_total_area_err_pct": 14.96
+   "count_f1": 0.6387,
+   "abs_total_area_err_pct": 13.02
   },
   {
    "params": {
@@ -470,8 +490,8 @@
     "min_room_share": 0.01,
     "neck_share": 0.06
    },
-   "count_f1": 0.5822,
-   "abs_total_area_err_pct": 14.04
+   "count_f1": 0.6371,
+   "abs_total_area_err_pct": 12.82
   },
   {
    "params": {
@@ -480,8 +500,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.0
    },
-   "count_f1": 0.6355,
-   "abs_total_area_err_pct": 17.63
+   "count_f1": 0.6601,
+   "abs_total_area_err_pct": 15.32
   },
   {
    "params": {
@@ -490,8 +510,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.01
    },
-   "count_f1": 0.6335,
-   "abs_total_area_err_pct": 20.02
+   "count_f1": 0.6623,
+   "abs_total_area_err_pct": 17.07
   },
   {
    "params": {
@@ -500,8 +520,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.02
    },
-   "count_f1": 0.614,
-   "abs_total_area_err_pct": 21.49
+   "count_f1": 0.6587,
+   "abs_total_area_err_pct": 17.68
   },
   {
    "params": {
@@ -510,8 +530,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.03
    },
-   "count_f1": 0.6125,
-   "abs_total_area_err_pct": 21.82
+   "count_f1": 0.6614,
+   "abs_total_area_err_pct": 18.31
   },
   {
    "params": {
@@ -520,8 +540,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.04
    },
-   "count_f1": 0.601,
-   "abs_total_area_err_pct": 22.01
+   "count_f1": 0.6578,
+   "abs_total_area_err_pct": 18.23
   },
   {
    "params": {
@@ -530,8 +550,8 @@
     "min_room_share": 0.02,
     "neck_share": 0.06
    },
-   "count_f1": 0.6016,
-   "abs_total_area_err_pct": 20.74
+   "count_f1": 0.6545,
+   "abs_total_area_err_pct": 17.74
   }
  ]
 }

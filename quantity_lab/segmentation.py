@@ -28,9 +28,9 @@ THIRD_PARTY = Path(__file__).resolve().parent.parent / "third_party"
 @dataclass(frozen=True)
 class SegParams:
     close_doors: bool = False  # treat predicted door icons as walls, so rooms do not leak through doorways
-    split_by_class: bool = True  # a change of predicted room class also separates rooms (open kitchens)
+    split_by_class: bool = False  # a change of predicted room class also separates rooms (open kitchens)
     min_room_share: float = 0.01  # floor pieces below this share of all predicted floor are not rooms (scale-free)
-    neck_share: float = 0.01  # > 0: split floor at openings narrower than 2 x this x sqrt(floor area) (0 = off)
+    neck_share: float = 0.06  # > 0: split floor at openings narrower than 2 x this x sqrt(floor area) (0 = off)
 
     def to_dict(self) -> dict:
         return asdict(self)

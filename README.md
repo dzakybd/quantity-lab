@@ -1,12 +1,20 @@
 # quantity-lab
 
+## Why this exists
+
+Finishing work is priced room by room. Some numbers are written on the drawing, but a written number is a claim: an earlier hand takeoff, often partial, typed by hand, stale on revision. The per-room quantities that drive the price — tile from the floor polygon, skirting from its perimeter, paint from wall area — are computed from the room polygon, so the polygon is what has to be right.
+
+That is why the room finder matters. Classic CV labels free space: it splits at furniture, leaks through doorways, and its settings do not transfer between drawing styles (mean room F1 0.101 on the test plans). A trained segmentation model learns walls, doors and rooms across styles (0.807), because the target is meaning, not ink. This repo measures what each option costs in quantities.
+
+## What it does
+
 How do small geometry errors turn into wrong quantities? quantity-lab measures room area, perimeter and count on floor plans in three separate modes, so the error sources stay apart:
 
 - **A. Oracle:** the annotated room polygons, measured directly. It also runs the raster round trip (polygons → mask → polygons) to show the error that rasterizing alone adds.
 - **B. Controlled errors:** known damage applied to the oracle mask, then re-measured. The damage types are boundary erosion and dilation (2 and 5 px), a 2 and 5 px shift, a ±2% scale, a missing divider (two rooms merge) and a spurious line (one room splits).
 - **C. Predicted:** two real room finders, scored the same way.
   - `predicted`: a classical OpenCV baseline with no model. It keeps thick dark strokes as walls, closes doorways between collinear wall pieces, and labels the free space between walls as rooms.
-  - `segmented`: the pretrained CubiCasa5K multi-task network (Kalervo et al., 2019; trained on the train split, not retrained). Rooms are the connected floor regions between the walls it predicts; that pixel-to-room step was chosen on train plans only (`eval/tune_seg.py`, frozen in `runs/seg_params.json`).
+  - `segmented`: the pretrained CubiCasa5K multi-task network (Kalervo et al., 2019; trained on the train split, not retrained). Rooms are the connected floor regions between the walls it predicts; that pixel-to-room step was chosen on validation plans only (`eval/tune_seg.py`, frozen in `runs/seg_params.json`).
 
 Units are **image pixels** (px, px²). No physical scale is claimed.
 
@@ -92,7 +100,9 @@ What this shows:
 
 The baseline fails as a room counter. It splits rooms at furniture and fixture lines, merges rooms through open doorways and open plans, and its settings did not carry over between drawing styles: tuned on three train plans, it scored 0.33 count F1 even there. Across the ten plans, mean count F1 is 0.101 and the room-count MAE is 33.3. Note `9453`: **total area within 1.3% while matching zero rooms**. A right total can hide wrong rooms. HQ = `high_quality`, HQA = `high_quality_architectural`.
 
-**Mode C: trained model (count F1 / mask IoU / total-area error).** Mean count F1 **0.731** (median 0.700, range 0.400–1.000), mask IoU 0.88, room-count MAE 3.1, median per-plan room-area error 8.0%, mean |total-area error| 8.5%. The pixel-to-room step (class split, minimum room share, doorway split; `runs/seg_params.json`) is chosen on **ten validation plans** (`samples/VAL.txt`, `eval.fetch_samples --val`): the model was trained on the train split, so its output there is cleaner than on unseen plans. Validation picked class splitting on, a 1% minimum room share and a small doorway split (`neck_share` 0.01). For comparison, the same step tuned on three train plans scored higher on these test plans (count F1 0.752, total-area error 3.3%); it is not used, because switching after seeing the test plans would be choosing on them. The doorway split grows floor cores back over the floor together (a watershed version settled ties arbitrarily and is replaced; `tests/test_segmentation.py` pins the case). The weakest plan is `9453`: **mask IoU 0.82 while only 5 of 9 rooms match**. Most model rooms (90%) need contour repair. Segmentation plus post-processing takes a median 0.59 s per plan on an M1 Pro GPU (MPS).
+**Mode C: trained model (count F1 / mask IoU / total-area error).** Mean count F1 **0.807** (median 0.800, range 0.609–1.000), mean mask IoU 0.93, room-count MAE 2.0, median per-plan room-area error 2.2%, mean |total-area error| 3.8%. The pixel-to-room step (`runs/seg_params.json`) is chosen on **thirty validation plans** (`samples/VAL.txt`, `eval.fetch_samples --val`), expanded from ten while preserving the first ten. The selected settings leave class splitting and door closing off, keep a 1% minimum room share and split narrow openings with `neck_share` 0.06. They score 0.733 count F1 on validation. The model was trained on the train split and is not retrained here.
+
+The doorway split grows floor cores back over the floor together (`tests/test_segmentation.py` pins the case). The weakest test plan is `6276`: **mask IoU 0.85 while only 14 of 28 rooms match**. The mean per-plan fraction of model rooms needing contour repair is 78%. Model inference and room post-processing take a median 0.54 s per plan on an M3 Pro GPU (MPS). These results cover the same ten test plans; the full test split has not been evaluated.
 
 Mask IoU, area/perimeter errors, polygon validity before and after repair, and stage timings (mean, median, min, max) are in `runs/summary.json`. Rooms are matched one-to-one at IoU ≥ 0.5. `runs/verification.json` records the export checks and the repeat run of both predictors on every test plan (identical metrics).
 
@@ -117,7 +127,7 @@ uv run pytest -q
 
 - **Ten test plans,** three of which were inspected before the set was expanded. These show how the errors behave, not a general accuracy figure.
 - **No physical units.** A real takeoff needs a validated scale (a scale bar or a known dimension).
-- **One pretrained model, tested on its own dataset,** and post-processing chosen on ten validation plans; which tuning split is better is not settled by ten test plans. Other drawing styles will do worse, and open plans and wide openings still merge rooms.
+- **One pretrained model, tested on its own dataset,** and post-processing chosen on thirty validation plans; ten test plans do not establish general accuracy. Other drawing styles will do worse, and open plans and wide openings still merge rooms.
 - **Wall length is not measured.** The area of a wall polygon is not wall length, and a centreline method was out of scope.
 
 ## Data and licence
